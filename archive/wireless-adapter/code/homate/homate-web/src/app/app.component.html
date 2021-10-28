@@ -1,0 +1,29 @@
+<mat-sidenav-container class="fill-viewport">
+  <mat-sidenav opened="true" mode="side">
+    <div>
+      <mat-nav-list class="bg">
+        <a mat-list-item (click)="roomClick(room)" *ngFor="let room of rooms; let i = index">
+          {{i+1}}
+        </a>
+      </mat-nav-list>
+      <mat-nav-list>
+        <a mat-list-item (click)="logout">
+          <mat-icon>
+            exit_to_app
+          </mat-icon>
+        </a>
+        <a mat-list-item (click)="settings">
+          <mat-icon>
+            settings
+          </mat-icon>
+        </a>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+  <mat-toolbar>
+    <app-toolbar [roomName]="selectedRoom.name" style="width: 100%;"></app-toolbar>
+  </mat-toolbar>
+  <div *ngIf="selectedRoom" class="main-container">
+    <app-main [room]="selectedRoom"></app-main>
+  </div>
+</mat-sidenav-container>

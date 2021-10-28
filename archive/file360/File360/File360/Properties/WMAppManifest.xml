@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
+  <DefaultLanguage xmlns="" code="en-US" />
+  <Languages xmlns="">
+    <Language code="ta" />
+  </Languages>
+  <App xmlns="" ProductID="{6db737b7-6d8e-4901-86a4-3110a717c72f}" Title="File360°" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="AMI" Description="Elegant Beautiful Explorer for Windows Phone 8." Publisher="AMI" PublisherID="{adf37227-c10c-460b-a659-59745477b5c6}">
+    <IconPath IsRelative="true" IsResource="false">File360.Logo.png</IconPath>
+    <Capabilities>
+      <Capability Name="ID_CAP_NETWORKING" />
+      <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
+      <Capability Name="ID_CAP_MEDIALIB_PLAYBACK" />
+      <Capability Name="ID_CAP_SENSORS" />
+      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
+      <Capability Name="ID_CAP_REMOVABLE_STORAGE" />
+      <Capability Name="ID_CAP_MEDIALIB_PHOTO" />
+      <Capability Name="ID_CAP_IDENTITY_DEVICE" />
+      <Capability Name="ID_CAP_ISV_CAMERA" />
+    </Capabilities>
+    <Tasks>
+      <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
+    </Tasks>
+    <Tokens>
+      <PrimaryToken TokenID="File360Token" TaskName="_default">
+        <TemplateFlip>
+          <SmallImageURI IsRelative="true" IsResource="false">File360.Logo.Small.png</SmallImageURI>
+          <Count>0</Count>
+          <BackgroundImageURI IsRelative="true" IsResource="false">File360.Logo.Medium.png</BackgroundImageURI>
+          <Title>File360</Title>
+          <BackContent></BackContent>
+          <BackBackgroundImageURI></BackBackgroundImageURI>
+          <BackTitle></BackTitle>
+          <LargeBackgroundImageURI IsRelative="true" IsResource="false">File360.Logo.Large.png</LargeBackgroundImageURI>
+          <LargeBackContent />
+          <LargeBackBackgroundImageURI IsRelative="true" IsResource="false"></LargeBackBackgroundImageURI>
+          <DeviceLockImageURI></DeviceLockImageURI>
+          <HasLarge>True</HasLarge>
+        </TemplateFlip>
+      </PrimaryToken>
+    </Tokens>
+    <Extensions>
+      <FileTypeAssociation Name="File URI" TaskID="_default" NavUriFragment="fileToken=%s">
+        <!--<Logos>
+          <If you want to specify your own logo files, you can do it here>
+          <Logo Size="small" IsRelative="true">Assets/sdk-small-33x33.png</Logo>
+          <Logo Size="medium" IsRelative="true">Assets/sdk-medium-69x69.png</Logo>
+          <Logo Size="large" IsRelative="true">Assets/sdk-large-176x176.png</Logo>
+        </Logos>-->
+        <SupportedFileTypes>
+          <FileType ContentType="application/rar">.rar</FileType>
+          <FileType ContentType="application/pdf">.pdf</FileType>
+          <FileType ContentType="application/svg">.svg</FileType>
+          <FileType ContentType="application/mkv">.mkv</FileType>
+          <FileType ContentType="application/avi">.avi</FileType>
+          <FileType ContentType="application/csv">.csv</FileType>
+          <FileType ContentType="application/7z">.7z</FileType>
+        </SupportedFileTypes>
+      </FileTypeAssociation>
+      <Protocol Name="f360" NavUriFragment="encodedLaunchUri=%s" TaskID="_default" />
+    </Extensions>
+    <ScreenResolutions>
+      <ScreenResolution Name="ID_RESOLUTION_WVGA" />
+      <ScreenResolution Name="ID_RESOLUTION_WXGA" />
+      <ScreenResolution Name="ID_RESOLUTION_HD720P" />
+    </ScreenResolutions>
+  </App>
+</Deployment>

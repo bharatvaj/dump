@@ -1,0 +1,12 @@
+[submodule "Node"]
+	path = Node
+	url = https://github.com/bharatph/Node
+[submodule "clog"]
+	path = clog
+	url = https://github.com/bharatph/clog
+[submodule "UniversalUI"]
+	path = UniversalUI
+	url = https://github.com/bharatph/UniversalUI
+[submodule "LP"]
+	path = LP
+	url = https://github.com/bharatph/LP

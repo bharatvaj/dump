@@ -1,0 +1,5 @@
+{
+    "connect": "1",
+    "disconnect": "2",
+    "help": "3"
+}

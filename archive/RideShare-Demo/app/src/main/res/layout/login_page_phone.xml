@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:textColor="@android:color/white"
+        style="@style/AppTheme.HeaderTextView"
+        android:text="@string/caption_user_mobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal"
+        >
+
+        <EditText
+            android:id="@+id/loginCountryCode"
+            style="@style/CustomEditText"
+            android:text="+91"
+            android:textSize="@dimen/xxlarge"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:theme="@style/CustomEditText"
+            android:layout_weight="0.2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="phone" />
+        <EditText
+            android:id="@+id/field_phone_number"
+            android:textSize="@dimen/xxlarge"
+            style="@style/CustomEditText"
+            android:theme="@style/CustomEditText"
+            android:layout_weight="0.6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_mobile"
+            android:inputType="phone" />
+
+        <ImageButton
+            android:id="@+id/button_start_verification"
+            android:tint="@android:color/white"
+            app:srcCompat="@drawable/chevron_right"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/start_phone_auth" />
+    </LinearLayout>
+</LinearLayout>

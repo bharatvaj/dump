@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>9511400e-a6b8-425b-86dc-a79d165d8f65</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Expense_Manager</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Common\DateTimeExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObservableCollectionExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Transaction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TransType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\Calendar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\CalendarAutomationPeer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\CalendarBlackoutDatesCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\CalendarButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\CalendarButtonAutomationPeer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\CalendarDateChangedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\CalendarDateRange.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\CalendarDayButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\CalendarDayButtonAutomationPeer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\CalendarExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\CalendarItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\CalendarMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\CalendarModeChangedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\CalendarSelectionMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\DateTimeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\DateTimeTypeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\Properties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Calendar\SelectedDatesCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Common\InteractionHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Common\IUpdateVisualState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Common\VisualStates.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\DrawerLayout.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\9130440.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\ARAM.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\bg_box-shadow-left-right.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\bharatgas_logo.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\cisco_drop.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\date_tag.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\drop-shadows-generator-3.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\faders_final.gif" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\acc_boy.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\acc_girl.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\img-thing.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\mainDropShadow.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\ribbon_body.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\ribbon_head.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Slide-Drop-shadows-png.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Expense Manger.txt" />
+    <Content Include="$(MSBuildThisFileDirectory)expense_categories.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)expense_data.xml" />
+    <Content Include="$(MSBuildThisFileDirectory)Fonts\Iconographics\expensemanagertype.ttf" />
+    <Content Include="$(MSBuildThisFileDirectory)Fonts\Iconographics\expensemanagerui.ttf" />
+    <Content Include="$(MSBuildThisFileDirectory)income_categories.xml" />
+    <Content Include="$(MSBuildThisFileDirectory)income_data.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Common\StandardStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)View\Calendar\Calendar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)View\Calendar\CalendarButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)View\Calendar\CalendarDayButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)View\Calendar\CalendarItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

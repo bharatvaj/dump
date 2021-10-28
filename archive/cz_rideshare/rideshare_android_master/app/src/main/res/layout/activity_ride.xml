@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/rideshare_gradient"
+    android:theme="@style/AppTheme.Contrast"
+    tools:context="com.cz.rideshare.RideActivity">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        tools:context="com.cz.rideshare.RideActivity"
+        android:id="@+id/rideMap"
+        android:layout_marginBottom="-10sp"
+        android:layout_weight="0.55"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+    <LinearLayout
+        android:elevation="@dimen/small"
+        android:background="@drawable/cornered_background"
+        android:layout_weight="0.38"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="0dp">
+        <include layout="@layout/driver_quick_info"
+            android:layout_marginTop="@dimen/tiniest"
+            android:layout_weight="0.3"
+            android:id="@+id/mapDriver"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/small"
+            android:layout_marginRight="@dimen/small"
+            android:layout_width="match_parent"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rideNodeRecyclerView"
+            android:overScrollMode="never"
+            android:layout_weight="0.4"
+            android:layout_marginTop="@dimen/tiniest"
+            android:paddingLeft="@dimen/small"
+            android:paddingRight="@dimen/small"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+        <TextView
+            android:paddingLeft="@dimen/small"
+            android:paddingRight="@dimen/small"
+            android:layout_marginTop="@dimen/tiniest"
+            android:id="@+id/rideInfoText"
+            android:layout_weight="0.1"
+            android:text="@string/caption_access_request_notification"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+        <LinearLayout
+            android:elevation="@dimen/small"
+            android:layout_marginTop="@dimen/tiniest"
+            android:paddingTop="@dimen/small"
+            android:background="@color/colorRideshare"
+            android:layout_weight="0.2"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <ImageButton
+                android:id="@+id/rideCallDriver"
+                app:srcCompat="@drawable/phone_call"
+                android:tint="@android:color/white"
+                android:contentDescription="@string/call_user"
+                android:layout_weight="0.33"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <ImageButton
+                android:id="@+id/rideMsgDriver"
+                app:srcCompat="@drawable/chat"
+                android:tint="@android:color/white"
+                android:contentDescription="@string/call_user"
+                android:layout_weight="0.33"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <ImageButton
+                android:id="@+id/rideCancel"
+                app:srcCompat="@drawable/cancel_button"
+                android:tint="@android:color/white"
+                android:contentDescription="@string/call_user"
+                android:layout_weight="0.33"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

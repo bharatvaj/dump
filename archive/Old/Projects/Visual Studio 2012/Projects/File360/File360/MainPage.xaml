@@ -1,0 +1,711 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ExpInteractivity="clr-namespace:Microsoft.Expression.Interactivity.Layout;assembly=Microsoft.Expression.Interactions"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:ec="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+    xmlns:local="clr-namespace:File360"
+    xmlns:Controls="clr-namespace:Microsoft.Live.Controls;assembly=Microsoft.Live.Controls"
+    xmlns:metro="clr-namespace:MetroInMotionUtils"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
+    xmlns:es="clr-namespace:Microsoft.Expression.Shapes;assembly=Microsoft.Expression.Drawing"
+    x:Class="File360.MainPage"
+    Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+
+    <phone:PhoneApplicationPage.Resources>
+        <!--DataTemplate-->
+        <DataTemplate x:Name="File360FileTemplate">
+            <Grid Hold="folderTap_Hold" Tap="folderTap_Click" Height="120" Width="110" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{x:Null}">
+                <StackPanel>
+                    <Rectangle Height="10" VerticalAlignment="Top"/>
+                    <Rectangle Width="115" Height="70" VerticalAlignment="Top">
+                        <Rectangle.Fill>
+                            <ImageBrush Stretch="Uniform" ImageSource="{Binding Name2}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <TextBlock x:Name="folderTap" TextWrapping="NoWrap" TextTrimming="WordEllipsis" Text="{Binding Name}" TextAlignment="Center" FontFamily="Segoe UI Light" FontSize="20" Height="30" Foreground="{StaticResource PhoneForegroundBrush}" Width="115" VerticalAlignment="Top"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Name="SettingsItemTemplate">
+            <Grid Tap="SettingTap_Tap" x:Name="SettingTap" Height="120">
+                <TextBlock x:Name="txtB" Margin="116,10,10,48" Foreground="{StaticResource PhoneForegroundBrush}" Text="{Binding SettingName}" FontSize="36"/>
+                <TextBlock Margin="111,65,17,20" Foreground="{StaticResource PhoneSubtleBrush}" Text="{Binding SettingDescription}" FontFamily="Segoe UI Light"/>
+                <Rectangle HorizontalAlignment="Left" Height="75" Margin="6,24,0,0" Stroke="{x:Null}" VerticalAlignment="Top" Width="75" Fill="{StaticResource PhoneForegroundBrush}">
+                    <Rectangle.OpacityMask>
+                        <ImageBrush Stretch="Uniform" ImageSource="{Binding SettingPicture}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Name="MusicItemTemplate">
+            <Grid Height="100" Width="420" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="{Binding SONG}"  HorizontalAlignment="Left" Height="40" Margin="38,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="373" Foreground="#FFFFFFFF" FontSize="28" FontFamily="Segoe WP Light"/>
+                <TextBlock Text="{Binding ARTIST}" HorizontalAlignment="Left" Height="30" Margin="38,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="374" FontSize="22" FontFamily="Segoe wp Light" Foreground="#BFFFFFFF"/>
+            </Grid>
+        </DataTemplate>
+
+        <!--StoryBoard-->
+        <Storyboard x:Name="expandAnimation">
+            <DoubleAnimation Storyboard.TargetName="searchButton" Storyboard.TargetProperty="Width" To="75" Duration="0:0:0.1"/>
+            <DoubleAnimation Storyboard.TargetName="searchBox" Storyboard.TargetProperty="Width" From="247" To="200" Duration="0:0:0.1"/>
+        </Storyboard>
+        <Storyboard x:Name="headerExpandAnimation">
+            <DoubleAnimation Storyboard.TargetName="header" Storyboard.TargetProperty="Height" To="518" Duration="0:0:0.2"/>
+            <DoubleAnimation Duration="0:0:0.2" To="-1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="posI" d:IsOptimized="True"/>
+            <DoubleAnimation Duration="0:0:0.2" To="180" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="posI" d:IsOptimized="True"/>
+            <DoubleAnimation Duration="0:0:0.2" To="-19.952" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="posI" d:IsOptimized="True"/>
+            <ColorAnimation Duration="0:0:0.2" To="{StaticResource PhoneBackgroundColor}" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="posI" d:IsOptimized="True"/>
+        </Storyboard>
+        <Storyboard x:Name="headerShrinkAnimation">
+            <DoubleAnimation Storyboard.TargetName="header" Storyboard.TargetProperty="Height" To="91" Duration="0:0:0.2"/>
+            <ColorAnimation Duration="0:0:0.2" To="{StaticResource PhoneForegroundColor}" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="posI" d:IsOptimized="True"/>
+            <DoubleAnimation Duration="0:0:0.2" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="posI" d:IsOptimized="True"/>
+            <DoubleAnimation Duration="0:0:0.2" To="180" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="posI" d:IsOptimized="True"/>
+            <DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="posI" d:IsOptimized="True"/>
+        </Storyboard>
+        <Storyboard x:Name="shrinkAnimation">
+            <DoubleAnimation Storyboard.TargetName="searchButton" Storyboard.TargetProperty="Width" To="0" Duration="0:0:0.3"/>
+            <DoubleAnimation Storyboard.TargetName="searchBox" Storyboard.TargetProperty="Width" From="200" To="247" Duration="0:0:0.3"/>
+        </Storyboard>
+        <Storyboard x:Name="downladAnimation">
+            <DoubleAnimation Storyboard.TargetName="downloadProgress" Storyboard.TargetProperty="Width" From="65" To="45" Duration="0:0:0.2" AutoReverse="True" RepeatBehavior="Forever"/>
+        </Storyboard>
+        <Storyboard x:Name="slideInPictureGrid">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="ptc">
+                <EasingDoubleKeyFrame KeyTime="0" Value="10.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-422.5"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="aboutAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="fal">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="2.477"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="2.665"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="fal">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="2.477"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="2.665"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="fal">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="180.75"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="186.75"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="fal">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="116.25"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="99.75"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="fal">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.35"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Duration="0:0:0.3" To="360" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="fal" d:IsOptimized="True"/>
+        </Storyboard>
+        <Storyboard x:Name="settingPopup">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="settings">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="settings">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.32" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="aboutPage">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="about">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <System:Boolean>True</System:Boolean>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="about">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="about">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="about">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="personalizationPage">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="personalization">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <System:Boolean>True</System:Boolean>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="grid2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="grid2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="personalization">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="securityPage">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Popup.IsOpen)" Storyboard.TargetName="security">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <System:Boolean>True</System:Boolean>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="security">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="security">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="security">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="blurer">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Blurer">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="mediaBackgroundFade">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="RightMediaMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.2"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="ringRotate">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Arc.EndAngle)" Storyboard.TargetName="arcs">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="360"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Arc.EndAngle)" Storyboard.TargetName="arcbg">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="360"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="slideRight">
+            <ColorAnimation Duration="0:0:0.2" To="{StaticResource PhoneForegroundColor}" Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="button" d:IsOptimized="True"/>
+        </Storyboard>
+
+        <Storyboard x:Name="dragMusic">
+            <DoubleAnimation Duration="0:0:0.2" To="450" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.VerticalAlignment)" Storyboard.TargetName="grid">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <VerticalAlignment>Bottom</VerticalAlignment>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <ColorAnimation Duration="0:0:0.2" To="{StaticResource PhoneAccentColor}" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="textBlock" d:IsOptimized="True"/>
+            <ColorAnimation Duration="0:0:0.2" To="{StaticResource PhoneForegroundColor}" Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="toggleButton" d:IsOptimized="True"/>
+            <ColorAnimation Duration="0:0:0.2" To="{StaticResource PhoneAccentColor}" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="textBlock1" d:IsOptimized="True"/>
+            <DoubleAnimation Duration="0:0:0.2" To="300" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="musicLists" d:IsOptimized="True"/>
+            <DoubleAnimation Duration="0:0:0.2" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="musicCoverArt" d:IsOptimized="True"/>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsHitTestVisible)" Storyboard.TargetName="LayoutRoot">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2">
+                    <DiscreteObjectKeyFrame.Value>
+                        <System:Boolean>True</System:Boolean>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimation Duration="0:0:0.2" To="800" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="playStateGrid" d:IsOptimized="True"/>
+            <DoubleAnimation Duration="0:0:0.2" To="4.501" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="canvas" d:IsOptimized="True"/>
+        </Storyboard>
+
+        <Storyboard x:Name="holdMenu">
+            <DoubleAnimation Duration="0:0:0.15" To="95" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="holdMenuGrid" d:IsOptimized="True"/>
+            <DoubleAnimation Duration="0:0:0.15" To="605" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="sdlists" d:IsOptimized="True"/>
+        </Storyboard>
+
+        <!--Other Resources-->
+        <ImageBrush x:Name="folderim" Stretch="Uniform" ImageSource="/Resources/Assets/Images/folder.png"/>
+
+    </phone:PhoneApplicationPage.Resources>
+
+    <Canvas x:Name="canvas" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.5">
+        <Canvas.Resources>
+            <Storyboard x:Name="moveAnimation">
+                <DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetProperty="(Canvas.Left)" Storyboard.TargetName="LayoutRoot" d:IsOptimized="True" />
+            </Storyboard>
+        </Canvas.Resources>
+        <Canvas.RenderTransform>
+            <CompositeTransform/>
+        </Canvas.RenderTransform>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0"/>
+                </VisualStateGroup.Transitions>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Canvas CacheMode="BitmapCache" x:Name="LayoutRoot" ManipulationStarted="canvas_ManipulationStarted" ManipulationDelta="canvas_ManipulationDelta" ManipulationCompleted="canvas_ManipulationCompleted" Width="1740"  VerticalAlignment="Bottom" Canvas.Left="-420" Height="800" Background="{StaticResource PhoneBackgroundBrush}">
+            <Popup x:Name="about" Height="800" Width="480">
+                <Popup.RenderTransform>
+                    <CompositeTransform/>
+                </Popup.RenderTransform>
+                <Popup.Projection>
+                    <PlaneProjection/>
+                </Popup.Projection>
+                <Grid Height="800" Width="480">
+                    <Grid Margin="10,20,10,20">
+                        <Rectangle x:Name="bgChanger" Stroke="{StaticResource PhoneForegroundBrush}" StrokeThickness="3" Fill="{StaticResource PhoneChromeBrush}" RadiusX="10" RadiusY="10"/>
+                        <Image HorizontalAlignment="Center" Height="91" Margin="0,431,0,0" VerticalAlignment="Top" Source="/AMI.png" Width="294"/>
+                        <HyperlinkButton Content="am Industries inc." HorizontalAlignment="Center" Margin="0,540,0,0" VerticalAlignment="Top" FontFamily="Segoe WP Light" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="28,378,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Text="developed &amp; produced by" Foreground="{StaticResource PhoneForegroundBrush}" FontFamily="Segoe WP Light" FontSize="18"/>
+                        <Rectangle x:Name="blue" HorizontalAlignment="Left" Height="100" Margin="286,422,0,0" VerticalAlignment="Top" Width="75"/>
+                        <Rectangle x:Name="red" HorizontalAlignment="Left" Height="100" Margin="105,422,0,0" VerticalAlignment="Top" Width="75"/>
+                        <Rectangle x:Name="green" HorizontalAlignment="Left" Height="100" Margin="196,422,0,0" VerticalAlignment="Top" Width="75"/>
+                        <TextBlock HorizontalAlignment="Left" Height="60" Margin="28,32,0,0" TextWrapping="Wrap" Text="about" VerticalAlignment="Top" Width="276" FontSize="40" FontFamily="Segoe WP Light" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                        <Rectangle Visibility="Visible" x:Name="fal" HorizontalAlignment="Left" Height="75" Margin="10,28,0,0" VerticalAlignment="Top" Width="75" Fill="{StaticResource PhoneForegroundBrush}" Opacity="0" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <CompositeTransform/>
+                            </Rectangle.RenderTransform>
+                            <Rectangle.OpacityMask>
+                                <ImageBrush ImageSource="/FILE360.png" Stretch="Uniform"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <TextBlock HorizontalAlignment="Center" Height="98" Margin="0,275,0,0" TextWrapping="Wrap" Text="thankyou for purchasing FILE360 and supporting AMI. This is a premium version." VerticalAlignment="Top" Width="440" FontFamily="Segoe WP Light" FontSize="22" Foreground="{StaticResource PhoneForegroundBrush}" TextAlignment="Center"/>
+                        <HyperlinkButton Content="rate &amp; review application" HorizontalAlignment="Center" Margin="0,608,0,0" VerticalAlignment="Top" FontFamily="Segoe WP Light" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                    </Grid>
+                </Grid>
+            </Popup>
+            <Popup x:Name="security" Height="800" Width="480" RenderTransformOrigin="0.5,0.5">
+                <Popup.RenderTransform>
+                    <CompositeTransform/>
+                </Popup.RenderTransform>
+                <Grid Height="800" Width="480">
+                    <Grid Margin="10,20,10,20">
+                        <Rectangle Stroke="{StaticResource PhoneForegroundBrush}" StrokeThickness="3" Fill="{StaticResource PhoneChromeBrush}" RadiusX="10" RadiusY="10"/>
+                        <toolkit:ToggleSwitch x:Name="passw" Checked="passw_Checked" Unchecked="passw_Unchecked" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="420" Content="password"/>
+                        <toolkit:ToggleSwitch x:Name="shake" Checked="shake_Checked" Unchecked="shake_Unchecked" HorizontalAlignment="Left" Margin="10,256,0,0" VerticalAlignment="Top" Width="420" Content="shake to hide"/>
+                        <TextBox x:Name="pb" HorizontalAlignment="Left" Height="84" Margin="10,359,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="420" TextChanged="PSetter" Foreground="{StaticResource PhoneBackgroundBrush}" SelectionBackground="{x:Null}" SelectionForeground="{x:Null}"/>
+                        <TextBlock HorizontalAlignment="Left" Height="81" Margin="16,31,0,0" TextWrapping="Wrap" Text="security" VerticalAlignment="Top" Width="378" Foreground="{StaticResource PhoneForegroundBrush}" FontFamily="Segoe WP Light" FontSize="40"/>
+                    </Grid>
+                </Grid>
+            </Popup>
+            <Popup x:Name="personalization" Height="800" Width="480">
+                <Popup.RenderTransform>
+                    <CompositeTransform/>
+                </Popup.RenderTransform>
+                <Grid x:Name="grid2" Height="800" Width="480" RenderTransformOrigin="0.5,0.5">
+                    <Grid.RenderTransform>
+                        <CompositeTransform/>
+                    </Grid.RenderTransform>
+                    <Grid Margin="10,20,10,20">
+                        <Rectangle Stroke="{StaticResource PhoneForegroundBrush}" StrokeThickness="3" RadiusY="10" RadiusX="10" Fill="{StaticResource PhoneChromeBrush}"/>
+                        <TextBlock Margin="22,21,2,609" Style="{StaticResource PhoneTextTitle1Style}" Text="personalization" FontSize="40" FontFamily="Segoe WP Light"/>
+                        <ListBox x:Name="listBox" Margin="10,84,0,0">
+                            <toolkit:ToggleSwitch x:Name="Wallpaper" Checked="Wallpaper_Checked" Unchecked="Wallpaper_Unchecked" Content="Wallpaper" Width="420" Height="108"/>
+                            <Grid x:Name="WallpaperTemp" Visibility="Visible" Height="341" Width="420">
+                                <Rectangle x:Name="SideMenuWallChanger" Margin="10,0,10,59" RadiusY="23.5" RadiusX="23.5">
+                                    <Rectangle.Fill>
+                                        <ImageBrush Stretch="Uniform" ImageSource="/Resources/Assets/Wallpaper/bg1.jpg"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                                <Rectangle Fill="{StaticResource PhoneDisabledBrush}" Margin="0,318,0,17" RenderTransformOrigin="0.5,0.5">
+                                    <Rectangle.RenderTransform>
+                                        <CompositeTransform ScaleY="-1"/>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                                <TextBlock Tap="SideMenuWallChanger_Tap"  HorizontalAlignment="Left" Height="59" Margin="141,272,0,0" VerticalAlignment="Top" Width="115" Text="change" FontSize="36" FontFamily="Segoe WP Light">
+                                    <TextBlock.Foreground>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#99FFFFFF" Offset="0"/>
+                                            <GradientStop Color="#BFFFFFFF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </TextBlock.Foreground>
+                                </TextBlock>
+                            </Grid>
+                            <toolkit:ToggleSwitch Content="Sound FX" Width="420" Height="104"/>
+                            <Grid Width="470">
+                                <TextBlock TextWrapping="Wrap" Text="Sidebar Color" FontFamily="Segoe WP Light" FontSize="30" Margin="10,4,268,6"/>
+                            </Grid>
+                        </ListBox>
+                    </Grid>
+                </Grid>
+            </Popup>
+
+            <Grid x:Name="grdCommands" CacheMode="BitmapCache" Height="800" Width="480" Canvas.Left="420" Background="{StaticResource PhoneBackgroundBrush}" >
+                <Popup x:Name="PasswordAccepter">
+                    <Grid Height="800" Width="480" Background="{StaticResource PhoneBackgroundBrush}">
+                        <Grid Margin="0,0,0,603">
+                            <TextBlock x:Name="passwordDisplay" VerticalAlignment="Center" HorizontalAlignment="Left" Height="72" Margin="51,16,0,9" TextWrapping="Wrap" Width="384" FontSize="48" TextAlignment="Center" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                        </Grid>
+                        <toolkit:WrapPanel x:Name="wrapPanel" Margin="10,102,10,187" Height="307.5"/>
+                        <Button Content="x" HorizontalAlignment="Left" Click="PopupCancel" Height="102.5" Margin="10,478,0,0" VerticalAlignment="Top" Width="153.3" BorderBrush="{x:Null}" Background="{x:Null}" FontSize="48" FontFamily="Ebrima"/>
+                        <Button Content="0" Click="Numbers_Click" HorizontalAlignment="Left" Height="102.5" Margin="163,478,0,0" VerticalAlignment="Top" Width="153.3" BorderBrush="{x:Null}" FontSize="35" Background="{x:Null}"/>
+                        <Button Content="x" Click="PasswordBackspace" HorizontalAlignment="Left" Height="102.5" Margin="327,478,0,0" VerticalAlignment="Top" Width="153.3" BorderBrush="{x:Null}" Foreground="{StaticResource PhoneForegroundBrush}" Background="{x:Null}" FontFamily="/File360;component/Resources/Assets/Fonts/UIFont.ttf#untitled-font-1" FontSize="40"/>
+                        <TextBlock HorizontalAlignment="Left" Height="56" Margin="199,603,0,0" TextWrapping="Wrap" Text="Forgot Password?" VerticalAlignment="Top" Width="235" FontSize="24" Foreground="{StaticResource PhoneForegroundBrush}" FontFamily="Segoe WP Semibold"/>
+                        <TextBlock x:Name="WarningP" Visibility="Collapsed" HorizontalAlignment="Left" Height="57" Margin="0,97,0,0" TextWrapping="Wrap" Text="MAX PASSWORD CHARACTERS 4" VerticalAlignment="Top" Width="480" TextAlignment="Center" FontSize="30" Foreground="#FFB43D3D" FontFamily="Segoe UI Symbol"/>
+                    </Grid>
+                </Popup>
+                <TextBlock x:Name="nosd" Visibility="Collapsed" Style="{StaticResource PhoneTextLargeStyle}" Margin="10,213,10,451" TextWrapping="Wrap" Height="104" Width="460" TextAlignment="Center" Foreground="{StaticResource PhoneForegroundBrush}">
+					<Span Foreground="{StaticResource PhoneForegroundBrush}" FontSize="32">
+						<Run Text="no "/>
+					</Span>
+					<Span Foreground="{StaticResource PhoneAccentBrush}" FontSize="32" >
+						<Run Text="sdcard " FontWeight="Bold"/>
+					</Span>
+					<Span Foreground="{StaticResource PhoneForegroundBrush}" FontSize="32">
+						<Run Text="found, please insert one to view files. "/>
+					</Span>
+                </TextBlock>
+                <toolkit:LongListMultiSelector 
+                    x:Name="sdlists"
+                    LayoutMode="Grid"
+					GridCellSize="115,130"
+					ItemTemplate="{StaticResource File360FileTemplate}"
+					IsGroupingEnabled="False" BorderBrush="{StaticResource PhoneChromeBrush}" BorderThickness="10" Foreground="{x:Null}" Background="{StaticResource PhoneBackgroundBrush}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="480" Height="620" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,80">
+                    <toolkit:LongListMultiSelector.RenderTransform>
+                        <CompositeTransform/>
+                    </toolkit:LongListMultiSelector.RenderTransform>
+                </toolkit:LongListMultiSelector>
+                <Popup x:Name="OneDriveSignIn" >
+                    <Grid Height="768" Width="480">
+                        <Grid Margin="10,216,10,218">
+                            <Grid.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#F8D9D9D9" Offset="0"/>
+                                    <GradientStop Color="#F8C0C0C2" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Grid.Background>
+                            <!--<Controls:SignInButton IsEnabled="False" x:Name="loginButton" 
+								Content="Sign In" HorizontalAlignment="Center" 
+								Margin="0,0,0,20" VerticalAlignment="Bottom" 
+								Scopes="wl.signin wl.offline_access wl.skydrive_update" 
+								SessionChanged="loginButton_SessionChanged" Visibility="Visible" Style="{StaticResource SignInButtonStyle}" FontFamily="Segoe WP Semibold"/>-->
+                            <TextBox IsEnabled="True" Margin="10,0,10,104" BorderBrush="{x:Null}" Background="{StaticResource PhoneInactiveBrush}" SelectionBackground="{StaticResource PhoneForegroundBrush}" SelectionForeground="{StaticResource PhoneBackgroundBrush}" Text="email address" Height="75" VerticalAlignment="Bottom" Foreground="#FF255FB9" FontFamily="Segoe WP Light" Style="{StaticResource CurvedTextBoxTemplate}"/>
+                            <TextBlock HorizontalAlignment="Left" Height="122" Margin="26,33,0,0" TextWrapping="Wrap" Text="Please enter your email address of your onedrive account and click Sign in to proceed." VerticalAlignment="Top" Width="402" FontSize="24" Foreground="#A0000000" FontFamily="Segoe UI Semilight" TextAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </Popup>
+                <Rectangle Visibility="Collapsed" x:Name="dragDown" Fill="{StaticResource PhoneSemitransparentBrush}" HorizontalAlignment="Left" Height="709" Margin="0,91,0,0" StrokeThickness="2" VerticalAlignment="Top" Width="480"/>
+                <Grid x:Name="header" ManipulationStarted="header_ManipulationStarted" ManipulationDelta="header_ManipulationDelta" ManipulationCompleted="header_ManipulationCompleted" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="91" Margin="0" Background="{StaticResource PhoneForegroundBrush}">
+                    <ListBox ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="0,90,0,0" Height="44" Width="460" VerticalAlignment="Top">
+                        <StackPanel x:Name="addressCont" Orientation="Horizontal" Height="44">
+                            <TextBlock Tap="Home_Tap" x:Name="sdop" FontSize="30" FontWeight="Normal" Text="sd" Foreground="{StaticResource PhoneBackgroundBrush}" Height="44" Margin="0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="31" FontFamily="Segoe WP Light"/>
+                        </StackPanel>
+                    </ListBox>
+                    <Button x:Name="button"  Click="OpenClose_Right" Style="{StaticResource HamburgerButton}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="70" Height="70"  Background="{x:Null}" Margin="0,12,5,0" RenderTransformOrigin="0.5,0.5" FontFamily="/File360;component/Resources/Assets/Fonts/UIFont.ttf#untitled-font-1" Content="5" FontSize="40" BorderBrush="{x:Null}">
+                        <Button.Foreground>
+                            <SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
+                        </Button.Foreground>
+                        <Button.RenderTransform>
+                            <CompositeTransform/>
+                        </Button.RenderTransform>
+                    </Button>
+                    <Button  Click="OpenClose_Left" Content="h" BorderThickness="0" Style="{StaticResource HamburgerButton}" BorderBrush="{x:Null}" Foreground="{StaticResource PhoneAccentBrush}" Background="{x:Null}" Margin="0,12,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="70" FontFamily="/File360;component/Resources/Assets/Fonts/UIFont.ttf#untitled-font-1" FontSize="40"/>
+                    <TextBlock DoubleTap="Vault_DoubleTap" TextAlignment="Left"  TextTrimming="WordEllipsis" x:Name="fileHeader" TextWrapping="Wrap" FontSize="25" FontFamily="Segoe WP Light" Margin="70,28.5,0,0" Foreground="{StaticResource PhoneBackgroundBrush}" Text="SDCARD" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Height="34" Margin="10,172,0,0" TextWrapping="Wrap" Text="clipboard" VerticalAlignment="Top" Width="130" Foreground="{StaticResource PhoneBackgroundBrush}" FontSize="25" FontFamily="Segoe WP Light"/>
+                    <Grid HorizontalAlignment="Left" Height="267" Margin="10,224,0,0" VerticalAlignment="Top" Width="460"/>
+                    <Rectangle HorizontalAlignment="Left" Height="27" Margin="0,118,0,0" StrokeThickness="2" VerticalAlignment="Bottom" Width="480" Fill="{StaticResource PhoneAccentBrush}"/>
+                    <es:RegularPolygon x:Name="posI" HorizontalAlignment="Right" Height="20" InnerRadius="1" Margin="0,0,17,-20" PointCount="3" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Bottom" Width="50" RenderTransformOrigin="0.5,0.5">
+                        <es:RegularPolygon.Fill>
+                            <SolidColorBrush Color="{StaticResource PhoneForegroundColor}"/>
+                        </es:RegularPolygon.Fill>
+                        <es:RegularPolygon.RenderTransform>
+                            <CompositeTransform Rotation="180"/>
+                        </es:RegularPolygon.RenderTransform>
+                    </es:RegularPolygon>
+                </Grid>
+                <Grid x:Name="holdMenuGrid" Height="95" Margin="0" VerticalAlignment="Bottom" Width="480" Background="{StaticResource PhoneChromeBrush}">
+                    <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden">
+                        <toolkit:WrapPanel metro:MetroInMotion.Tilt="10" Orientation="Horizontal" Height="75" Width="600" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Button Content="select all" HorizontalAlignment="Left" Height="75" VerticalAlignment="Center" Width="96" Style="{StaticResource ImageTextButton}" Background="{x:Null}" Foreground="{x:Null}">
+                                <Button.BorderBrush>
+                                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/Assets/Images/check33.png"/>
+                                </Button.BorderBrush>
+                            </Button>
+                            <Button Content="cut" HorizontalAlignment="Left" Height="75" VerticalAlignment="Center" Width="96" Style="{StaticResource ImageTextButton}" Background="{x:Null}" Foreground="{x:Null}" Margin="0">
+                                <Button.BorderBrush>
+                                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/Assets/Images/cut1.png"/>
+                                </Button.BorderBrush>
+                            </Button>
+                            <Button Content="copy" HorizontalAlignment="Left" Height="75" VerticalAlignment="Center" Width="96" Style="{StaticResource ImageTextButton}" Background="{x:Null}" Foreground="{x:Null}" Margin="0,6,0,0">
+                                <Button.BorderBrush>
+                                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/Assets/Images/copy25.png"/>
+                                </Button.BorderBrush>
+                            </Button>
+                            <Button Content="rename" HorizontalAlignment="Left" Height="75" VerticalAlignment="Center" Width="96" Style="{StaticResource ImageTextButton}" Background="{x:Null}" Foreground="{x:Null}" Margin="0">
+                                <Button.BorderBrush>
+                                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/Assets/Images/write38.png"/>
+                                </Button.BorderBrush>
+                            </Button>
+                            <Button Content="delete" HorizontalAlignment="Left" Height="75" VerticalAlignment="Center" Width="96" Style="{StaticResource ImageTextButton}" Background="{x:Null}" Foreground="{x:Null}" Margin="0">
+                                <Button.BorderBrush>
+                                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/Assets/Images/rubbish7.png"/>
+                                </Button.BorderBrush>
+                            </Button>
+                            <Rectangle Margin="0,0,-120,0" Fill="#FFCF4141"/>
+                        </toolkit:WrapPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+            <Border x:Name="border" Width="420"  CacheMode="BitmapCache" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="800" RenderTransformOrigin="0.5,0.5">
+                <Border.RenderTransform>
+                    <CompositeTransform/>
+                </Border.RenderTransform>
+                <Grid x:Name="LeftGrid">
+                    <Popup x:Name="settings" RenderTransformOrigin="0.5,0.5">
+                        <Popup.RenderTransform>
+                            <CompositeTransform/>
+                        </Popup.RenderTransform>
+                        <Popup.Projection>
+                            <PlaneProjection/>
+                        </Popup.Projection>
+                        <Grid x:Name="grid1" Height="768" Width="480">
+                            <Grid Margin="10,20,10,20">
+                                <Rectangle Stroke="{StaticResource PhoneForegroundBrush}" StrokeThickness="3" Fill="{StaticResource PhoneChromeBrush}" RadiusX="10" RadiusY="10"/>
+                                <phone:LongListSelector
+            						x:Name="SettingsList"
+            						Style="{StaticResource LongListSelectorWithNoScrollBarStyle}"
+            						ScrollViewer.VerticalScrollBarVisibility="Hidden"
+            						ItemTemplate="{StaticResource SettingsItemTemplate}"
+            						IsGroupingEnabled="False" Margin="10,113,10,0" BorderBrush="{StaticResource PhoneAccentBrush}" BorderThickness="3"/>
+                                <TextBlock HorizontalAlignment="Left" Height="78" Margin="10,10,0,0" TextWrapping="Wrap" Text="settings" VerticalAlignment="Top" Width="348" FontFamily="Segoe WP Light" FontSize="40" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                            </Grid>
+                        </Grid>
+                    </Popup>
+                    <Grid Height="95" VerticalAlignment="Top" HorizontalAlignment="Left" Width="420" Opacity="0.9" Background="{StaticResource PhoneAccentBrush}">
+                        <TextBox x:Name="searchBox" MouseEnter="searchBox_MouseEnter" Tap="searchButton_Tap" IsEnabled="False" LostFocus="searchBox_LostFocus" Margin="96,0,86,9" BorderBrush="{x:Null}" Background="{x:Null}" SelectionBackground="{StaticResource PhoneForegroundBrush}" SelectionForeground="{StaticResource PhoneBackgroundBrush}" Text="search..." Style="{StaticResource CurvedTextBoxTemplate}" Height="75" VerticalAlignment="Bottom" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                        <Button Tap="searchButton_Tap" x:Name="searchButton" Margin="0,0,15,0" Width="70" Height="70" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource HamburgerButton}" BorderBrush="{x:Null}" Background="{x:Null}" Content="s" FontFamily="/File360;component/Resources/Assets/Fonts/UIFont.ttf#untitled-font-1" FontSize="40" Foreground="White"/>
+                        <Rectangle x:Name="rectangle" HorizontalAlignment="Left" Height="75" VerticalAlignment="Top" Width="75" Stretch="Uniform" Fill="#DEFFFFFF" RenderTransformOrigin="0.5,0.5" Margin="10,10,0,0">
+                            <Rectangle.RenderTransform>
+                                <CompositeTransform/>
+                            </Rectangle.RenderTransform>
+                            <Rectangle.OpacityMask>
+                                <ImageBrush Stretch="Uniform" ImageSource="/FILE360.png"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Width="420" Margin="0,95,0,0">
+                        <ListBox VirtualizingStackPanel.VirtualizationMode="Recycling" ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="705" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="{StaticResource PhoneSemitransparentBrush}">
+                            <StackPanel x:Name="SideBar" Width="420">
+                                <Grid x:Name="sdcardMenu" metro:MetroInMotion.Tilt="3" Hold="leftMenuItem_Hold" Height="122" RenderTransformOrigin="0.5,0.5" Background="{StaticResource PhoneSemitransparentBrush}">
+                                    <!--<i:Interaction.Behaviors>
+                                        <ExpInteractivity:MouseDragElementBehavior ConstrainToParentBounds="True"/>
+                                    </i:Interaction.Behaviors>-->
+                                    <TextBlock Text="Home" FontSize="26" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="170,0,0,0" Width="72" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                                    <Rectangle x:Name="rects" HorizontalAlignment="Left" Height="50" Margin="40,0,0,0" VerticalAlignment="Center" Width="50" RenderTransformOrigin="0.5,0.5" Fill="{StaticResource PhoneForegroundBrush}">
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush Stretch="Uniform" ImageSource="/Resources/Assets/Images/home.png"/>
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Grid>
+                                <Grid metro:MetroInMotion.Tilt="4" Hold="leftMenuItem_Hold" Width="420" Height="122" Margin="0">
+                                    <TextBlock Margin="138,50,119,47" Tap="oneFill_Tap" Text="OneDrive" FontSize="26" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                                    <Ellipse x:Name="oneFill" Fill="#FF094AB2" HorizontalAlignment="Left" Height="95" VerticalAlignment="Top" Width="95" Margin="11,16,0,0" StrokeThickness="3">
+                                        <Ellipse.Stroke>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#19FFFFFF" Offset="0"/>
+                                                <GradientStop Color="#3F094AB2" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Ellipse.Stroke>
+                                        <Ellipse.OpacityMask>
+                                            <ImageBrush Stretch="Uniform" ImageSource="/Resources/Assets/Images/onedrive.png"/>
+                                        </Ellipse.OpacityMask>
+                                    </Ellipse>
+                                </Grid>
+                                <Grid metro:MetroInMotion.Tilt="6" Hold="leftMenuItem_Hold" Height="122" CacheMode="BitmapCache">
+                                    <TextBlock x:Name="sdText" Margin="164,47,0,44" Text="SD" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                                    <Rectangle x:Name="sdImage" HorizontalAlignment="Left" Height="50" Margin="29,40,0,0" VerticalAlignment="Top" Width="50" Stretch="Uniform" Fill="{StaticResource PhoneForegroundBrush}">
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush Stretch="Uniform" ImageSource="/Resources/Assets/Images/sdcard.png"/>
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Grid>
+                                <Grid Hold="leftMenuItem_Hold" Width="406" Height="122">
+                                    <TextBlock Margin="157,51,0,38" Text="Phone" FontSize="26" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Height="33" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                                    <Rectangle HorizontalAlignment="Left" Height="66" Margin="18,35,0,0" VerticalAlignment="Top" Width="75" Fill="{StaticResource PhoneForegroundBrush}">
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush Stretch="Uniform" ImageSource="/Resources/Assets/Images/phone.png"/>
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Grid>
+                                <Grid Height="110" Width="420">
+                                    <TextBlock Text="Downloads" FontSize="36" FontFamily="Segoe WP Light" Margin="27,10,206,49" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                                    <TextBlock Text="there are no active downloads" FontSize="22" FontFamily="Segoe WP Light" Margin="27,66,96,10" Foreground="{StaticResource PhoneBorderBrush}"/>
+                                    <Rectangle x:Name="downloadProgress" Margin="212,10,143,49" Width="65" Fill="{StaticResource PhoneForegroundBrush}">
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush Stretch="Uniform" ImageSource="/Resources/Assets/Images/download.png"/>
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Grid>
+                                <Grid Height="82" Width="420">
+                                    <TextBlock Tap="Settings_Tap" Text="settings" FontSize="36" FontFamily="Segoe WP Light" Margin="27,10,206,24" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                                </Grid>
+                                <Grid Height="110" Width="420">
+                                    <TextBlock Text="Add Provider" FontSize="36" FontFamily="Segoe WP Light" Margin="27,10,194,49" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                                    <TextBlock Text="folder, onedrive, gdrive, e.t.c." FontSize="22" FontFamily="Segoe WP Light" Margin="27,66,96,10" Foreground="{StaticResource PhoneBorderBrush}"/>
+                                    <Rectangle Margin="212,10,143,49" Width="65" Fill="{StaticResource PhoneForegroundBrush}">
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush Stretch="Uniform" ImageSource="/Toolkit.Content/ApplicationBar.Add.png"/>
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Grid>
+                            </StackPanel>
+                        </ListBox>
+                    </Grid>
+                </Grid>
+            </Border>
+            <Border x:Name="RightMediaMenu" Width="420" CacheMode="BitmapCache" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="800" Canvas.Left="900" RenderTransformOrigin="0.5,0.5">
+                <Border.RenderTransform>
+                    <CompositeTransform/>
+                </Border.RenderTransform>
+                <Grid Background="#7F000000">
+                    <ListBox x:Name="mlb" Margin="22,171,0,0" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}">
+                        <Rectangle Height="18" StrokeThickness="2" Width="100"/>
+                        <TextBlock HorizontalAlignment="Left" Height="58" TextWrapping="Wrap" Text="music" VerticalAlignment="Top" Width="150" FontFamily="Segoe WP Light" FontSize="28" Foreground="#BFFFFFFF"/>
+                        <toolkit:WrapPanel x:Name="musicTileContainer" Height="290" Width="380"/>
+                        <TextBlock HorizontalAlignment="Left" Height="36" TextWrapping="Wrap" Text="pictures" VerticalAlignment="Top" Width="150" FontFamily="Segoe WP Light" FontSize="28" Foreground="#BFFFFFFF"/>
+                        <Rectangle Height="18" StrokeThickness="2" Width="100"/>
+                        <toolkit:WrapPanel x:Name="pac" Height="256" Width="388"/>
+                    </ListBox>
+                    <Grid HorizontalAlignment="Left" Height="800" VerticalAlignment="Top" Width="420">
+                        <Grid x:Name="playStateGrid" ManipulationDelta="Drag_ManipulationDelta" HorizontalAlignment="Left" Height="170" VerticalAlignment="Top" Width="420" RenderTransformOrigin="0.5,0.5" Background="#7F000000">
+                            <Grid.RenderTransform>
+                                <CompositeTransform/>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="musicCoverArt" HorizontalAlignment="Left" Height="450" VerticalAlignment="Top" Width="420" Margin="0" RenderTransformOrigin="0.5,0.5">
+                                <Rectangle.Fill>
+                                    <ImageBrush ImageSource="/Resources/Assets/Images/coverArt.png"/>
+                                </Rectangle.Fill>
+                                <Rectangle.Projection>
+                                    <PlaneProjection/>
+                                </Rectangle.Projection>
+                                <Rectangle.RenderTransform>
+                                    <CompositeTransform/>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <Grid x:Name="grid" Tap="playState_Tap" ManipulationDelta="Drag_ManipulationDelta" ManipulationCompleted="Drag_ManipulationCompleted" ManipulationStarted="Drag_ManipulationStarted" Height="170" VerticalAlignment="Top" HorizontalAlignment="Center" Width="420" RenderTransformOrigin="0.5,0.5" Margin="0" Background="#99000000">
+                                <Grid.RenderTransform>
+                                    <CompositeTransform/>
+                                </Grid.RenderTransform>
+                                <phone:LongListSelector 
+            						x:Name="musicLists" 
+            						HorizontalAlignment="Center"
+            						Height="0"
+            						ItemTemplate="{StaticResource MusicItemTemplate}"
+            						VerticalAlignment="Bottom" 
+            						Width="400" RenderTransformOrigin="0.5,0.5" Margin="10,0" Background="#AA000000">
+                                    <phone:LongListSelector.RenderTransform>
+                                        <CompositeTransform/>
+                                    </phone:LongListSelector.RenderTransform>
+                                </phone:LongListSelector>
+                                <TextBlock x:Name="songName" HorizontalAlignment="Left" Height="40" Margin="38,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="373" FontSize="28" FontFamily="Segoe WP Light" RenderTransformOrigin="0.5,0.5" Foreground="White">
+                                    <TextBlock.RenderTransform>
+                                        <CompositeTransform/>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="artistName" HorizontalAlignment="Left" Height="30" Margin="38,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="373" FontSize="22" FontFamily="Segoe wp Light" RenderTransformOrigin="0.5,0.5" Foreground="White">
+                                    <TextBlock.RenderTransform>
+                                        <CompositeTransform/>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="36" Margin="72,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" FontFamily="Segoe WP Light" FontSize="30" Foreground="White" RenderTransformOrigin="0.5,0.5">
+                                    <TextBlock.RenderTransform>
+                                        <CompositeTransform/>
+                                    </TextBlock.RenderTransform>
+            						<Run FontWeight="Bold" Text="NOW"/>
+            						<Run Text="PLAYING"/>
+                                </TextBlock>
+                                <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="36" Margin="10,25,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="60" FontSize="40" FontFamily="/File360;component/Resources/Assets/Fonts/UIFont.ttf#untitled-font-1" TextAlignment="Center" Foreground="White"/>
+                                <ToggleButton x:Name="toggleButton" Content="L" HorizontalAlignment="Left" Height="36" Margin="345,25,0,0" VerticalAlignment="Top" Width="70" BorderThickness="0" RenderTransformOrigin="0.5,0.5" FontFamily="/File360;component/Resources/Assets/Fonts/UIFont.ttf#untitled-font-1" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="40" Style="{StaticResource ToggleButtonDefaultStyle}">
+                                    <ToggleButton.RenderTransform>
+                                        <CompositeTransform/>
+                                    </ToggleButton.RenderTransform>
+                                </ToggleButton>
+                                <Grid x:Name="playForward" HorizontalAlignment="Left" Height="170" VerticalAlignment="Top" Width="0">
+                                    <Grid.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#BF8B1D36" Offset="0"/>
+                                            <GradientStop Color="#CC78142B" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Grid.Background>
+                                    <Rectangle x:Name="rectForward" HorizontalAlignment="Right" Height="166" VerticalAlignment="Top" Width="75" Fill="White" Margin="0">
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush Stretch="Uniform" ImageSource="/Resources/Assets/Images/transport.ff.png"/>
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Grid>
+                                <Grid x:Name="playPrevious" HorizontalAlignment="Right" Height="170" VerticalAlignment="Top" Width="0">
+                                    <Grid.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#BF8B1D36" Offset="0"/>
+                                            <GradientStop Color="#CC78142B" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Grid.Background>
+                                    <Rectangle x:Name="rectPrevious" HorizontalAlignment="Left" Height="168" VerticalAlignment="Top" Width="75" Fill="White" Margin="0">
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush Stretch="Uniform" ImageSource="/Resources/Assets/Images/transport.rew.png"/>
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Slider Visibility="Collapsed" HorizontalAlignment="Left" Height="50" Margin="40,325,0,0" VerticalAlignment="Top" Width="315" Style="{StaticResource SliderStyle}" Background="#FFC7A3A3"/>
+                    <Grid HorizontalAlignment="Left" Height="800" VerticalAlignment="Top" Width="840" Margin="0,0,-413,0">
+                        <Grid x:Name="ptc" Margin="421,0,-1,0" RenderTransformOrigin="0.5,0.5" Width="420" Background="{StaticResource PhoneSemitransparentBrush}">
+                            <Grid.RenderTransform>
+                                <CompositeTransform/>
+                            </Grid.RenderTransform>
+                            <Grid HorizontalAlignment="Left" Height="672" VerticalAlignment="Top" Width="420" Margin="0,130,-1,0">
+                                <Grid.Background>
+                                    <SolidColorBrush Color="{StaticResource PhoneSemitransparentColor}"/>
+                                </Grid.Background>
+                                <ScrollViewer HorizontalAlignment="Left" Height="662" VerticalAlignment="Top" Width="420" Margin="0,10,0,0" Background="{x:Null}" BorderBrush="{x:Null}">
+                                    <toolkit:WrapPanel x:Name="ptcf" Height="0" Width="390" VerticalAlignment="Top"/>
+                                </ScrollViewer>
+                            </Grid>
+                            <Grid HorizontalAlignment="Left" Height="130" VerticalAlignment="Top" Width="420" Background="{StaticResource PhoneBackgroundBrush}" RenderTransformOrigin="0,0">
+                                <Grid.RenderTransform>
+                                    <CompositeTransform/>
+                                </Grid.RenderTransform>
+                                <TextBlock x:Name="pictureAlbumName" VerticalAlignment="Center" HorizontalAlignment="Left" Height="50" Margin="63,33,0,47" TextWrapping="Wrap" Width="347" FontSize="33.333" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                                <Button Tap="pictureBack_Tap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="63" Height="50" Style="{StaticResource HamburgerButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PhoneForegroundBrush}" Content="l" FontFamily="/File360;component/Resources/Assets/Fonts/UIFont.ttf#untitled-font-1" FontSize="40" Margin="0,0,0,47"/>
+                                <TextBlock HorizontalAlignment="Left" Height="45" Margin="63,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="347" FontFamily="Segoe WP Light" FontSize="24" Foreground="{StaticResource PhoneForegroundBrush}">
+            						<Run Text="has "/>
+            						<Run x:Name="pictureSubText" Foreground="{StaticResource PhoneAccentBrush}" FontFamily="Segoe WP"/>
+            						<Run Text=" pictures"/>
+                                </TextBlock>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Border>
+            <Grid x:Name="PopupHelper" Visibility="Collapsed" Height="800" Width="1740">
+                <Grid.Background>
+                    <SolidColorBrush Color="#AA000000"/>
+                </Grid.Background>
+            </Grid>
+            <Grid x:Name="Blurer" Visibility="Collapsed" Height="800" Width="480" Canvas.Left="420">
+                <Grid.Background>
+                    <SolidColorBrush Color="#AA000000"/>
+                </Grid.Background>
+            </Grid>
+        </Canvas>
+    </Canvas>
+</phone:PhoneApplicationPage>

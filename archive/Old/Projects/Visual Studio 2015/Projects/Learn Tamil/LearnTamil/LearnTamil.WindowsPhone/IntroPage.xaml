@@ -1,0 +1,107 @@
+﻿<Page
+    x:Class="LearnTamil.IntroPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LearnTamil"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <ContentThemeTransition VerticalOffset="0" HorizontalOffset="0" />
+        </TransitionCollection>
+    </Page.Transitions>
+
+    <Grid x:Name="grid" >
+        <Grid.Background>
+            <SolidColorBrush Color="#FF333333"/>
+        </Grid.Background>
+        <FlipView IsEnabled="False" x:Name="flipView">
+            <FlipViewItem>
+                <StackPanel Margin="10" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="WELCOME TO THE COURSE" FontSize="30" Foreground="#BFFFFFFF" FontWeight="Bold" TextWrapping="Wrap"/>
+                    <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" Text="In this course, you will learn Tamil with more emphasis on modern spoken Tamil. Before you continue any further, go through carefully the instructions to make the best of the product." TextWrapping="Wrap" Foreground="#BFFFFFFF" FontFamily="Global User Interface" FontSize="25"/>
+                </StackPanel>
+            </FlipViewItem>
+            <FlipViewItem>
+                <Border >
+                    <StackPanel Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="WHERE IS TAMIL SPOKEN?" Style="{StaticResource SubheaderTextBlockStyle}" FontSize="30" FontWeight="Bold" Foreground="#BF000000" FontFamily="Global User Interface" TextWrapping="Wrap"/>
+                        <TextBlock Margin="0,5" Text="Tamil is recognized as an official language in Sri Lanka, Singapore and in the Indian states of Tamil Nadu and Puducherry (Pondicherry). It is also widely spoken in the surrounding states such as Kerala, Karnataka, Andhra Pradesh, Telangana and other Indian states. Despite official figures, Tamil is also spoken by minorities in several countries around the world." FontSize="25" TextWrapping="Wrap" Style="{StaticResource SubheaderTextBlockStyle}" FontFamily="Global User Interface" FontWeight="SemiLight" Foreground="#BF000000"/>
+                    </StackPanel>
+                </Border>
+            </FlipViewItem>
+            <FlipViewItem>
+                <Border Margin="10" >
+                    <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollMode="Disabled">
+                        <StackPanel Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock TextWrapping="Wrap" Text="டிராவிட குடம்பம்" Style="{StaticResource SubheaderTextBlockStyle}" FontSize="30" FontWeight="Bold" FontFamily="Global User Interface" Foreground="#BF000000"/>
+                            <TextBlock TextWrapping="Wrap" Text="THE DRAVIDIAN LANGUAGE FAMILY" FontSize="25" VerticalAlignment="Center" Margin="0,10,0,0" Foreground="#BF000000"/>
+                            <TextBlock Margin="0,5" Text="The Dravidian language group is an isolate group which differs vastly from the Indo-European sub-branches. Tamil belongs to the Dravidian family. Other popular languages related to Tamil are Telugu, Kannada and Malayalam. Malayalam has more resemblance to Tamil than Kannada and Telugu. These two languages share similarities but not as much as Malayalam. The main difference between Tamil and other popular south Indian languages is that Tamil still uses the same set of Alphabets despite external influences, thus retaining most of the old sounds. However, being one of the oldest languages in the world, it has undergone several changes as for the vocabulary due to invasions, colonization and other factors. Thus, today there are several English words used in day to day conversation and new sounds are represented as &quot;special&quot; characters. The standard version of the language is often used to write and also used in several formal occasions including T.V and Radio. Though In T.V and Radio, both versions are used." FontSize="25" TextWrapping="Wrap" Style="{StaticResource SubheaderTextBlockStyle}" FontWeight="SemiLight" Foreground="#BF000000"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+            </FlipViewItem>
+            <FlipViewItem>
+                <Border Margin="10" >
+                    <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollMode="Disabled">
+                        <StackPanel Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock TextWrapping="Wrap" Text="WHEN TO USE WHICH?" Style="{StaticResource SubheaderTextBlockStyle}" FontSize="30" FontWeight="Bold"  Foreground="#BF000000"/>
+                            <TextBlock Margin="0,5" Text="As the main goal of this course is to provide non-native Tamil speakers to converse daily with natives and also to read Tamil without flaw, we have put more emphasis on the colloquial dialect. Tamil speakers can understand each other unless and until they encounter a word that is used especially in that region. However Srilankan Tamil is not that different from standard Tamil. Thus we have included both the standard version and the colloquial version. It won't be complicted, hopefully! " FontSize="25" TextWrapping="Wrap" Style="{StaticResource SubheaderTextBlockStyle}" FontWeight="SemiLight" Foreground="#BF000000"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+            </FlipViewItem>
+            <FlipViewItem>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border>
+                        <Border.Projection>
+                            <PlaneProjection CenterOfRotationZ="0.5"/>
+                        </Border.Projection>
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollMode="Disabled" Background="{x:Null}">
+                            <StackPanel Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock TextWrapping="Wrap" Text="WHICH VERSION WILL I LEARN THIS COURSE?" FontSize="25" FontWeight="Bold" Foreground="#BFFFFFFF" Style="{StaticResource SubheaderTextBlockStyle}" FontFamily="Global User Interface"/>
+                                <TextBlock FontSize="25" Margin="0" Text="•  The standard version, as well as the colloquial version will be in the course.
+" Foreground="#BFECE6DF" TextWrapping="Wrap" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                                <TextBlock Text="•  It's up to you to decide." FontSize="25" Foreground="#BFECE6DF" Margin="0" TextWrapping="Wrap" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                                <TextBlock Text="
+•  If you want to simply get around in Tamil Nadu and Pondicherry, it's enough to master the colloquial version (though the script is recommended)," FontSize="25" Foreground="#BFECE6DF" Margin="0" TextWrapping="Wrap" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                                <TextBlock Text="•  If you are in Tamil Nadu and you need to watch a news channel, we recommend both the versions" FontSize="25" Foreground="#BFECE6DF" Margin="0" TextWrapping="Wrap" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                                <TextBlock Text="•  If you are in Sri Lanka, Standard version will be sufficient!" FontSize="25" Foreground="#BFECE6DF" Margin="0" TextWrapping="Wrap" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                                <TextBlock Text="•  As we have made this course as user-friendly as possible, we hope you will enjoy this course. Thank you!" FontSize="25" Foreground="#BFECE6DF" Margin="0" TextWrapping="Wrap" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                    <Border  Grid.Column="1" Background="#4C000000">
+                        <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold" FontSize="66.667" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Click="LearnTamil">
+                            <StackPanel>
+                                <TextBlock Text="கற்க தமிழ்" TextWrapping="Wrap" TextAlignment="Center" FontSize="33.333">
+                                    <TextBlock.Foreground>
+                                        <ImageBrush Stretch="UniformToFill" ImageSource="1.jpg"/>
+                                    </TextBlock.Foreground>
+                                </TextBlock>
+                                <TextBlock Text="(LEARN TAMIL)" FontSize="13.333" TextAlignment="Center" TextWrapping="Wrap">
+                                    <TextBlock.Foreground>
+                                        <ImageBrush Stretch="Fill" ImageSource="1.jpg"/>
+                                    </TextBlock.Foreground>
+                                </TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </Border>
+                </Grid>
+            </FlipViewItem>
+        </FlipView>
+        <Grid Background="Black" VerticalAlignment="Bottom" Visibility="Collapsed">
+            <TextBlock x:Name="info" Foreground="White"/>
+        </Grid>
+        <Grid x:Name="Thumb" Margin="50" VerticalAlignment="Bottom" Height="25"/>
+
+    </Grid>
+</Page>

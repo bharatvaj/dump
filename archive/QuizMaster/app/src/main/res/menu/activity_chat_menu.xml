@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/chatAddBtn"
+        android:icon="@drawable/ic_add"
+        android:title="@string/chat_action_video_call"
+        app:showAsAction="always" />
+    <!--TODO implement video call-->
+    <!--<item-->
+    <!--android:id="@+id/chatVideoCallBtn"-->
+    <!--android:icon="@drawable/video_call"-->
+    <!--android:title="@string/chat_action_video_call"-->
+    <!--app:showAsAction="always" />-->
+</menu>

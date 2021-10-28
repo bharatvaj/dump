@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/view_padding_medium"
+    tools:context=".SettingsActivity">
+
+    <Switch
+        android:id="@+id/settingsThemeSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_theme_toggle" />
+
+    <Button
+        android:id="@+id/settingsLogoutBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_padding_medium"
+        android:text="@string/logout" />
+    <TextView
+        android:layout_marginTop="@dimen/view_padding_medium"
+        android:gravity="center_horizontal"
+        android:id="@+id/settingsAboutText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

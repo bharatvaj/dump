@@ -1,0 +1,86 @@
+﻿<Page
+    x:Class="_18PLUSINDIAN.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_18PLUSINDIAN"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Transitions>
+        <TransitionCollection>
+            <ContentThemeTransition VerticalOffset="0" HorizontalOffset="0"/>
+        </TransitionCollection>
+    </Page.Transitions>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.Background>
+                <SolidColorBrush Color="{ThemeResource PhoneChromeColor}"/>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Margin="10,25" Orientation="Horizontal">
+                <TextBlock Text="18" Style="{StaticResource MessageDialogTitleStyle}">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{ThemeResource PhoneForegroundColor}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <TextBlock x:Name="headerTextBlock" Margin="10,0,0,0" Text="FREQUENTLY USED" Style="{StaticResource MessageDialogTitleStyle}">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{ThemeResource PhoneForegroundColor}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+            </StackPanel>
+
+            <Border Grid.Column="1" CornerRadius="15" HorizontalAlignment="Right" VerticalAlignment="Center" MinWidth="75" MinHeight="75" Margin="0,0,5,0" >
+                <Border.Background>
+                    <SolidColorBrush Color="{ThemeResource ContentDialogDimmingColor}"/>
+                </Border.Background>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="1">
+                    <Button x:Name="addButton" MinWidth="0" BorderBrush="{x:Null}" Click="AddCard">
+                        <TextBlock Text="+" FontSize="33.333"/>
+                    </Button>
+                    <Button x:Name="infoButton" MinWidth="0" BorderBrush="{x:Null}" Click="AddCard">
+                        <TextBlock Text="!" FontSize="33.333"/>
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <GridView x:Name="frequentGridView"
+                  Grid.Row="1"
+                  IsItemClickEnabled="True" ItemClick="frequentGridView_ItemClick">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <ItemsControl Width="{Binding ItemWidth}" Height="{Binding ItemHeight}">
+                        <Grid Width="{Binding GridWidth}" Height="{Binding GridHeight}" Background="{Binding GridBrush}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <!--<Rectangle Fill="{Binding Image}"/>-->
+                            <TextBlock Text="{Binding Name}" Grid.Row="1" FontSize="20" VerticalAlignment="Bottom" Foreground="White"/>
+                        </Grid>
+                    </ItemsControl>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+        <Rectangle x:Name="blockRect" Grid.RowSpan="2" Tapped="blockRect_Tapped" Visibility="Collapsed">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="{ThemeResource ContentDialogDimmingColor}" Opacity="0.3"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Frame x:Name="newCardFrame"
+            Grid.Row="1" Visibility="Collapsed" Margin="30">
+            <Frame.Background>
+                <SolidColorBrush Color="{ThemeResource PhoneBackgroundColor}"/>
+            </Frame.Background>
+        </Frame>
+    </Grid>
+</Page>

@@ -1,0 +1,18 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VideoFX"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    x:Class="VideoFX.MainPage"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="{StaticResource PhoneBackgroundBrush}">
+        <Frame x:Name="MainFrame"/>
+        <Grid Background="{StaticResource PhoneAccentBrush}" VerticalAlignment="Top">
+            <TextBlock x:Name="statusText" Foreground="White" Text="Status Message" FontSize="26.667"/>
+        </Grid>
+    </Grid>
+</Page>

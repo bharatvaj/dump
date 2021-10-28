@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorRideshare"
+    android:padding="@dimen/xxlarge"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginTop="@dimen/xxlarge"
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        style="@style/TextAppearance.AppCompat.Headline"
+        android:layout_marginBottom="@dimen/title_bottom_margin"
+        android:text="@string/app_name"/>
+    <TextView
+        android:textColor="@color/translucent"
+        android:textStyle="bold"
+        style="@style/Base.TextAppearance.AppCompat.Subhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rideshare_phone_info"/>
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/xxlarge"
+        android:gravity="center"
+        android:id="@+id/phone_auth_fields"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.cz.rideshare.view.NonSwipeableViewPager
+            android:id="@+id/loginViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/skip_login"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/skip_login_caption"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

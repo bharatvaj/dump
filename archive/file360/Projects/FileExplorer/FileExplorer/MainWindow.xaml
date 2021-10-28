@@ -1,0 +1,12 @@
+﻿<Controls:MetroWindow x:Class="FileExplorer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        Title="Computer" Height="350" Width="525" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="108,59,26,32">
+            <WrapPanel x:Name="folderPanel" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="{Binding ViewportWidth, ElementName=MyScrollViewer}" Width="{Binding ViewportWidth, ElementName=MyScrollViewer}"/>
+        </ScrollViewer>
+        <Grid HorizontalAlignment="Left" Height="59" Margin="10,0,0,0" VerticalAlignment="Top" Width="497"/>
+    </Grid>
+</Controls:MetroWindow>

@@ -1,0 +1,24 @@
+{
+  "name": "healthcare-server",
+  "version": "1.0.0",
+  "description": "A server for maintaining for Electronic Medical Records",
+  "main": "index.js",
+  "scripts": {
+    "server": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bharatph/healthcare-server.git"
+  },
+  "author": "Bharatvaj H",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bharatph/healthcare-server/issues"
+  },
+  "homepage": "https://github.com/bharatph/healthcare-server#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "fs": "0.0.1-security"
+  }
+}

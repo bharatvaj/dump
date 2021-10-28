@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_bar_main_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cz.rideshare.MainActivity">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.cz.rideshare.MainActivity" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small"
+        android:paddingTop="@dimen/small"
+        android:theme="@style/AppTheme.Contrast">
+
+        <LinearLayout
+            android:id="@+id/fromContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/small"
+            android:layout_marginStart="@dimen/small"
+            android:paddingTop="@dimen/tiniest"
+            android:background="@drawable/round_button_white"
+            android:elevation="@dimen/medium"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/tiniest">
+
+                <ImageView
+                    android:layout_width="@dimen/tiny"
+                    android:layout_height="@dimen/tiny"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/small"
+                    app:srcCompat="@drawable/node_hollow" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/tiniest"
+                    android:paddingStart="@dimen/tiniest"
+                    android:text="@string/caption_from"
+                    android:textSize="@dimen/tiny" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editTextFrom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:paddingBottom="@dimen/small"
+                android:paddingLeft="@dimen/small"
+                android:paddingRight="@dimen/small" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:elevation="@dimen/small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fromContainer"
+            android:layout_marginEnd="@dimen/xxlarge"
+            android:layout_marginStart="@dimen/xxlarge"
+            android:layout_marginBottom="@dimen/xxlarge"
+            android:background="@drawable/round_button_white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:background="@android:color/white"
+                android:paddingTop="@dimen/small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="@dimen/tiny"
+                    android:layout_height="@dimen/tiny"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/small"
+                    app:srcCompat="@drawable/node_complete" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/tiniest"
+                    android:paddingStart="@dimen/tiniest"
+                    android:text="@string/caption_to"
+                    android:textSize="@dimen/tiny" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editTextTo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:layout_marginBottom="@dimen/small"
+                android:layout_marginLeft="@dimen/small"
+                android:layout_marginRight="@dimen/small" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingTop="@dimen/small"
+        android:paddingLeft="@dimen/small"
+        android:paddingStart="@dimen/small"
+        android:paddingEnd="@dimen/small"
+        android:paddingRight="@dimen/small"
+        >
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/sidebarToggleOnMap"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/radial_shadow"
+            android:contentDescription="@string/menu_toggle"
+            android:tint="@color/colorRideshare"
+            app:srcCompat="@drawable/hamburger_menu" />
+
+        <Button
+            android:id="@+id/rideShareButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_toEndOf="@+id/sidebarToggleOnMap"
+            android:layout_toLeftOf="@id/centerLocationButton"
+            android:layout_toRightOf="@id/sidebarToggleOnMap"
+            android:layout_toStartOf="@+id/centerLocationButton"
+            android:text="@string/menu_book_rides" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/centerLocationButton"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/radial_shadow"
+            android:contentDescription="@string/center_map"
+            android:tint="@color/colorRideshare"
+            app:srcCompat="@drawable/center_map" />
+
+    </RelativeLayout>
+</RelativeLayout>

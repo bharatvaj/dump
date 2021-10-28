@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/AppTheme.Contrast"
+    tools:context="com.cz.rideshare.OfferRideActivity">
+    <com.cz.rideshare.view.RideshareToolbar
+        app:headerText="@string/menu_offer_ride"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.cz.rideshare.view.RideshareToolbar>
+</RelativeLayout>

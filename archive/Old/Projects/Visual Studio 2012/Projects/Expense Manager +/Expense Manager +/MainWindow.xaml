@@ -1,0 +1,122 @@
+﻿<Controls:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:Expense_Manager__"
+        xmlns:Custom="http://metro.mahapps.com/winfx/xaml/shared" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ee="http://schemas.microsoft.com/expression/2010/effects" mc:Ignorable="d" x:Class="Expense_Manager__.MainWindow"
+        Title="Expense Manager +" FontSize="18" FontFamily="Mohave" Height="445" Width="860" ResizeMode="CanResizeWithGrip" ShowMinButton="True" ShowMaxRestoreButton="False" WindowStartupLocation="CenterScreen" ShowCloseButton="True" ShowIconOnTitleBar="True">
+    <Controls:MetroWindow.Resources>
+        <Storyboard x:Key="searchBoxAnimation">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="label">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FF80BA45"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="searchBoxAnimation_Copy1">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="label">
+                <SplineColorKeyFrame KeyTime="0:0:0.2" Value="Transparent"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </Controls:MetroWindow.Resources>
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Content="settings" Click="settings_Click" FontSize="14" FontFamily="Segoe UI Symbol"/>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="25" Height="25">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="Resources/msstore_400x400.png" Stretch="Uniform"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <TextBlock
+                   VerticalAlignment="Center"
+                   Text=" Hemanth Kumar P K" FontSize="14"/>
+                </StackPanel>
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+    <local:DrawerLayout x:Name="DrawerLayout">
+        <Grid x:Name="MainFragment">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="12*"/>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Button HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0,0,0,0" Style="{DynamicResource DefaultButton}" Click="header_Clicked">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="h" FontSize="20" FontFamily="/Expense Manager +;component/Resources/Fonts/UI/#untitled-font-1" Foreground="White" VerticalContentAlignment="Center"/>
+                        <Label x:Name="header" VerticalContentAlignment="Center" Content="Expenses" FontFamily="Mohave" Foreground="White" FontSize="20"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid x:Name="ExpenseTableMenu">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="75*"/>
+                        <ColumnDefinition Width="25*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <Grid x:Name="grid" Height="29.617">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto" MinWidth="28"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="textBox" Controls:TextBoxHelper.Watermark="Search..." Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.ButtonContent="x" Controls:TextBoxHelper.ButtonFontFamily="Mohave" Controls:TextBoxHelper.SelectAllOnFocus="True" Style="{DynamicResource TextBoxDefault}" GotFocus="searchBox_GotFocus" Background="#FF464646" LostFocus="searchBox_LostFocus" RenderTransformOrigin="0.5,0.5" TextChanged="searchBox_TextChanged"/>
+                            <Label x:Name="label" Grid.Column="1" Content="s" FontFamily="/Expense Manager +;component/Resources/Fonts/UI/#untitled-font-1" RenderTransformOrigin="0.5,0.5"/>
+                        </Grid>
+                        <DataGrid x:Name="expenseData" SelectionChanged="expenseData_SelectionChanged" CanUserAddRows="True" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserDeleteRows="True" ColumnWidth="*" Loaded="expenseData_Loaded" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" FontSize="14" FontFamily="Segoe WP Semibold" GridLinesVisibility="None" HorizontalGridLinesBrush="{x:Null}" VerticalGridLinesBrush="{x:Null}" Style="{DynamicResource DataGridStyle}" CurrentCellChanged="expenseData_CurrentCellChanged" MouseMove="expenseData_MouseMove"/>
+                        <Label IsHitTestVisible="False" Visibility="Collapsed" x:Name="selectedExpense" Content="" Background="#7F139B88" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Grid Grid.Column="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="4*"/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <local:Pie x:Name="pieChart" Width="Auto" Height="Auto" OverridesDefaultStyle="True" ProgressRing="50" GaugeHeight="150" GaugeWidth="150" VerticalAlignment="Top"/>
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                    <TextBlock x:Name="currency" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Text="₹" TextAlignment="Center"/>
+                                    <TextBlock x:Name="balanceDisplay" HorizontalAlignment="Left" TextWrapping="Wrap" FontSize="22" Text="1789" FontWeight="Bold" FontFamily="Mohave"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid Grid.Row="2">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Button  Style="{DynamicResource MetroButtonDefault}" FontSize="25" Content="+" Width="40" Height="40" Background="#FF548E19" FontFamily="/Expense Manager +;component/Resources/Fonts/UI/#untitled-font-1" Click="AddTransaction"/>
+                                    <Button x:Name="edit" Style="{DynamicResource MetroButtonDefault}" Controls:ButtonHelper.CornerRadius="50" HorizontalAlignment="Center" Height="40" Width="40" FontSize="20" Click="Button_Click" FontFamily="/Expense Manager +;component/Resources/Fonts/UI/#untitled-font-1" Background="#FFC8384F">
+                                        <TextBlock Text="e"/>
+                                    </Button>
+                                    <Button Style="{DynamicResource MetroButtonDefault}" Controls:ButtonHelper.CornerRadius="50" HorizontalAlignment="Center" Height="40" Width="40" FontSize="20" Click="Button_Click" FontFamily="/Expense Manager +;component/Resources/Fonts/UI/#untitled-font-1" Background="#FF38AEC8">
+                                        <TextBlock Text="x"/>
+                                    </Button>
+
+                                </StackPanel>
+                                <ToggleButton Content="Show Money Indicator" IsChecked="True" Checked="ShowMoneyPopup" Unchecked="UnShowMoneyPopup" HorizontalAlignment="Center" Height="33" VerticalAlignment="Bottom" Margin="0,10" Width="111"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2">
+                <StatusBar Margin="0,0,0,-5.949">
+                    <Label x:Name="CurrentInfo" Content="Ready" FontSize="12" FontFamily="Tw Cen MT Condensed" Background="{x:Null}" Height="21.051" Width="852" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StatusBar>
+                <Controls:MetroProgressBar 
+					IsIndeterminate="False" VerticalAlignment="Stretch" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" />
+            </Grid>
+        </Grid>
+        <Grid x:Name="ListFragment" Background="#FF252525" Width="0" HorizontalAlignment="Left">
+            <ListBox x:Name="listBox">
+                <local:ListButtonItem Text="Home" Image="H"/>
+                <local:ListButtonItem Text="Settings" Image="S"/>
+            </ListBox>
+        </Grid>
+    </local:DrawerLayout>
+</Controls:MetroWindow>

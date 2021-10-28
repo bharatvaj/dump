@@ -1,0 +1,9 @@
+/* This file defines set of #defines for to be used by solo */
+
+#cmakedefine SOLO_VERSION "@SOLO_VERSION@"
+
+/*
+ * TCP/IP implementation defaults
+ */
+
+#define SOLO_DEFAULT_PORT 12600

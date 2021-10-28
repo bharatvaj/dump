@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>e7253c4e-c82f-4585-bb9f-9709bb8b652a</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>LearnTamil</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)BoolToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CircleButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\GridTable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\Title.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\WordItems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DrawerLayout.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)1.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)200px-Word_Tamil.svg.png" />
+    <Content Include="$(MSBuildThisFileDirectory)7_Wallpapers_for_L20.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Barathiyar_Poster_small.png" />
+    <Content Include="$(MSBuildThisFileDirectory)chapter1.Xml" />
+    <Content Include="$(MSBuildThisFileDirectory)chapter2.xml" />
+    <Content Include="$(MSBuildThisFileDirectory)dCtaCBG.png" />
+    <Content Include="$(MSBuildThisFileDirectory)images.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)img-thing.png" />
+    <Content Include="$(MSBuildThisFileDirectory)languageapp.ttf" />
+    <Content Include="$(MSBuildThisFileDirectory)lesson1.xml" />
+    <Content Include="$(MSBuildThisFileDirectory)lesson_contents\lesson0.xml" />
+    <Content Include="$(MSBuildThisFileDirectory)logo\0\0.png" />
+    <Content Include="$(MSBuildThisFileDirectory)mainDropShadow.png" />
+    <Content Include="$(MSBuildThisFileDirectory)mainDropShadowP.png" />
+    <Content Include="$(MSBuildThisFileDirectory)main_drop_shadow.png" />
+    <Content Include="$(MSBuildThisFileDirectory)preface.xml" />
+    <Content Include="$(MSBuildThisFileDirectory)rec\rec1.1.0.1.mp3" />
+    <Content Include="$(MSBuildThisFileDirectory)SpeakTamil4.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)tamil_characters.xml" />
+    <Content Include="$(MSBuildThisFileDirectory)Untitled-1.png" />
+    <Content Include="$(MSBuildThisFileDirectory)white-paper-material-design-wallpaper-shadow-vector-illustration-57877239.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)_DSC0086.JPG" />
+  </ItemGroup>
+</Project>

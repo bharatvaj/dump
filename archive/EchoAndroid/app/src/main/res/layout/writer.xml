@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:showIn="@layout/activity_main"
+        android:background="@color/echoMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal">
+    <EditText
+            android:id="@+id/writer_edit_text"
+            android:background="@android:color/transparent"
+            android:hint="@string/writer_message_hint"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/padding_small"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    <ImageButton
+            android:id="@+id/send_btn"
+            android:layout_margin="@dimen/padding_medium"
+            android:src="@drawable/ic_right_arrow"
+            android:tint="@color/echoRed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+</LinearLayout>

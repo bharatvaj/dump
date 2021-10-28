@@ -1,0 +1,66 @@
+<h1 id="cricket-api">Cricket API</h1>
+<h3 id="series">Series</h3>
+<ul>
+<li>series array</li>
+</ul>
+<pre><code>/series/:seriesName
+/season/:seasonYear</code></pre>
+<ul>
+<li>series</li>
+</ul>
+<pre><code>/series/:seriesName/season/:seasonYear</code></pre>
+<h3 id="match">Match</h3>
+<ul>
+<li>match array</li>
+</ul>
+<pre><code>/series/:seriesName/season/:seasonYear/match/
+/match/date/:DATE</code></pre>
+<ul>
+<li>match</li>
+</ul>
+<pre><code>/series/:seriesId/season/:seasonYear/match/number/:matchNo</code></pre>
+<h3 id="team">Team</h3>
+<ul>
+<li>team A &amp; B</li>
+</ul>
+<pre><code>/series/:seriesId/season/:seasonYear/match/number/:matchNo/teams/</code></pre>
+<ul>
+<li>team</li>
+</ul>
+<pre><code>/series/:seriesId/season/:seasonYear/match/number/:matchNo/team/:teamId
+/team/:teamId</code></pre>
+<h3 id="player">Player</h3>
+<ul>
+<li>playerId array</li>
+</ul>
+<pre><code>/series/:seriesId/season/:seasonYear/match/number/:matchNo/team/:teamId/players</code></pre>
+<ul>
+<li>player</li>
+</ul>
+<pre><code>/player/:playerId</code></pre>
+<h3 id="player-batting">Player Batting</h3>
+<ul>
+<li>match stats</li>
+</ul>
+<pre><code>/series/:seriesId/season/:seasonYear/match/number/:matchNo/team/:teamId/player/:playerId/br</code></pre>
+<ul>
+<li>series stats</li>
+</ul>
+<pre><code>/series/:seriesName/player/:playerId/br</code></pre>
+<ul>
+<li>per season stats</li>
+</ul>
+<pre><code>/series/:seriesName/season/:seasonYear/player/:playerId/br</code></pre>
+<h3 id="player-bowling">Player Bowling</h3>
+<ul>
+<li>match stats</li>
+</ul>
+<pre><code>/series/:seriesId/season/:seasonYear/match/number/:matchNo/team/:teamId/player/:playerId/bor</code></pre>
+<ul>
+<li>series stats</li>
+</ul>
+<pre><code>/series/:seriesName/player/:playerId/bor</code></pre>
+<ul>
+<li>per season stats</li>
+</ul>
+<pre><code>/series/:seriesName/season/:seasonYear/player/:playerId/bor</code></pre>

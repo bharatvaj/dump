@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">@android:color/white</color>
+    <color name="colorRideshare">#63c9b4</color>
+    <color name="colorRideshareDark">#209B84</color>
+    <color name="colorPrimary">@android:color/white</color>
+    <color name="colorPrimaryDark">@android:color/black</color>
+
+    <color name="foregroundColor">@android:color/white</color>
+    <color name="contrastForegroundColor">@android:color/black</color>
+
+    <color name="color_button_sos">#FFACA3</color>
+
+    <color name="translucent">#91ffffff</color>
+
+    <color name="error_light">#e74c3c</color>
+
+    <color name="error_dark">#c0392b</color>
+
+    <color name="success_light">#2ecc71</color>
+
+    <color name="success_dark">#27ae60</color>
+
+    <color name="grey_100">#F5F5F5</color>
+
+    <color name="grey_300">#E0E0E0</color>
+</resources>

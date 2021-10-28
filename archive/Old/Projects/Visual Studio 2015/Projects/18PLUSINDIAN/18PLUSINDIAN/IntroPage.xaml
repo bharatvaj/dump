@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="_18PLUSINDIAN.IntroPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_18PLUSINDIAN"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid x:Name="grid" Background="#FF095B5F">
+        <FlipView x:Name="flipView" IsEnabled="False">
+            <FlipViewItem>
+                <StackPanel Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock TextAlignment="Center" Style="{StaticResource HeaderTextBlockStyle}" Text="WELCOME!" FontSize="40" Foreground="White"/>
+                    <TextBlock Style="{StaticResource ComboBoxPlaceholderTextBlockStyle}" Text="Welcome to 18+ INDIAN...If you think this is some sort of porn app, please delete this app. This app is a vault used for storing your personal data such as AADHAR card number, Ration Card number, e.t.c. The main benefit of using this app is that it does not connect to internet... So you don't need to be bothered of your privacy." TextWrapping="Wrap" Margin="0,10,0,0" TextAlignment="Center" Foreground="White"/>
+                    <TextBlock Text="swipe right to continue--->" TextAlignment="Center" Style="{StaticResource ControlContextualInfoTextBlockStyle}" Margin="0,20,0,0" Foreground="White"/>
+                </StackPanel>
+            </FlipViewItem>
+            <FlipViewItem>
+
+            </FlipViewItem>
+        </FlipView>
+    </Grid>
+</Page>

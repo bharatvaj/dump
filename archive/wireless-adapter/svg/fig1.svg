@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="fig1.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="438.48803"
+     inkscape:cy="683.13109"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g1276"
+       transform="translate(-6.9490082,-0.66454502)">
+      <g
+         transform="translate(0.21415705,-3.1054018e-6)"
+         id="g842">
+        <rect
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.5291667;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none"
+           id="rect17"
+           width="44.768192"
+           height="23.038139"
+           x="14.953115"
+           y="70.289917" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.08620739px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.12715518"
+           x="37.41917"
+           y="80.481522"
+           id="text826"><tspan
+             sodipodi:role="line"
+             x="37.41917"
+             y="80.481522"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518"
+             id="tspan836">TRANSEIVER</tspan><tspan
+             id="tspan877"
+             sodipodi:role="line"
+             x="37.41917"
+             y="86.839462"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518">MODULE 1</tspan></text>
+      </g>
+      <g
+         id="g842-6"
+         transform="translate(0.21415705,29.253961)">
+        <rect
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.5291667;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none"
+           id="rect17-0"
+           width="44.768192"
+           height="23.038139"
+           x="14.953115"
+           y="70.289917" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.08620739px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.12715518"
+           x="37.41917"
+           y="80.481522"
+           id="text826-4"><tspan
+             id="tspan879"
+             sodipodi:role="line"
+             x="37.41917"
+             y="80.481522"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518">TRANSEIVER</tspan><tspan
+             id="tspan883"
+             sodipodi:role="line"
+             x="37.41917"
+             y="86.839462"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518">MODULE 2</tspan><tspan
+             id="tspan873"
+             sodipodi:role="line"
+             x="37.41917"
+             y="93.197273"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518" /></text>
+      </g>
+      <g
+         id="g842-6-7"
+         transform="translate(0.21415705,71.934543)">
+        <rect
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.5291667;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none"
+           id="rect17-0-8"
+           width="44.768192"
+           height="23.038139"
+           x="14.953115"
+           y="70.289917" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.08620739px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.12715518"
+           x="37.41917"
+           y="80.481522"
+           id="text826-4-0"><tspan
+             id="tspan879-6"
+             sodipodi:role="line"
+             x="37.41917"
+             y="80.481522"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518">TRANSEIVER</tspan><tspan
+             id="tspan883-6"
+             sodipodi:role="line"
+             x="37.41917"
+             y="86.839462"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518">MODULE N</tspan><tspan
+             id="tspan873-9"
+             sodipodi:role="line"
+             x="37.41917"
+             y="93.197273"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518" /></text>
+      </g>
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path917"
+         d="m 37.551369,128.51522 v 7.77605"
+         style="fill:none;stroke:#000000;stroke-width:0.52916676;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.52916673, 2.11666692;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <g
+       id="g1183"
+       transform="translate(-9.948131,0.48906306)">
+      <g
+         transform="translate(-4.543582,-14.432554)"
+         id="g1040">
+        <g
+           id="g842-1"
+           transform="translate(60.751249,2.7413178)">
+          <rect
+             y="70.752274"
+             x="15.415469"
+             height="115.12322"
+             width="72.441322"
+             id="rect17-6"
+             style="fill:#ffffff;stroke:#000000;stroke-width:0.59885466;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none" />
+        </g>
+      </g>
+      <g
+         id="g1206"
+         transform="translate(-3.2593997e-7,0.33939608)">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.08620739px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.12715518"
+           x="51.46104"
+           y="79.946999"
+           id="text826-1"
+           transform="translate(56.207668,-11.691236)"><tspan
+             id="tspan948"
+             sodipodi:role="line"
+             x="51.46104"
+             y="79.946999"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518">ROUTE BINDER</tspan></text>
+        <g
+           transform="translate(70.292429,2.558585)"
+           id="g1060-0">
+          <g
+             transform="translate(0.21415705,-3.1054018e-6)"
+             id="g842-0">
+            <rect
+               style="fill:#ffffff;stroke:#000000;stroke-width:0.5291667;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none"
+               id="rect17-64"
+               width="44.768192"
+               height="23.038139"
+               x="14.953115"
+               y="70.289917" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-weight:normal;font-size:5.08620739px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.12715518"
+               x="37.41917"
+               y="80.481522"
+               id="text826-47"><tspan
+                 sodipodi:role="line"
+                 x="37.41917"
+                 y="80.481522"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518"
+                 id="tspan1137">ROUTEBIND</tspan><tspan
+                 sodipodi:role="line"
+                 x="37.41917"
+                 y="86.839462"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518"
+                 id="tspan1141">1</tspan></text>
+          </g>
+          <g
+             id="g842-6-6"
+             transform="translate(0.21415705,29.253961)">
+            <rect
+               style="fill:#ffffff;stroke:#000000;stroke-width:0.5291667;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none"
+               id="rect17-0-9"
+               width="44.768192"
+               height="23.038139"
+               x="14.953115"
+               y="70.289917" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-weight:normal;font-size:5.08620739px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.12715518"
+               x="37.41917"
+               y="80.481522"
+               id="text826-4-6"><tspan
+                 id="tspan873-3"
+                 sodipodi:role="line"
+                 x="37.41917"
+                 y="80.481522"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518">ROUTEBIND</tspan><tspan
+                 sodipodi:role="line"
+                 x="37.41917"
+                 y="86.839462"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518"
+                 id="tspan1148">2</tspan></text>
+          </g>
+          <g
+             id="g842-6-7-9"
+             transform="translate(0.21415705,71.934543)">
+            <rect
+               style="fill:#ffffff;stroke:#000000;stroke-width:0.5291667;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none"
+               id="rect17-0-8-8"
+               width="44.768192"
+               height="23.038139"
+               x="14.953115"
+               y="70.289917" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-weight:normal;font-size:5.08620739px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.12715518"
+               x="37.41917"
+               y="80.481522"
+               id="text826-4-0-4"><tspan
+                 sodipodi:role="line"
+                 x="37.41917"
+                 y="80.481522"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518"
+                 id="tspan1155">ROUTEBIND</tspan><tspan
+                 sodipodi:role="line"
+                 x="37.41917"
+                 y="86.839462"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518"
+                 id="tspan1159">N</tspan></text>
+          </g>
+          <path
+             sodipodi:nodetypes="cc"
+             inkscape:connector-curvature="0"
+             id="path917-9"
+             d="m 37.551369,128.51522 v 7.77605"
+             style="fill:none;stroke:#000000;stroke-width:0.52916676;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.52916673, 2.11666692;stroke-dashoffset:0;stroke-opacity:1" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="g1431"
+       transform="translate(-19.638386,-12.588506)">
+      <g
+         transform="translate(147.34604,57.50199)"
+         id="g842-5-4-1">
+        <rect
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.5291667;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none"
+           id="rect17-1-3-2"
+           width="44.447388"
+           height="59.867802"
+           x="15.113517"
+           y="70.450317" />
+        <g
+           transform="translate(0.18552279,1.5076912)"
+           id="g1406">
+          <text
+             id="text826-6-6-0"
+             y="80.481514"
+             x="37.083389"
+             style="font-style:normal;font-weight:normal;font-size:5.08620739px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.12715518"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518"
+               y="80.481514"
+               x="37.083389"
+               sodipodi:role="line"
+               id="tspan1335">NETWORK</tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518"
+               y="86.839455"
+               x="37.083389"
+               sodipodi:role="line"
+               id="tspan937">CONTROLLER</tspan></text>
+          <g
+             id="g1369"
+             transform="translate(-1.5218669,-1.6142635)">
+            <rect
+               y="93.56884"
+               x="23.171923"
+               height="11.759859"
+               width="31.003265"
+               id="rect1337"
+               style="fill:#ffffff;stroke:#000000;stroke-width:0.52916664;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-weight:normal;font-size:5.08620739px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.12715518"
+               x="38.52454"
+               y="101.30027"
+               id="text826-6-6-3"><tspan
+                 id="tspan1304-4"
+                 sodipodi:role="line"
+                 x="38.52454"
+                 y="101.30027"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08635044px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518">CONNECT</tspan></text>
+          </g>
+          <g
+             id="g1369-0"
+             transform="translate(-1.5218669,15.453283)">
+            <rect
+               y="93.56884"
+               x="23.171923"
+               height="11.759859"
+               width="31.003265"
+               id="rect1337-4"
+               style="fill:#ffffff;stroke:#000000;stroke-width:0.52916664;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-weight:normal;font-size:5.08620739px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.12715518"
+               x="38.52454"
+               y="101.30027"
+               id="text826-6-6-3-6"><tspan
+                 id="tspan1304-4-1"
+                 sodipodi:role="line"
+                 x="38.52454"
+                 y="101.30027"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08635044px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518">LISTEN</tspan></text>
+          </g>
+        </g>
+      </g>
+      <g
+         transform="translate(147.32975,1.130007)"
+         id="g842-5-4-1-2">
+        <rect
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.49658632;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none"
+           id="rect17-1-3-2-2"
+           width="44.479969"
+           height="52.684105"
+           x="15.097227"
+           y="70.434029" />
+        <g
+           transform="translate(-0.10679364,0.8314535)"
+           id="g1406-8">
+          <text
+             id="text826-6-6-0-7"
+             y="80.481522"
+             x="37.268913"
+             style="font-style:normal;font-weight:normal;font-size:5.08620739px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.12715518"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08634996px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518"
+               y="80.481522"
+               x="37.268913"
+               sodipodi:role="line"
+               id="tspan1335-8">FORWARDER</tspan></text>
+          <g
+             id="g1369-1"
+             transform="translate(-1.3363476,-7.725132)">
+            <rect
+               y="93.56884"
+               x="23.171923"
+               height="11.759859"
+               width="31.003265"
+               id="rect1337-3"
+               style="fill:#ffffff;stroke:#000000;stroke-width:0.52916664;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-weight:normal;font-size:5.08620739px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.12715518"
+               x="38.52454"
+               y="101.30027"
+               id="text826-6-6-3-4"><tspan
+                 id="tspan1304-4-6"
+                 sodipodi:role="line"
+                 x="38.52454"
+                 y="101.30027"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08635044px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518">STRIP</tspan></text>
+          </g>
+          <g
+             id="g1369-0-2"
+             transform="translate(-1.3363476,9.5894765)">
+            <rect
+               y="93.56884"
+               x="23.171923"
+               height="11.759859"
+               width="31.003265"
+               id="rect1337-4-8"
+               style="fill:#ffffff;stroke:#000000;stroke-width:0.52916664;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-weight:normal;font-size:5.08620739px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.12715518"
+               x="38.52454"
+               y="101.30027"
+               id="text826-6-6-3-6-8"><tspan
+                 id="tspan1304-4-1-7"
+                 sodipodi:role="line"
+                 x="38.52454"
+                 y="101.30027"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.08635044px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.12715518">PACK</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

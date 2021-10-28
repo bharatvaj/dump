@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/ride_snapshot">
+<ImageView
+    android:id="@+id/snapshotRideImage"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_centerVertical="true"
+    android:layout_width="@dimen/vehicle_type_image"
+    android:layout_height="@dimen/vehicle_type_image"
+    android:layout_marginEnd="@dimen/small"
+    android:layout_marginRight="@dimen/small"
+    android:tint="@android:color/black"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/snapshotRideImage"
+        android:layout_toRightOf="@id/snapshotRideImage"
+        android:layout_toStartOf="@+id/snapshotPrice"
+        android:layout_toLeftOf="@id/snapshotPrice"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/snapshotDate"
+            style="@style/AppTheme.HeaderTextView"
+            android:textSize="@dimen/xxlarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="Sun, Sep 24" />
+        <TextView
+            android:id="@+id/snapshotRideType"
+            style="@style/AppTheme.HeaderTextView"
+            android:textSize="@dimen/large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="Batmobile" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/snapshotPrice"
+        android:layout_marginStart="@dimen/small"
+        android:layout_marginLeft="@dimen/small"
+        android:textColor="@color/colorRideshare"
+        android:maxLines="1"
+        android:paddingLeft="@dimen/small"
+        android:paddingRight="@dimen/small"
+        android:paddingTop="@dimen/tiniest"
+        android:paddingBottom="@dimen/tiniest"
+        android:background="@drawable/round_button_outline_rideshare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="₹205" />
+</RelativeLayout>

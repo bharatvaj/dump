@@ -1,0 +1,4 @@
+ a. Dump boot.img from your phone
+ b. Extract ramdisk.img from boot.img
+ c. Combine Image.gz-dtb with ramdisk.img to new boot.img
+ d. Flash new boot.img to boot partition

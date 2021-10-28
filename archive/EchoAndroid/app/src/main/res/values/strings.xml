@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Echo</string>
+    <string name="writer_message_hint">Message</string>
+</resources>

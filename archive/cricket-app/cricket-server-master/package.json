@@ -1,0 +1,23 @@
+{
+  "name": "cricket-server",
+  "version": "1.0.0",
+  "description": "Cricket server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bharatvaj/cricket-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bharatvaj/cricket-server/issues"
+  },
+  "homepage": "https://github.com/bharatvaj/cricket-server#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^7.11.0"
+  }
+}

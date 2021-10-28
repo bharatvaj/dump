@@ -1,0 +1,5 @@
+<button (click)="toggleDisplay()" name="button">Display Details</button>
+<p *ngIf="this.shouldDisplay">Secret Password = tuna</p>
+<ul [ngStyle]="{color: i >= 4? 'white':'black'}" [ngClass]="{blue: i >= 4}" *ngFor="let log of logs; let i = index;">
+  {{log}}
+</ul>

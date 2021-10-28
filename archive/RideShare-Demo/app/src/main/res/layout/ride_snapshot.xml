@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white"
+    android:layout_marginTop="@dimen/small"
+    android:layout_marginBottom="@dimen/small"
+    android:padding="@dimen/small"
+    android:elevation="@dimen/cardview_default_elevation"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <include
+        android:id="@+id/snapshot_cost"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/small"
+        layout="@layout/ride_quick_info"/>
+    <include
+        android:layout_marginLeft="@dimen/xxlarge"
+        android:layout_marginRight="@dimen/xxlarge"
+        android:id="@+id/snapshot_telemetry"
+        android:layout_below="@id/snapshot_cost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/horizontal_path"/>
+    <include
+        android:layout_marginTop="@dimen/small"
+        android:layout_below="@id/snapshot_telemetry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/driver_quick_info"/>
+
+</RelativeLayout>

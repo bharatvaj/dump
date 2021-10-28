@@ -1,0 +1,104 @@
+﻿<Page
+    x:Class="Hackeroid.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hackeroid"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Page.Resources>
+        <DataTemplate x:Name="ListNormal">
+            <Grid>
+                
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid RequestedTheme="Dark">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.09*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.Background>
+                <SolidColorBrush Color="#FF151515"/>
+            </Grid.Background>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="H" Foreground="Yellow"/>
+                    <TextBlock Text="HACKEROID"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+        
+        
+        
+        
+        <Grid Grid.Row="1" Background="#FF1C1C1C">
+            <local:DrawerLayout>
+
+
+                <Grid x:Name="MainFragent">
+                    <StackPanel Orientation="Vertical">
+                        <Grid Margin="10,5" Height="95">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Width="10" HorizontalAlignment="Left" Background="Yellow"/>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.8*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Margin="10,5" TextTrimming="WordEllipsis" Text="Stickmann Gansta" FontSize="26.667" FontFamily="Segoe UI Light"/>
+                                <TextBlock Grid.Row="1" TextWrapping="WrapWholeWords" Margin="10,5" TextTrimming="WordEllipsis" Text="A stickman game produced by Phoenix Productions." FontSize="16"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="10,5" Height="95">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Width="10" HorizontalAlignment="Left" Background="Yellow"/>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.8*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Margin="10,5" TextTrimming="WordEllipsis" Text="File360" FontSize="26.667" FontFamily="Segoe UI Light"/>
+                                <TextBlock Grid.Row="1" TextWrapping="WrapWholeWords" Margin="10,5" TextTrimming="WordEllipsis" Text="A simple file manager for WinRT devices, published and developed by aram." FontSize="16"/>
+                            </Grid>
+
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <Grid Width="40" HorizontalAlignment="Left"/>
+                <Grid HorizontalAlignment="Left" Width="300" x:Name="ListFragment" Background="#FF151515">
+                    <ScrollViewer>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.45*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.6*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Width="100" Height="100" VerticalAlignment="Bottom" Fill="Yellow"/>
+                                <StackPanel Margin="10,8,8,20" Grid.Column="1" VerticalAlignment="Bottom">
+                                    <TextBlock Text="Hi, Bharatvaj" FontSize="21.333"/>
+                                    <TextBlock Text="bharatvaj@yahoo.com" FontSize="16" Foreground="Gainsboro"/>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </local:DrawerLayout>
+        </Grid>
+    </Grid>
+</Page>

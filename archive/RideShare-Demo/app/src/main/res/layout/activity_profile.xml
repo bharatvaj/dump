@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/xxlarge"
+    tools:context="com.cz.rideshare.ProfileActivity">
+
+    <LinearLayout
+        android:id="@+id/userImageContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileUserImage"
+            android:layout_width="@dimen/user_profile_picture"
+            android:layout_height="@dimen/user_profile_picture"
+            android:elevation="@dimen/cardview_default_elevation" />
+
+        <TextView
+            android:id="@+id/profileUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="0dp"
+            android:layout_marginLeft="@dimen/medium"
+            android:layout_marginRight="0dp"
+            android:layout_marginStart="@dimen/medium"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/xxlarge" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userImageContainer"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/medium"
+                android:text="@string/caption_user_email"
+                android:textSize="@dimen/large"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/profileUserEmailEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/mdtp_transparent_black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/medium"
+                android:text="@string/caption_user_mobile"
+                android:textSize="@dimen/large"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/profileUserPhoneEdit"
+                android:enabled="false"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/mdtp_transparent_black"
+                android:hint="@string/hint_mobile" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/logoutButton"
+        android:layout_marginLeft="@dimen/xxlarge"
+        android:layout_marginRight="@dimen/xxlarge"
+        android:background="@drawable/round_button_outline"
+        android:text="@string/button_password_change"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/xxlarge"
+        android:background="@drawable/round_button_sos"
+        android:text="@string/button_logout" />
+
+
+</RelativeLayout>

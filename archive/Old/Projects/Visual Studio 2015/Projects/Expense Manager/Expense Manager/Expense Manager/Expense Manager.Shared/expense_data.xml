@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<expenses>
+    <expense>
+    <amount>25</amount>
+    <type>Some Expense</type>
+    <date>05-02-16</date>
+    <description>somehing waste</description>
+  </expense>
+</expenses>

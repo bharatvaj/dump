@@ -1,0 +1,16 @@
+{
+  "name": "homate-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "firebase": "^5.8.4",
+    "mqtt": "^2.18.8"
+  }
+}

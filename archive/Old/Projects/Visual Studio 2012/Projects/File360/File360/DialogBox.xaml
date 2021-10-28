@@ -1,0 +1,38 @@
+﻿<UserControl
+    Name="DialogBoxControl"
+    x:Class="File360.DialogBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="800" d:DesignWidth="480">
+
+    <Grid Background="#AA000000">
+        <toolkit:WrapPanel x:Name="LayoutRoot" HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Margin="0" Background="{StaticResource PhoneChromeBrush}">
+            <Grid Background="{StaticResource PhoneChromeBrush}" VerticalAlignment="Top" Height="65" Width="400">
+                <TextBlock x:Name="heading" Foreground="{StaticResource PhoneForegroundBrush}" Text="Are You Sure?" FontSize="36" FontFamily="Segoe WP Semibold" Margin="10,4,10,6"/>
+                <Rectangle Fill="{StaticResource PhoneAccentBrush}" HorizontalAlignment="Left" Margin="0,59,0,1" StrokeThickness="20" Width="400" RenderTransformOrigin="0.5,0.5" Height="5">
+                </Rectangle>
+            </Grid>
+            <Rectangle Height="10" Width="400"/>
+            <TextBlock x:Name="dialogDetails"  Margin="0,0,-3,0" TextWrapping="Wrap" Text="Random Text and Messages Detailed about this operation comes here." FontFamily="Segoe WP Light" FontSize="24" TextAlignment="Center" Width="400"/>
+            <Rectangle Height="10" Width="400"/>
+            <Grid Width="400" Margin="0" Height="70" VerticalAlignment="Bottom">
+                <Button x:Name="leftButton" Background="{StaticResource PhoneAccentBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" Width="200" HorizontalAlignment="Left" Style="{StaticResource DialogBoxButton}" Content="OK" FontFamily="Segoe WP Light" Click="leftButton_Click"/>
+                <Button x:Name="rightButton" Width="200" HorizontalAlignment="Right" Style="{StaticResource DialogBoxButton}" Content="Cancel" FontFamily="Segoe WP Light" Click="rightButton_Click">
+                    <Button.BorderBrush>
+                        <SolidColorBrush Color="#AA000000"/>
+                    </Button.BorderBrush>
+                    <Button.Background>
+                        <SolidColorBrush Color="#AA000000"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </toolkit:WrapPanel>
+    </Grid>
+</UserControl>

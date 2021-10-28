@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="_18PLUSINDIAN.ListPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_18PLUSINDIAN"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="{ThemeResource PhoneChromeColor}"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <StackPanel.Background>
+                <SolidColorBrush Color="{ThemeResource ContentDialogDimmingColor}"/>
+            </StackPanel.Background>
+            <StackPanel Margin="0,25">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="18" FontSize="26.667"/>
+                    <TextBlock  Text="INVENTORY PAGE" FontSize="26.667" Padding="5,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <ListView x:Name="listView" Grid.Row="1" Foreground="{x:Null}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="150" Margin="0,5" HorizontalAlignment="Stretch">
+                        <Grid.Background>
+                            <SolidColorBrush Color="{ThemeResource ContentDialogDimmingColor}"/>
+                        </Grid.Background>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <TextBlock Text="k" FontFamily="Assets/Fonts/18indian.ttf#18indian" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock.Foreground>
+                                    <SolidColorBrush Color="{ThemeResource PhoneForegroundColor}"/>
+                                </TextBlock.Foreground>
+                            </TextBlock>
+                        </Grid>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0">
+                            <TextBlock Margin="2" Style="{StaticResource MessageDialogTitleStyle}" Text="AADHAR CARD" TextTrimming="WordEllipsis"/>
+                            <TextBlock Margin="2" Style="{StaticResource ControlContextualInfoTextBlockStyle}" Text="Contains information about AADHAR CARD" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

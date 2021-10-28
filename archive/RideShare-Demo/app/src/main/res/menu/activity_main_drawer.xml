@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_book_rides"
+            android:title="Book Rides" />
+        <item
+            android:id="@+id/nav_ride_history"
+            android:title="Ride History"
+            />
+        <item
+            android:id="@+id/nav_emergency_contacts"
+            android:title="Emergency Contacts" />
+        <item
+            android:id="@+id/nav_offer_ride"
+            android:title="Offer Ride" />
+        <item
+            android:id="@+id/nav_support"
+            android:title="Support" />
+    </group>
+</menu>

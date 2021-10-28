@@ -1,0 +1,15 @@
+boot_magic: ANDROID!
+kernel_size: 17641412
+kernel load address: 0x8000
+ramdisk size: 1649810
+ramdisk load address: 0x2000000
+second bootloader size: 0
+second bootloader load address: 0xf00000
+kernel tags load address: 0x100
+page size: 4096
+os version and patch level: 301990203
+boot image header version: 0
+product name: 
+command line args: androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 service_locator.enable=1 swiotlb=2048 androidboot.usbconfigfs=true androidboot.usbcontroller=a800000.dwc3 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7 buildvariant=userdebug
+additional command line args: 
+

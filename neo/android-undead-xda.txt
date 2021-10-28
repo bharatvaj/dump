@@ -1,0 +1,61 @@
+
+I'm new to the forum so please pardon me if my english or explainations are not perfect.
+I post here to explain a way to launch linux from android without vnc.
+
+We need to stop android services to do that, but as already explain in other topics, the framebuffer access seems to be blocked on android 4.4 (or above).
+I found that the framebuffer can still be accessed but just at the beginning of the boot process.
+A way to launch linux is thus to modify the file "/system/etc/install-revovery.sh" (sometimes it is under "/system/bin") wich is started just at the same moment with other android services.
+You can for instance add in that file:
+
+busybox mount /dev/block/mmcblk1p1 /mnt/asec
+# were mmcblk1p1 is your sdcard
+if [ -e /mnt/asec/start.sh ] ; then
+setprop ctl.stop zygote
+setprop.ctl.stop bootanim
+setprop ctl.stop surfaceflinger
+setprop ctl.stop servicemanager
+# (you should stop all services showed in /init.rc that restart other services)
+# (you can repeat the setprop ctl.stop two or three times to be sure they are stopped)
+exec busybox chroot /mnt/asec /start.sh
+fi
+
+In your sdcard, you should install a linux-arm system (for instance debian, can be done with linuxdeploy app), and place a file "start.sh" like this one:
+
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+mount -t tmpfs none /dev
+mount -t proc none /proc
+mount -t sysfs none /sys
+sleep 1
+busybox mdev -s
+# (busybox should be installed in the linux-arm system)
+mkdir /dev/pts
+mount -t devpts none /dev/pts
+sleep 1
+sudo startx -- vt1
+
+If you reboot your device within your sdcard insert, linux should start. If something goes wrong, just reboot the device without the sdcard (long-press power), and android should restart.
+If your kernel doesn't have tty support, it can also work. Just add in the "install-recovery.sh" file:
+
+( while [ 1 ]
+do
+echo 0>/sys/class/graphics/fb0/rotate
+busybox sleep 0.01
+done ) &
+
+And in your start.sh you should replace the last line with:
+
+ln -s /dev/null /dev/tty1
+sudo startx -- vt1 -sharevts
+
+(I learn this trick by examin the source code of linuxdeploy, wich use it too).
+
+If you're lucky, touchscreen will work (with default evdev driver that comes with linux).
+If not, you can try tslib driver (search for "tslib" and "xf86-input-tslib" on olimex website or other places on the web).
+For this be aware they are some patchs to apply (can be found on olimex website) and you should compile.
+However when sucessfull it seems to work on a good number of devices (you can also try some "tslib-multitouch" patchs that make the driver work on some other devices).
+For the keyboard you can use matchbox-keyboard program for instance, wich use the touchscreen to emulate the keyboard.
+
+I've tested this method on two tablets (an allwinner and a rockchip) and on a Wiko phone (MediaTek processor). It has worked for each of three.
+Be carefull nevertheless when modifying "install-recovery.sh" (wrong manipulations can brick your device, you are warned, I shall not be responsable for any damage).
+
+Thanks.

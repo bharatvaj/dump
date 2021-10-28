@@ -1,0 +1,3 @@
+[submodule "ProjectManagerCore"]
+	path = ProjectManagerCore
+	url = https://github.com/bharatvaj/ProjectManagerCore

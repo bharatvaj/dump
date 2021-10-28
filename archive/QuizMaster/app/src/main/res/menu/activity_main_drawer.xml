@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@android:drawable/ic_menu_edit"
+            android:title="Schedule" />
+        <item
+            android:id="@+id/nav_add_test"
+            android:icon="@drawable/ic_add"
+            android:title="Add Test" />
+        <item
+            android:id="@+id/nav_remove_test"
+            android:icon="@android:drawable/ic_delete"
+            android:title="Remove Test" />
+        <item
+            android:id="@+id/nav_leaderboard"
+            android:icon="@android:drawable/arrow_up_float"
+            android:title="Leaderboard" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/settings_icon"
+            android:title="@string/action_settings" />
+
+    </group>
+
+</menu>

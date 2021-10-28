@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <include
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:background="@drawable/rideshare_gradient"
+        app:itemTextColor="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/small"
+            android:layout_gravity="bottom">
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/sidebarToggleOnNavBar"
+                android:contentDescription="@string/menu_book_rides"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/hamburger_menu"
+                android:tint="@android:color/white" />
+            <Button
+                android:id="@+id/sos_button_menu"
+                android:text="@string/button_sos"
+                android:background="@drawable/round_button_sos"
+                android:layout_toRightOf="@id/sidebarToggleOnNavBar"
+                android:layout_toEndOf="@+id/sidebarToggleOnNavBar"
+                android:layout_toLeftOf="@+id/settings_btn"
+                android:layout_toStartOf="@+id/settings_btn"
+                android:layout_marginLeft="@dimen/xxlarge"
+                android:layout_marginRight="@dimen/xxlarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageButton
+                android:id="@+id/settings_btn"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="@string/settings"
+                android:layout_width="wrap_content"
+                app:srcCompat="@drawable/settings"
+                android:tint="@android:color/white"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>

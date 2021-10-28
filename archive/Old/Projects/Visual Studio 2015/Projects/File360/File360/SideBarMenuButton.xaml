@@ -1,0 +1,28 @@
+﻿<UserControl
+    x:Class="File360.SideBarMenuButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:File360"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid x:Name="LayoutGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="TextImage" 
+                       VerticalAlignment="Center" 
+                       FontFamily="Assets/Font/iconFont.ttf#iconfont" 
+                       FontSize="25" 
+                       Text="t" 
+                       TextAlignment="Left" Foreground="{ThemeResource PhoneForegroundBrush}"/>
+        <TextBlock Grid.Column="1" x:Name="Text" 
+                       TextWrapping="NoWrap" 
+                       FontFamily="Segoe WP Light" 
+                       FontSize="20" 
+                       TextAlignment="Left"
+                       Text="sd som" VerticalAlignment="Center" Foreground="{ThemeResource PhoneForegroundBrush}"/>
+    </Grid>
+</UserControl>

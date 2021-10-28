@@ -1,0 +1,69 @@
+#!/bin/bash
+
+#global vars
+installPath=deps
+
+if [ "$EUID" -ne 0 ]
+  then echo "Root previliges required"
+  exit
+fi
+
+mkdir -p $installPath
+cd $installPath
+
+cloneAndInstall() {
+    str=${1##*/}
+    git clone $1 $str
+    cd $str
+    git checkout $2
+    cd ..
+    makeAndInstall $str
+}
+
+makeAndInstall() {
+    cd $1 && cmake -DBUILD_SHARED_LIBS=ON . && make && make install && cd ..
+}
+
+makeBuild() {
+    cd $1 && cmake -DBUILD_SHARED_LIBS=ON . && make && cd ..
+}
+
+configureAndInstall() {
+	cd $1 && ./configure && make && make install && cd ..
+}
+
+downloadAndInstallXBee() {
+	url=https://github.com/digidotcom/xbee_ansic_library 
+	str=${url##*/}
+	git clone $url $str
+	cp ../3rdparty/xbee/CMakeLists.txt $str/CMakeLists.txt
+	makeBuild $str
+}
+
+if [ -f /etc/arch-release ]; then
+	pacman -Syu --needed base-devel bluez bluez-libs libmnl
+else
+	apt update && apt upgrade
+	apt install doxygen bluez bluez-tools bluez-hcidump build-essential libmnl0 libmnl-dev libbluetooth-dev cmake make uuid-dev libfmt-dev
+fi
+
+if [ $? -ne 0 ]; then
+	echo "Dep installation failed, try updating your OS"
+	exit
+fi
+
+# download and install bluez manually(on error) for ubuntu
+# sudo apt install libdbus-1-dev libudev-dev libical-dev 
+# wget http://www.kernel.org/pub/linux/bluetooth/bluez-5.50.tar.xz
+# tar -xvf bluez-5.50.tar.xz
+# configureAndInstall bluez-5.50
+
+#TODO add branch hash
+cloneAndInstall https://github.com/bmegli/wifi-scan
+cloneAndInstall https://github.com/bharatvaj/clog
+cloneAndInstall https://github.com/graeme-hill/crossguid b151b7d1aeb68c4b9e98a8a2e0a547885aa0b60c
+cloneAndInstall https://github.com/bharatvaj/crosssocket
+cloneAndInstall https://github.com/bharatvaj/libcomm
+downloadAndInstallXBee
+cloneAndInstall https://github.com/bharatvaj/EventManager
+cloneAndInstall https://github.com/bharatvaj/Dot

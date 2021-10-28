@@ -1,0 +1,153 @@
+﻿<Page
+    x:Class="Expense_Manager.CalendarPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Expense_Manager"
+    xmlns:controls="using:System.Windows.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Foreground="Black" FontSize="20">
+    <Page.Resources>
+        <Style x:Key="ButtonStyleDefault" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="{ThemeResource PhoneBorderThickness}"/>
+            <Setter Property="FontFamily" Value="{ThemeResource PhoneFontFamilyNormal}"/>
+            <Setter Property="FontWeight" Value="{ThemeResource PhoneButtonFontWeight}"/>
+            <Setter Property="FontSize" Value="{ThemeResource TextStyleLargeFontSize}"/>
+            <Setter Property="Padding" Value="{ThemeResource PhoneButtonContentPadding}"/>
+            <Setter Property="MinHeight" Value="{ThemeResource PhoneButtonMinHeight}"/>
+            <Setter Property="MinWidth" Value="{ThemeResource PhoneButtonMinWidth}"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="Grid" Background="Transparent">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition From="Pressed" To="Normal">
+                                            <Storyboard>
+                                                <DoubleAnimation Duration="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="Border"/>
+                                                <DoubleAnimation Duration="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="Border"/>
+                                            </Storyboard>
+                                        </VisualTransition>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="PointerOver"/>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.2" To="1.1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="Border" d:IsOptimized="True">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseInOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation Duration="0:0:0.2" To="1.1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="Border" d:IsOptimized="True">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseInOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonDisabledForegroundThemeBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border x:Name="Border" Margin="{ThemeResource PhoneTouchTargetOverhang}" RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <CompositeTransform/>
+                                </Border.RenderTransform>
+                                <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid x:Name="RootGrid" Background="#FFD8D8D8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid Background="White">
+            <!--<Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>-->
+
+            <DatePicker HorizontalAlignment="Center" Margin="15,30"/>
+
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ProgressBar Height="50"  Value="66" Foreground="#FF99CA83" Background="#FFCB5B5B"/>
+            <StackPanel Grid.Row="1" HorizontalAlignment="Left">
+                <TextBlock Margin="5" MinHeight="0" Foreground="Black" HorizontalAlignment="Left" FontWeight="Thin" Text="INCOME" FontSize="18.667"/>
+                <TextBlock FontSize="21.333" HorizontalAlignment="Left" FontWeight="SemiLight" Foreground="Black">
+                    <Run Text="{StaticResource Currency}"/>
+                    <Run Text="5,75,000"/>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Row="1" HorizontalAlignment="Right">
+                <TextBlock Margin="5" MinHeight="0" Foreground="Black" HorizontalAlignment="Right" FontWeight="Thin" Text="EXPENSE" FontSize="18.667"/>
+                <TextBlock FontSize="21.333" HorizontalAlignment="Right" FontWeight="SemiLight" Foreground="Black">
+                    <Run Text="{StaticResource Currency}"/>
+                    <Run Text="10,75,000"/>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="15">
+            <Grid.Background>
+                <ImageBrush Stretch="Fill" ImageSource="Assets/mainDropShadow.png"/>
+            </Grid.Background>
+            <Button HorizontalAlignment="Stretch" Style="{StaticResource ButtonStyleDefault}">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Margin="10,10,10,5" Text="HIGHEST INCOME" FontWeight="SemiLight" FontSize="22" HorizontalAlignment="Center" Foreground="#FF5BAA37"/>
+                    <TextBlock FontSize="45" HorizontalAlignment="Center" FontWeight="SemiLight" Foreground="Black">
+                    	<Run Text="{StaticResource Currency}"/>
+                    	<Run Text="5,75,000"/>
+                    </TextBlock>
+                    <TextBlock Margin="10,0,10,10" Text="14, FEB 2015" FontSize="26.667" HorizontalAlignment="Center" Foreground="Black" FontWeight="Thin"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="15">
+            <Grid.Background>
+                <ImageBrush Stretch="Fill" ImageSource="Assets/mainDropShadow.png"/>
+            </Grid.Background>
+            <Button HorizontalAlignment="Stretch" Style="{StaticResource ButtonStyleDefault}">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Margin="10,10,10,5" Text="HIGHEST EXPENSE" FontWeight="SemiLight" FontSize="22" HorizontalAlignment="Center" Foreground="#FFBF2A2A"/>
+                    <TextBlock FontSize="45" HorizontalAlignment="Center" FontWeight="SemiLight" Foreground="Black">
+                    	<Run Text="{StaticResource Currency}"/>
+                    	<Run Text="10,75,000"/>
+                    </TextBlock>
+                    <TextBlock Margin="10,0,10,10" Text="18, MAR 2015" FontSize="26.667" HorizontalAlignment="Center" Foreground="Black" FontWeight="Thin"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+
+
+        <!--<controls:Calendar x:Name="calendar" IsTodayHighlighted="True"/>-->
+    </Grid>
+</Page>

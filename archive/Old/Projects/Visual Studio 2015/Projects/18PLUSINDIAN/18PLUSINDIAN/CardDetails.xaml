@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="_18PLUSINDIAN.CardDetails"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_18PLUSINDIAN"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontSize="18"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Name"/>
+            <TextBlock Text="{NAME}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Card Number"/>
+            <TextBlock Text="4514 5203 0171 6567"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="CCV"/>
+            <TextBlock Text="{CCV}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Expiration Date"/>
+            <TextBlock Text="{DATE}"/>
+        </StackPanel>
+        </StackPanel>
+</Page>

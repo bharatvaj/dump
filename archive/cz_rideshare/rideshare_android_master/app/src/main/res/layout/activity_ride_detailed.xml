@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cz.rideshare.RideDetailed">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <com.cz.rideshare.view.RideshareToolbar
+            app:headerText="@string/ride_detailed_header"
+            android:theme="@style/AppTheme.Contrast"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <ImageButton
+                android:id="@+id/detailedShareButton"
+                app:srcCompat="@drawable/share"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </com.cz.rideshare.view.RideshareToolbar>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include
+                android:layout_marginLeft="@dimen/large"
+                android:layout_marginRight="@dimen/large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/ride_summary"/>
+            <include
+                android:layout_marginLeft="@dimen/large"
+                android:layout_marginRight="@dimen/large"
+                android:layout_marginTop="@dimen/large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/ride_car_info"/>
+            <include
+                android:layout_marginLeft="@dimen/large"
+                android:layout_marginRight="@dimen/large"
+                android:layout_marginTop="@dimen/large"
+                android:layout_marginBottom="@dimen/large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/ride_owner_info"/>
+        </LinearLayout>
+        <Button
+            android:text="@string/menu_book_rides"
+            android:layout_marginBottom="@dimen/medium"
+            android:layout_marginLeft="@dimen/user_profile_picture"
+            android:layout_marginRight="@dimen/user_profile_picture"
+            android:id="@+id/detailedBookButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name" translatable="false">RideShare</string>
+    <string name="user_name">Username or Email-id</string>
+    <string name="password">Enter password</string>
+    <string name="caption_access_request_notification">Please accept push notifications from us</string>
+    <string name="text_access_request_notification">We will notify you when your ride is near to you</string>
+
+    <string name="caption_access_request_gps">Please give us access to your GPS location</string>
+    <string name="text_access_request_gps">We will use it to show our vehicles around you</string>
+
+    <string name="button_ok">Done</string>
+
+    <string name="welcome_text">Hello, Hi</string>
+    <string name="caption_user_input">user</string>
+    <string name="hint_user_input" translatable="false">you@example.com</string>
+    <string name="caption_password_input">pass</string>
+    <string name="hint_password_input">enter your password</string>
+    <string name="button_forgot_password">Forgot Password?</string>
+    <string name="button_sign_in">Sign In</string>
+    <string name="button_register">Register?</string>
+    <string name="First_name">First Name</string>
+    <string name="Last_name">Last Name</string>
+    <string name="Email_id">Email-id</string>
+    <string name="Password">Enter Password</string>
+    <string name="Choose_name">User Name</string>
+    <string name="age">Age</string>
+    <string name="Recheck">Re-type the same password</string>
+    <string name="gender">Gender</string>
+
+    <string name="menu_book_rides">Book Ride</string>
+    <string name="menu_ride_history">Ride History</string>
+    <string name="menu_emergency_contacts">Emergency Contacts</string>
+    <string name="menu_offer_ride">Offer Ride</string>
+    <string name="menu_support">Support</string>
+    <string name="button_sos">SOS</string>
+    <string name="caption_from">From</string>
+    <string name="caption_to">Where to</string>
+    <string name="hint_search_location">search for a location</string>
+    <string name="caption_date_pick">When?</string>
+    <string name="text_date_pick">Pick the date and time you want to travel</string>
+
+    <string name="header_profile">Profile</string>
+    <string name="caption_user_email">e-mail</string>
+    <string name="caption_user_mobile">phone</string>
+    <string name="hint_mobile">XXXXX XXXXX</string>
+    <string name="button_password_change">Change Password</string>
+    <string name="button_sign_up">Sign Up</string>
+    <string name="button_logout">Logout</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="back_description">Go Back</string>
+
+    <!-- COntent Descrptino-->
+    <string name="menu_toggle">Menu Toggle</string>
+    <string name="center_map">Center on map</string>
+    <string name="settings">Settings</string>
+
+    <style name="ui_rating">ratings</style>
+
+    <string name="sign_out">Sign Out</string>
+    <string name="hint_phone_number">Enter Phone Number</string>
+    <string name="hint_verification_code">XXX XXX</string>
+    <string name="start_phone_auth">Start</string>
+    <string name="verify_phone_auth">Verify</string>
+    <string name="resend_phone_auth">Resend</string>
+    <string name="rideshare_phone_info">Enter your phone number to proceed</string>
+    <string name="skip_login_caption">skip this step</string>
+    <string name="caption_verify_otp">Awaiting Verification</string>
+    <string name="verify_otp_brief">Waiting to automatically detect an SMS sent to your number or you can enter manually</string>
+    <string name="resend_sms">Resend SMS</string>
+    <string name="call_user">Call me</string>
+
+    <string name="ride_detailed_header">Ride Detailed</string>
+
+    <string name="ride_summary_travelled">Distance Travelled</string>
+    <string name="ride_summary_duration">Duration</string>
+
+    <string name="app_support_url">http://czsm.co.in/</string>
+
+</resources>

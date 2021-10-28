@@ -1,0 +1,1056 @@
+﻿<Page x:Name="page"
+    x:Class="File360.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:File360"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:WinRTXamlToolkit.Controls"
+    mc:Ignorable="d" RequestedTheme="Dark" FontFamily="Helvetica Neue" FontSize="18.667" FontWeight="SemiLight">
+    <Page.Resources>
+        <local:BoolToVisibilityConverter x:Key="BoolToVisConverter" />
+
+        <local:IntToNegativeIntConverter  x:Key="IntToNegativeIntConverter" />
+
+        <DataTemplate x:Name="GridFoldersView">
+            <ItemsControl Height="{Binding GridHeight}" Width="{Binding GridWidth}" Background="{x:Null}" Holding="ItemHolding">
+                <StackPanel CacheMode="BitmapCache" Background="{Binding Background}">
+                    <Grid Margin="0,5,0,0">
+                        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Width="130" Text="{Binding Image}" FontSize="65" FontFamily="Assets/Font/filetypes.ttf#filetypes" TextAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                            <TextBlock.RenderTransform>
+                                <CompositeTransform/>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock Text="{Binding Count}" x:Name="DataContents" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}" TextAlignment="Center" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,2,0,0"/>
+                    </Grid>
+                    <TextBlock  Text="{Binding Name}" FontSize="16" TextTrimming="WordEllipsis" x:Name="DataName" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}" TextAlignment="Center" FontFamily="Assets/Font/Custom/Raleway-Light.ttf#Raleway" Margin="4,0"/>
+                    <TextBlock Text="53.05 mb" Visibility="{Binding IsVisible, Converter={StaticResource BoolToVisConverter}}" HorizontalAlignment="Center">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{ThemeResource PhoneBaseLowColor}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                </StackPanel>
+            </ItemsControl>
+        </DataTemplate>
+        <DataTemplate x:Name="ListFoldersView">
+            <ItemsControl Height="{Binding ListHeight}" Width="{Binding Width}" Margin="0" Background="{x:Null}" Holding="ItemHolding">
+                <StackPanel Orientation="Horizontal" Background="{x:Null}">
+                    <Grid>
+                        <TextBlock Margin="10" VerticalAlignment="Center" Text="{Binding Image}" FontSize="66.667" FontFamily="Assets/Font/filetypes.ttf#filetypes" TextAlignment="Left"/>
+                        <TextBlock Margin="2,5,2,2" Text="{Binding Count}" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}" TextAlignment="Center" FontFamily="Assets/Font/Custom/ClearSans-Thin.ttf#Clear Sans Thin" VerticalAlignment="Bottom"/>
+                    </Grid>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Name}" TextTrimming="WordEllipsis" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}" TextAlignment="Left" FontFamily="Assets/Font/Custom/Raleway-Light.ttf#Raleway" FontSize="20" VerticalAlignment="Bottom" Margin="3,0,0,1"/>
+
+                        <TextBlock Text="05/02/1997" Visibility="{Binding IsVisible, Converter={StaticResource BoolToVisConverter}}" VerticalAlignment="Center" Margin="3,1,0,0">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="{ThemeResource PhoneBaseMediumHighColor}"/>
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                        <TextBlock Text="53.05 mb" Visibility="{Binding IsVisible, Converter={StaticResource BoolToVisConverter}}" VerticalAlignment="Top" Margin="3,1,0,0">
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="{ThemeResource PhoneBaseLowColor}"/>
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </ItemsControl>
+        </DataTemplate>
+        <ItemsPanelTemplate x:Name="GridViewItemsPanel">
+            <ItemsWrapGrid Orientation="Horizontal">
+                <!--<ItemsWrapGrid.ChildrenTransitions>
+                    <TransitionCollection>
+                        <EdgeUIThemeTransition Edge="Bottom"/>
+                    </TransitionCollection>
+                </ItemsWrapGrid.ChildrenTransitions>-->
+            </ItemsWrapGrid>
+        </ItemsPanelTemplate>
+        <ItemsPanelTemplate x:Name="ListViewItemsPanel">
+            <ItemsStackPanel Orientation="Vertical">
+                <!--<ItemsStackPanel.ChildrenTransitions>
+                    <TransitionCollection>
+                        <EdgeUIThemeTransition Edge="Left"/>
+                    </TransitionCollection>
+                </ItemsStackPanel.ChildrenTransitions>-->
+            </ItemsStackPanel>
+        </ItemsPanelTemplate>
+        <Storyboard x:Name="MediaOpen">
+            <DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="MediaFragment" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <SineEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Name="MediaOpenRev">
+            <DoubleAnimation To="700" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="MediaFragment" Duration="0:0:0.2">
+                <DoubleAnimation.EasingFunction>
+                    <SineEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Name="DurationBlink" RepeatBehavior="Forever" AutoReverse="True">
+            <DoubleAnimation Duration="0:0:0.6" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="currentDuration">
+                <DoubleAnimation.EasingFunction>
+                    <SineEase EasingMode="EaseInOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Name="SeekOpen">
+            <DoubleAnimation Duration="0:0:0.2" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="border" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <BackEase EasingMode="EaseInOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Name="SeekClose">
+            <DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border" d:IsOptimized="True"/>
+            <DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="border" d:IsOptimized="True"/>
+        </Storyboard>
+        <Storyboard x:Name="FTPOpen">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="border1">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimation Duration="0:0:0.3" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border1" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Duration="0:0:0.3" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="border1" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Duration="0:0:0.3" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="border1" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Duration="0:0:0.3" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="border1" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Name="OpenSortMenuAnim">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SortMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuinticEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="SortMenu">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="SortMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuinticEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="SortMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuinticEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Name="FTPActive" RepeatBehavior="Forever" AutoReverse="True">
+            <DoubleAnimation Duration="0:0:0.3" To="0.5" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border3" d:IsOptimized="True"/>
+
+        </Storyboard>
+        <Storyboard x:Name="OpenSettings">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="border2">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimation Duration="0:0:0.2" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border2" d:IsOptimized="True"/>
+            <DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="border2" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+
+    </Page.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="{ThemeResource PhoneChromeColor}"/>
+        </Grid.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.035*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="grid4" Grid.RowSpan="2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid x:Name="Header" Margin="0">
+                        <Grid.Background>
+                            <SolidColorBrush Color="{ThemeResource ContentDialogDimmingColor}"/>
+                        </Grid.Background>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="hamburgerButton" MinWidth="0" HorizontalContentAlignment="Left" Click="Menu_Click" VerticalAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{ThemeResource PhoneForegroundBrush}" Background="{x:Null}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="h" FontFamily="Assets/Font/iconFont.ttf#iconfont" FontSize="25" MinHeight="0" MinWidth="0" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Visibility="Collapsed" VerticalAlignment="Center" x:Name="menuText" FontFamily="Segoe WP Semibold" FontWeight="Normal" FontSize="16" HorizontalAlignment="Center">
+                            	<Run CharacterSpacing="75" Text="FILE360"/>
+                            	<Run Foreground="{StaticResource PhoneAccentBrush}" Text="°"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Width="{StaticResource FlyoutThemeMinHeight}" >
+                                <TextBlock Foreground="{StaticResource PhoneAccentBrush}" x:Name="RootFolder" Text="" TextLineBounds="Tight" FontFamily="Assets/Font/iconfont.ttf#iconfont" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                            </Border>
+                            <ScrollViewer
+                        Grid.Column="1" Background="{x:Null}">
+                                <StackPanel Orientation="Horizontal">
+                                    <local:Addresser x:Name="Addresser"/>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                    </Grid>
+                    <local:DrawerLayout x:Name="SideMenu" Grid.Row="1">
+
+                        <Grid  x:Name="MainFragment">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.12*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+
+                            <Grid Grid.Row="1">
+                                <GridView x:Name="SDGridView"
+                                              Visibility="Visible" 
+                                              ItemTemplate="{StaticResource GridFoldersView}"
+                                              ItemsPanel="{StaticResource GridViewItemsPanel}"
+                                              SelectionMode="Single"
+                                              ScrollViewer.VerticalScrollMode="Enabled"
+                                              ScrollViewer.IsDeferredScrollingEnabled="False"
+                                              ScrollViewer.IsScrollInertiaEnabled="False"
+                                              ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                              ScrollViewer.HorizontalScrollMode="Disabled" 
+                                              IsItemClickEnabled="True"
+                                              ItemClick="GridItemClick"
+                                              IncrementalLoadingThreshold="5" SelectionChanged="SDListChanged">
+                                    <GridView.Background>
+                                        <SolidColorBrush Color="#CC000000"/>
+                                    </GridView.Background>
+
+                                    <GridView.ItemContainerStyle>
+                                        <Style TargetType="GridViewItem">
+                                            <Setter Property="local:SelectorItemEx.ToggleSelectedOnHold" Value="True" />
+                                        </Style>
+                                    </GridView.ItemContainerStyle>
+                                </GridView>
+                                <Grid x:Name="SortMenu" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Right" Width="150" Height="250" Visibility="Collapsed" RenderTransformOrigin="1,0">
+                                    <Grid.RenderTransform>
+                                        <CompositeTransform/>
+                                    </Grid.RenderTransform>
+                                    <Grid.Background>
+                                        <SolidColorBrush Color="{ThemeResource PhoneChromeColor}"/>
+                                    </Grid.Background>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Button  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Name" HorizontalContentAlignment="Left" Padding="25,0,9.5,3.5" Click="SortMenuItemClick"/>
+                                    <Button  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Content="Type" HorizontalContentAlignment="Left" Padding="25,0,9.5,3.5" Click="SortMenuItemClick"/>
+                                    <Button  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Content="Size" HorizontalContentAlignment="Left" Padding="25,0,9.5,3.5" Click="SortMenuItemClick"/>
+                                    <Button  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="3" Content="Date" HorizontalContentAlignment="Left" Padding="25,0,9.5,3.5" Click="SortMenuItemClick"/>
+                                </Grid>
+
+                                <Button Click="SDCardEnumerator" Margin="50" x:Name="AddSDButton" HorizontalAlignment="Center" Visibility="Collapsed">
+                                    <StackPanel>
+                                        <TextBlock Text="f" HorizontalAlignment="Center" FontSize="80" FontFamily="iconfont.ttf#iconfont"/>
+                                        <TextBlock Text="your OS keeps us from accessing your files... maybe you can help us. tap to add folder." VerticalAlignment="Center" TextWrapping="Wrap" Margin="0,15,0,0" TextAlignment="Center" Style="{StaticResource ComboBoxPlaceholderTextBlockStyle}"/>
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                            <Grid Grid.Row="0">
+                                <Grid.Background>
+                                    <SolidColorBrush Color="#99000000"/>
+                                </Grid.Background>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.50*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Button  MinWidth="50" Content="l" Click="PreviousFolder" FontFamily="Assets/Font/iconfont.ttf#iconfont" Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Grid Grid.Column="1" VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="5*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox x:Name="selectBox" Checked="SelectAll" VerticalAlignment="Center" IsChecked="{x:Null}" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{ThemeResource PhoneAccentBrush}" Foreground="{ThemeResource PhoneForegroundBrush}" Unchecked="selectBox_Unchecked"/>
+                                    <TextBlock Grid.Column="1" Margin="5" TextWrapping="NoWrap" x:Name="headerText" Text="" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" TextTrimming="WordEllipsis" TextLineBounds="TrimToCapHeight"/>
+
+                                    <TextBox x:Name="searchBox" VerticalAlignment="Stretch" MinWidth="54" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Disabled" Padding="0" UseLayoutRounding="False" Text="" Background="Black" TextChanged="searchBox_TextChanged" Grid.Column="1" LostFocus="searchBox_LostFocus" Visibility="Collapsed" Foreground="Black"/>
+                                </Grid>
+                                <StackPanel Orientation="Horizontal"  Grid.Column="2">
+                                    <Button MinWidth="20" Width="50" BorderBrush="{x:Null}" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="26.667" Background="{x:Null}" Content="s" FontFamily="Assets/Font/iconfont.ttf#iconfont" Click="FocusSearch"/>
+                                    <Button MinWidth="50" FontFamily="Assets/Font/iconfont.ttf#iconfont" Click="OpenSortMenu" Content="i"/>
+                                </StackPanel>
+
+                                <Rectangle Grid.ColumnSpan="3" Height="2" MinHeight="2"  Fill="{ThemeResource PhoneAccentBrush}" Opacity="0.25" VerticalAlignment="Bottom"/>
+                                <!--<local:BottomBarItem x:Name="compressButton" Visibility="Visible" HorizontalAlignment="Center" ImageText="B" Grid.Column="1" ContentText="compress"/>-->
+                            </Grid>
+                            <ScrollViewer Grid.Row="1" x:Name="EmptyFolderStack" Visibility="Collapsed">
+                                <ScrollViewer.Background>
+                                    <SolidColorBrush Color="{ThemeResource PhoneChromeColor}"/>
+                                </ScrollViewer.Background>
+                                <Grid>
+                                    <Grid.Background>
+                                        <SolidColorBrush Color="{ThemeResource ContentDialogDimmingColor}"/>
+                                    </Grid.Background>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid>
+                                            <Button Margin="25"  Click="AddFolder" HorizontalAlignment="Center" Background="{x:Null}">
+                                                <StackPanel>
+                                                    <TextBlock Text="G" FontSize="90" FontFamily="Assets/Font/iconfont.ttf#iconfont" Foreground="#FF27AE60"/>
+                                                    <TextBlock Text="add folder" HorizontalAlignment="Center"/>
+                                                </StackPanel>
+                                            </Button>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <Button Click="AddFile" Margin="25"  HorizontalAlignment="Center" Grid.Column="1">
+                                                <StackPanel>
+                                                    <TextBlock Text="S" FontSize="90" FontFamily="Assets/Font/iconfont.ttf#iconfont" Foreground="#FFF39C12"/>
+                                                    <TextBlock Text="add file" HorizontalAlignment="Center"/>
+                                                </StackPanel>
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                    <Button HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Stretch" Click="DeleteThisFolder" Background="{x:Null}" >
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="3*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock VerticalAlignment="Center" Margin="10" Text="I" FontSize="66.667" FontFamily="Assets/Font/iconfont.ttf#iconfont">
+                                                <TextBlock.Foreground>
+                                                    <SolidColorBrush Color="#FFE74C3C"/>
+                                                </TextBlock.Foreground>
+                                            </TextBlock>
+                                            <TextBlock Margin="5" Text="delete this folder?" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource HeaderTextBlockStyle}" TextWrapping="Wrap" FontSize="33.333"/>
+                                        </Grid>
+                                    </Button>
+                                    <Button HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Stretch" Click="PreviousFolder" Background="{x:Null}" >
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="3*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock VerticalAlignment="Center" Margin="10" Text="l" FontSize="66.667" FontFamily="Assets/Font/iconfont.ttf#iconfont"/>
+                                            <TextBlock Margin="5" Text="go back" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource HeaderTextBlockStyle}" TextWrapping="Wrap" FontSize="33.333"/>
+                                        </Grid>
+                                    </Button>
+                                    <Grid>
+                                        <TextBlock Margin="10" Text="empty folder" Style="{StaticResource ComboBoxPlaceholderTextBlockStyle}" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                            <TextBlock.Foreground>
+                                                <SolidColorBrush Color="{ThemeResource PhoneForegroundColor}"/>
+                                            </TextBlock.Foreground>
+                                        </TextBlock>
+                                    </Grid>
+
+                                </Grid>
+                            </ScrollViewer>
+
+                            <!--><StackPanel Grid.Row="1" x:Name="MediaGridView"
+                                      ScrollViewer.VerticalScrollMode="Enabled"
+                                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      ScrollViewer.HorizontalScrollMode="Disabled"/>-->
+
+                            <StackPanel Grid.Row="2">
+                                <StackPanel.Background>
+                                    <SolidColorBrush Color="{ThemeResource ContentDialogDimmingColor}"/>
+                                </StackPanel.Background>
+                                <Rectangle Height="2" MinHeight="2"  Fill="{ThemeResource PhoneAccentBrush}" Opacity="0.25"/>
+                                <Grid>
+                                    <Grid.Background>
+                                        <SolidColorBrush Color="{ThemeResource ContentDialogDimmingColor}" Opacity="0.6"/>
+                                    </Grid.Background>
+                                    <Grid x:Name="operationBar" Visibility="Collapsed">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <local:BottomBarItem HorizontalAlignment="Center" ImageText="O"  ContentText="copy" Click="CutItems"/>
+                                        <local:BottomBarItem HorizontalAlignment="Center" Grid.Column="1" ImageText="I" ContentText="delete" Click="DeleteItem"/>
+                                        <local:BottomBarItem HorizontalAlignment="Center" ImageText="P" Grid.Column="2" ContentText="rename" Click="RenameItem"/>
+                                        <local:BottomBarItem  HorizontalAlignment="Center" ImageText="n" MinHeight="55" ContentText="share" Grid.Column="3" Click="ShareContent"/>
+                                    </Grid>
+                                    <Grid x:Name="operationBarNormal">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <local:BottomBarItem ImageText="G" ContentText="add folder" Click="AddFolder" HorizontalAlignment="Center"/>
+                                        <local:BottomBarItem Grid.Column="1" ImageText="S" ContentText="add file" Click="AddFile" HorizontalAlignment="Center"/>
+                                        <local:BottomBarItem 
+                                        ImageText="T"  
+                                        Grid.Column="2" 
+                                        ContentText="paste" 
+                                        Click="PasteItem" 
+                                        HorizontalAlignment="Center"/>
+                                        <local:BottomBarItem x:Name="gridList" Grid.Column="3" ImageText="N" MinHeight="55" IsEnabled="True" ContentText="grid" Click="GridListChange" HorizontalAlignment="Center"/>
+                                    </Grid>
+
+
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Width="40" Margin="0,50" HorizontalAlignment="Left">
+                            <Grid.Background>
+                                <SolidColorBrush Color="{ThemeResource ContentDialogDimmingColor}" Opacity="0"/>
+                            </Grid.Background>
+                        </Grid>
+                        <Grid x:Name="ListFragment" Width="400" HorizontalAlignment="Left" ManipulationMode="TranslateX" Background="{x:Null}" RenderTransformOrigin="0.5,0.5">
+
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel Margin="0,10,0,5">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button HorizontalContentAlignment="Stretch"  HorizontalAlignment="Stretch" Click="SDCardEnumerator" Margin="0,5" Background="{x:Null}" Grid.Column="1">
+                                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <TextBlock VerticalAlignment="Center" Text="3" FontFamily="Assets/Font/iconfont.ttf#iconfont" FontWeight="Light" FontSize="33.333" HorizontalAlignment="Center" />
+                                                <TextBlock VerticalAlignment="Center" Text="SD Card" FontFamily="Assets/Font/Custom/Raleway-Light.ttf#Raleway" FontWeight="Light" FontSize="16" HorizontalAlignment="Center" />
+                                                <TextBlock FontSize="10" VerticalAlignment="Bottom" Margin="0,0,0,7" HorizontalAlignment="Center">
+                                                    <TextBlock.Foreground>
+                                                        <SolidColorBrush Color="{ThemeResource TextBoxPlaceholderColor}"/>
+                                                    </TextBlock.Foreground>
+                                                    <Run x:Name="FreeSpace" Foreground="{ThemeResource PhoneForegroundBrush}" FontWeight="Bold" FontSize="13.333" Text="2"/>
+                                                    <Run Text="GB free"/>
+                                                </TextBlock>
+                                                <ProgressBar x:Name="sdProgbar" VerticalAlignment="Stretch" />
+                                            </StackPanel>
+                                        </Button>
+                                        <Button HorizontalContentAlignment="Stretch"  Click="PhoneEnumerator" Margin="0,5" HorizontalAlignment="Center" Grid.Column="2" VerticalAlignment="Center" Background="{x:Null}">
+                                            <Grid VerticalAlignment="Top">
+                                                <StackPanel>
+                                                    <TextBlock Text="p" Foreground="{ThemeResource PhoneForegroundBrush}" FontFamily="Assets/Font/iconfont.ttf#iconfont" FontWeight="Light" FontSize="33.333" HorizontalAlignment="Center"/>
+                                                    <TextBlock Text="Phone" Foreground="{ThemeResource PhoneForegroundBrush}" FontFamily="Assets/Font/Custom/Raleway-Light.ttf#Raleway" FontWeight="Light" FontSize="16" HorizontalAlignment="Center"/>
+                                                    <TextBlock FontSize="10" VerticalAlignment="Bottom" Margin="19.856,0,28.143,7" HorizontalAlignment="Center">
+                                                        <TextBlock.Foreground>
+                                                            <SolidColorBrush Color="{ThemeResource TextBoxPlaceholderColor}"/>
+                                                        </TextBlock.Foreground>
+                                                    	<Run x:Name="FreeSpace1" Foreground="{ThemeResource PhoneForegroundBrush}" FontWeight="Bold" FontSize="13.333" Text="2"/>
+                                                    	<Run Text="GB free"/>
+                                                    </TextBlock>
+                                                    <ProgressBar Maximum="{Binding Maximum,ElementName=sdProgbar}" Value="{Binding Value, ElementName=sdProgbar}" VerticalAlignment="Stretch"/>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Button>
+
+                                        <Button HorizontalAlignment="Stretch" Click="ListRecents">
+                                            <StackPanel>
+                                                <TextBlock Text="F" Foreground="{ThemeResource PhoneForegroundBrush}" FontFamily="Assets/Font/iconfont.ttf#iconfont" FontWeight="Light" FontSize="33.333" HorizontalAlignment="Center"/>
+                                                <TextBlock Text="Recent" Foreground="{ThemeResource PhoneForegroundBrush}" FontFamily="Assets/Font/Custom/Raleway-Light.ttf#Raleway" FontWeight="Light" FontSize="16" HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                        </Button>
+
+                                        <Button HorizontalContentAlignment="Stretch"  HorizontalAlignment="Center" Click="PersonalStorageEnumerator" Margin="0,5" Grid.Column="3" Background="{x:Null}">
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock VerticalAlignment="Center" Text="|" FontFamily="Assets/Font/iconfont.ttf#iconfont" FontWeight="Light" FontSize="33.333" HorizontalAlignment="Center" />
+                                                <TextBlock VerticalAlignment="Center" Text="Personal Storage" FontFamily="Assets/Font/Custom/Raleway-Light.ttf#Raleway" FontWeight="Light" FontSize="16" HorizontalAlignment="Center" TextWrapping="Wrap" />
+                                            </StackPanel>
+                                        </Button>
+
+                                    </Grid>
+                                </StackPanel>
+
+
+                                <StackPanel Grid.Row="1">
+                                    <TextBlock Text="Now Playing" FontSize="18" FontWeight="Thin" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,0,5"/>
+                                    <Rectangle Height="2" Margin="5">
+                                        <Rectangle.Fill>
+                                            <SolidColorBrush Color="{ThemeResource PhoneForegroundColor}" Opacity="0.25"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                    <Grid Background="{Binding Background, ElementName=imageContainerMedia}">
+                                        <StackPanel>
+                                            <StackPanel.Background>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#72000000" Offset="1"/>
+                                                    <GradientStop Offset="0.516" Color="#33000000"/>
+                                                    <GradientStop Color="#33000000"/>
+                                                </LinearGradientBrush>
+                                            </StackPanel.Background>
+                                            <ToggleButton IsChecked="{Binding IsChecked,ElementName=favoriteToggle,Mode=TwoWay}" HorizontalAlignment="Right" FontFamily="Assets/Font/iconfont.ttf#iconfont" Padding="0" ScrollViewer.HorizontalScrollBarVisibility="Auto" MinHeight="55" MinWidth="55" VerticalAlignment="Top" UseLayoutRounding="False" Content="a"/>
+                                            <Button Click="NowPlaying"  HorizontalAlignment="Stretch" BorderThickness="0" HorizontalContentAlignment="Stretch">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackPanel Grid.Column="1" Margin="5" VerticalAlignment="Center">
+                                                        <TextBlock Text="{Binding Text, ElementName=SongName}" TextTrimming="WordEllipsis" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+                                                        <TextBlock FontSize="12" Opacity="0.60" Text="{Binding Text, ElementName=SongArtist}" TextTrimming="WordEllipsis" HorizontalAlignment="Center"/>
+                                                        <ProgressBar Maximum="{Binding Maximum, ElementName=musicSlider}" Value="{Binding Value, ElementName=musicSlider}" Margin="5,0"/>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Button>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Button  Content="6"  FontFamily="Assets/Font/iconfont.ttf#iconfont" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                                <Button Grid.Column="1" Content="{Binding Content,ElementName=playPause}" FontFamily="Assets/Font/iconfont.ttf#iconfont"  Click="PlayCurrent" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                                <Button Content="4" Grid.Column="2"  FontFamily="Assets/Font/iconfont.ttf#iconfont" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="PlayNext"/>
+                                            </Grid>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Rectangle Height="2" Margin="5">
+                                        <Rectangle.Fill>
+                                            <SolidColorBrush Color="{ThemeResource PhoneForegroundColor}" Opacity="0.25"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </StackPanel>
+                                <Grid Grid.Row="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid x:Name="SettingsTab">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Margin="10,4,10,10" Text="Settings" FontSize="18.667"/>
+                                        <!--<Button  HorizontalAlignment="Center" VerticalAlignment="Center" Click="OpenBluetoothSettings">
+                                                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                        <TextBlock Text="b" FontSize="25" FontFamily="Assets/Font/settingsfont.ttf#settingsfont" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Top" Margin="5,0,10,5" Foreground="{ThemeResource PhoneAccentBrush}" Opacity="0.95" LineStackingStrategy="MaxHeight" FontWeight="Thin"/>
+                                                        <TextBlock Text="bluetooth" HorizontalAlignment="Center" FontSize="13.333"/>
+                                                        -->
+                                        <!--<TextBlock Text="configure bluetooth settings" HorizontalAlignment="Center"  FontSize="13"/>-->
+                                        <!--
+                                                    </StackPanel>
+                                                </Button>-->
+                                        <Button  Grid.Column="1" Grid.Row="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="HelpOpen">
+                                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <TextBlock Text="h" FontSize="25" FontFamily="Assets/Font/settingsfont.ttf#settingsfont" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Top" Margin="5,0,10,5" Foreground="{ThemeResource PhoneAccentBrush}" Opacity="0.95" LineStackingStrategy="MaxHeight" FontWeight="Normal" TextLineBounds="Tight"/>
+                                                <TextBlock Text="help" HorizontalAlignment="Center" FontSize="13.333"/>
+                                                <!--<TextBlock Text="check out this guide" HorizontalAlignment="Center" FontFamily="Helvetica Neue" FontSize="13" FontWeight="Normal"/>-->
+                                            </StackPanel>
+                                        </Button>
+                                        <Button  Grid.Column="2" Grid.Row="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OpenSecuritySetting">
+                                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <TextBlock Text="lock" FontSize="25" FontFamily="Assets/Font/settingsfont.ttf#settingsfont" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Top" Margin="5,0,10,5" Foreground="{ThemeResource PhoneAccentBrush}" Opacity="0.95" LineStackingStrategy="MaxHeight" FontWeight="Thin"/>
+                                                <TextBlock Text="security" HorizontalAlignment="Center" FontSize="13.333"/>
+                                                <!--<TextBlock Text="check out this guide" HorizontalAlignment="Center" FontFamily="Helvetica Neue" FontSize="13" FontWeight="Normal"/>-->
+                                            </StackPanel>
+                                        </Button>
+                                        <Button MinWidth="0" x:Name="musicToggle" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OpenMusicSetting" Grid.Row="1">
+                                            <StackPanel HorizontalAlignment="Center">
+                                                <TextBlock  HorizontalAlignment="Center" Text="y" FontFamily="Assets/Font/iconfont.ttf#iconfont" FontSize="33.333" VerticalAlignment="Center" Foreground="{ThemeResource PhoneAccentBrush}" TextLineBounds="Tight" FontWeight="Normal"/>
+                                                <TextBlock Text="music"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Button MinWidth="0" Grid.Column="1" x:Name="videosToggle" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OpenVideoSetting" Grid.Row="1">
+                                            <StackPanel>
+                                                <TextBlock  HorizontalAlignment="Center" Text=")" FontFamily="Assets/Font/iconfont.ttf#iconfont" FontSize="33.333" VerticalAlignment="Center" Foreground="{ThemeResource PhoneAccentBrush}" TextLineBounds="Tight" FontWeight="Normal"/>
+                                                <TextBlock Text="videos" HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Button MinWidth="0" Grid.Column="2" x:Name="picturesToggle" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OpenPictureSetting" Grid.Row="1">
+                                            <StackPanel>
+                                                <TextBlock  HorizontalAlignment="Center" Text="M" FontFamily="Assets/Font/iconfont.ttf#iconfont" FontSize="33.333" VerticalAlignment="Center" Foreground="{ThemeResource PhoneAccentBrush}" TextLineBounds="Tight" FontWeight="Normal"/>
+                                                <TextBlock Text="pictures" HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <ToggleButton MinWidth="0" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0">
+                                            <StackPanel>
+                                                <TextBlock TextAlignment="Center" Text="c" FontFamily="Assets/Font/iconfont.ttf#iconfont" FontSize="33.333" VerticalAlignment="Center" Foreground="{ThemeResource PhoneAccentBrush}" TextLineBounds="Tight" FontWeight="Normal"/>
+                                                <TextBlock Text="list" HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                        </ToggleButton>
+                                    </Grid>
+                                    <Border x:Name="border2" CornerRadius="5" Canvas.ZIndex="12" RenderTransformOrigin="0,1" Grid.ColumnSpan="2" Visibility="Collapsed" Opacity="0">
+                                        <Border.RenderTransform>
+                                            <CompositeTransform TranslateY="-100"/>
+                                        </Border.RenderTransform>
+                                        <Border.Background>
+                                            <SolidColorBrush Color="White"/>
+                                        </Border.Background>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid Grid.ColumnSpan="2" VerticalAlignment="Top">
+                                                <TextBlock x:Name="settingName" Text="music" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#BF000000" Margin="5,5,0,0"/>
+                                                <Button HorizontalAlignment="Right" VerticalAlignment="Top" Grid.ColumnSpan="2" Foreground="Black" Content="x" Padding="9.5" Background="#FFCF4949" MinWidth="45" MinHeight="30" Click="CloseSetting"/>
+                                            </Grid>
+                                            <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <TextBlock TextWrapping="Wrap"  Text="use built-in player" HorizontalAlignment="Center" Foreground="Black" Margin="5"/>
+                                                <ToggleSwitch RequestedTheme="Light"  HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                                            </StackPanel>
+                                            <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
+                                                <TextBlock TextWrapping="Wrap"  Text="show thumbnail" HorizontalAlignment="Center" Foreground="Black" Margin="5"/>
+                                                <ToggleSwitch RequestedTheme="Light"  HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                                            </StackPanel>
+
+                                        </Grid>
+                                    </Border>
+                                    <Border x:Name="border1" CornerRadius="5" Canvas.ZIndex="1" RenderTransformOrigin="1,0.5" Grid.ColumnSpan="2" Opacity="0" Visibility="Collapsed">
+                                        <Border.RenderTransform>
+                                            <CompositeTransform Rotation="-60"/>
+                                        </Border.RenderTransform>
+                                        <Border.Background>
+                                            <SolidColorBrush Color="#FFFFFFFF"/>
+                                        </Border.Background>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Button MinWidth="0" Background="#BFEA1010" HorizontalAlignment="Left" Click="StopFTP" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0">
+                                                <Grid Width="75">
+                                                    <TextBlock Text="2" HorizontalAlignment="Center" FontSize="40" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Assets/Font/iconfont.ttf#iconfont" FontWeight="Thin" TextLineBounds="TrimToBaseline" OpticalMarginAlignment="TrimSideBearings">
+                                                        <TextBlock.Foreground>
+                                                            <SolidColorBrush Color="White"/>
+                                                        </TextBlock.Foreground>
+                                                    </TextBlock>
+
+                                                </Grid>
+                                            </Button>
+                                            <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0">
+                                                <TextBlock Text="ADDRESS" FontSize="13" TextAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">
+                                                    <TextBlock.Foreground>
+                                                        <SolidColorBrush Color="{ThemeResource PhoneChromeColor}"/>
+                                                    </TextBlock.Foreground>
+                                                </TextBlock>
+                                                <TextBlock Text="192.168.1.1" TextAlignment="Center" FontSize="15" HorizontalAlignment="Center">
+                                                    <TextBlock.Foreground>
+                                                        <SolidColorBrush Color="{ThemeResource PhoneChromeColor}"/>
+                                                    </TextBlock.Foreground>
+                                                </TextBlock>
+                                                <TextBlock Foreground="Black" Text="CONNECTD DEVICES" FontSize="13" FontWeight="Bold" Margin="0,10,0,0"/>
+                                                <TextBlock Text="4" TextAlignment="Center" FontSize="26.667" HorizontalAlignment="Center">
+                                                    <TextBlock.Foreground>
+                                                        <SolidColorBrush Color="{ThemeResource PhoneChromeColor}"/>
+                                                    </TextBlock.Foreground>
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                    <Grid x:Name="grid5" Canvas.ZIndex="11" Grid.Column="1">
+                                        <Button MinWidth="0" x:Name="button"  Width="75" Height="75" HorizontalAlignment="Stretch" Click="OpenFTP" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0">
+                                            <Border x:Name="border3" CornerRadius="250" >
+                                                <Border.Background>
+                                                    <SolidColorBrush Color="#FF83BD83"/>
+                                                </Border.Background>
+                                                <Grid>
+                                                    <Ellipse Margin="5">
+                                                        <Ellipse.Fill>
+                                                            <SolidColorBrush Color="{ThemeResource ContentDialogDimmingColor}"/>
+                                                        </Ellipse.Fill>
+                                                    </Ellipse>
+                                                    <TextBlock Text="FTP" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#D8FFFFFF"/>
+                                                </Grid>
+                                            </Border>
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                                <!--<Button HorizontalContentAlignment="Left"  Margin="0,5" Click="Browser" Visibility="Collapsed">
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel>
+                                        <TextBlock Text="Experimental Browser" Foreground="{ThemeResource PhoneForegroundBrush}" FontFamily="Assets/Font/Custom/Raleway-Light.ttf#Raleway" FontWeight="Light" FontSize="21.333"/>
+                                        <TextBlock Text="Internet connection inactive" FontSize="10.667">
+                                            <TextBlock.Foreground>
+                                                <SolidColorBrush Color="{ThemeResource TextBoxPlaceholderColor}"/>
+                                            </TextBlock.Foreground>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Button>-->
+                            </Grid>
+                        </Grid>
+                    </local:DrawerLayout>
+                </Grid>
+            </Grid>
+            <Grid x:Name="MediaFragment" Grid.RowSpan="2" RequestedTheme="Dark"  RenderTransformOrigin="0,0">
+                <Grid.Background>
+                    <SolidColorBrush Color="{ThemeResource PhoneBackgroundColor}"/>
+                </Grid.Background>
+                <Grid.RenderTransform>
+                    <CompositeTransform TranslateX="700"/>
+                </Grid.RenderTransform>
+                <Grid x:Name="imageContainerMedia" VerticalAlignment="Stretch">
+                    <Grid.Background>
+                        <SolidColorBrush Color="{ThemeResource PhoneBackgroundColor}"/>
+                    </Grid.Background>
+                    <Viewbox StretchDirection="Both" Stretch="Uniform">
+                        <MediaElement x:Name="mediaPlayer" AudioCategory="BackgroundCapableMedia" VerticalAlignment="Center"/>
+                    </Viewbox>
+                    <Grid VerticalAlignment="Stretch" Margin="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid x:Name="grid1"  ManipulationDelta="mediaFragManipDelta" ManipulationCompleted="mediaFragManipCompleted" ManipulationMode="TranslateX" CacheMode="BitmapCache" Opacity="1">
+                            <Grid.Background>
+                                <SolidColorBrush Color="{ThemeResource ContentDialogDimmingColor}"/>
+                            </Grid.Background>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid MinWidth="50" MinHeight="0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Button >
+                                    <StackPanel Margin="10,0" Orientation="Horizontal">
+                                        <StackPanel VerticalAlignment="Center" CacheMode="BitmapCache" x:Name="grid" Grid.Column="1" Margin="0">
+                                            <TextBlock x:Name="SongName" Text="no media" TextWrapping="NoWrap" MinWidth="175" FontSize="18.667" VerticalAlignment="Center" FontFamily="Assets/Font/Custom/Raleway-Light.ttf#Raleway" Margin="0" HorizontalAlignment="Left" Foreground="White"/>
+                                            <TextBlock x:Name="SongArtist" Text="" FontSize="10.667" VerticalAlignment="Center" Margin="0" FontFamily="Assets/Font/Custom/ClearSans-Thin.ttf#Clear Sans Thin" HorizontalAlignment="Left" Foreground="White"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                            <Button x:Name="button2" Grid.Column="1" MinWidth="0" Visibility="Collapsed"  Content="c"  FontFamily="Assets/Font/iconfont.ttf#iconfont"/>
+                        </Grid>
+                        <Grid x:Name="grid2" Grid.Row="1" Visibility="Visible" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid ManipulationMode="TranslateX" ManipulationDelta="mediaFragManipDelta" ManipulationCompleted="mediaFragManipCompleted">
+                                <TextBlock x:Name="musicArt" Text="y" FontSize="150" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Assets/Font/iconfont.ttf#iconfont" />
+                                <Rectangle>
+                                    <Rectangle.Fill>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.7">
+                                            <GradientStop Color="Black" Offset="0"/>
+                                            <GradientStop Color="Black" Offset="1"/>
+                                            <GradientStop Offset="0.5"/>
+                                            <GradientStop Offset="0.05" Color="{ThemeResource ContentDialogDimmingColor}"/>
+                                            <GradientStop Offset="0.95" Color="{ThemeResource ContentDialogDimmingColor}"/>
+                                        </LinearGradientBrush>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                                <ToggleButton x:Name="favoriteToggle" HorizontalAlignment="Right" FontFamily="Assets/Font/iconfont.ttf#iconfont" Padding="0" ScrollViewer.HorizontalScrollBarVisibility="Auto" MinHeight="55" MinWidth="55" VerticalAlignment="Top" UseLayoutRounding="False" Content="a" d:LayoutOverrides="VerticalAlignment"/>
+                                <!--<ListView x:Name="MusicView"
+                                        ItemTemplate="{StaticResource RecentPlayTemplate}">
+                                    <ListView.Background>
+
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.75">
+                                            <GradientStop Color="Black" Offset="0"/>
+                                            <GradientStop Color="Black" Offset="1"/>
+                                            <GradientStop Offset="0.05" Color="{ThemeResource ContentDialogDimmingColor}"/>
+                                            <GradientStop Offset="0.95" Color="{ThemeResource ContentDialogDimmingColor}"/>
+                                        </LinearGradientBrush>
+                                    </ListView.Background>
+
+                                </ListView>-->
+                            </Grid>
+                            <Grid VerticalAlignment="Bottom">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <ToggleButton MinWidth="50" Content="X" FontFamily="Assets/Font/iconfont.ttf#iconfont" Style="{StaticResource ToggleButtonStyle}" VerticalAlignment="Bottom" Margin="10,0,0,25" Checked="RepeatButtonChecked" Unchecked="RepeatButtonUnchecked"/>
+                                <Border Grid.Column="1" x:Name="border" VerticalAlignment="Center" RenderTransformOrigin="0.5,1">
+                                    <Border.RenderTransform>
+                                        <CompositeTransform ScaleY="0"/>
+                                    </Border.RenderTransform>
+                                    <Border.Background>
+                                        <SolidColorBrush Color="{ThemeResource ContentDialogDimmingColor}" Opacity="0.98"/>
+                                    </Border.Background>
+                                    <TextBlock  x:Name="sliderTimer" Margin="30" Text="{Binding Text, ElementName=currentDuration}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">
+                                        <TextBlock.Foreground>
+                                            <SolidColorBrush Color="{ThemeResource PhoneForegroundColor}"/>
+                                        </TextBlock.Foreground>
+                                    </TextBlock>
+                                </Border>
+                                <ToggleButton Content="Y" MinWidth="50" Grid.Column="2" FontFamily="Assets/Font/iconfont.ttf#iconfont" Style="{StaticResource ToggleButtonStyle}" Margin="0,0,10,25" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                            </Grid>
+
+                            <Grid Grid.Row="1" VerticalAlignment="Center">
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.Background>
+                                            <SolidColorBrush Color="{ThemeResource ContentDialogDimmingColor}"/>
+                                        </Grid.Background>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Slider Value="0" Margin="10" x:Name="musicSlider" BorderBrush="{x:Null}" VerticalAlignment="Top"/>
+
+                                        <TextBlock x:Name="currentDuration"  Grid.Row="1" Text="--:--" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,0,5"/>
+                                        <TextBlock x:Name="mediaDuration" Text="--:--" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,5,10,5"/>
+                                    </Grid>
+                                    <Grid>
+                                        <Grid.Background>
+                                            <SolidColorBrush Color="{ThemeResource ContentDialogDimmingColor}"/>
+                                        </Grid.Background>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Button  Content="6"  FontFamily="Assets/Font/iconfont.ttf#iconfont" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                            <Button x:Name="playPause" Grid.Column="1" Content="5" FontFamily="Assets/Font/iconfont.ttf#iconfont"  Click="PlayCurrent" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                            <Button Content="4" Grid.Column="2"  FontFamily="Assets/Font/iconfont.ttf#iconfont" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="PlayNext"/>
+                                        </Grid>
+                                    </Grid>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+        <local:DialogBox Visibility="Collapsed" IsOpen="False" HeadingText="ARE YOU SURE?" ContentText="...are you sure you want to exit?" x:Name="DialogBox"/>
+        <ScrollViewer VerticalAlignment="Bottom" Visibility="Visible" Height="20">
+            <Grid VerticalAlignment="Top">
+                <Grid.Background>
+                    <SolidColorBrush Color="Black"/>
+                </Grid.Background>
+                <TextBlock TextWrapping="Wrap" x:Name="statusMsg" FontSize="18" Text="Status Message" Foreground="White"/>
+            </Grid>
+        </ScrollViewer>
+        <Border x:Name="aiBorder" CornerRadius="8" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,10" BorderThickness="2">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="{ThemeResource ContentDialogDimmingColor}"/>
+            </Border.BorderBrush>
+            <Border.Background>
+                <SolidColorBrush Color="{ThemeResource PhoneForegroundColor}"/>
+            </Border.Background>
+            <StackPanel Margin="1">
+                <TextBlock x:Name="aiText" TextWrapping="Wrap" Text="Rename Operation failed" FontSize="15" Margin="10,5" FontFamily="Segoe WP Light" FontWeight="Bold">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{ThemeResource PhoneBackgroundColor}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <TextBlock x:Name="aiSubText" TextWrapping="Wrap" Text="A file or folder can't contain any of the following characters" FontSize="15" Margin="10,5" FontFamily="Segoe WP Light">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{ThemeResource PhoneBackgroundColor}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Grid x:Name="PictureDisplayer" Visibility="Collapsed">
+            <Grid >
+                <Grid.Background>
+                    <SolidColorBrush Color="{ThemeResource PhoneBackgroundColor}"/>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <FlipView x:Name="PictureFlipView" Grid.RowSpan="2"/>
+
+                <StackPanel Grid.Row="1" >
+                    <StackPanel.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#19000000"/>
+                            <GradientStop Color="#F2000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </StackPanel.Background>
+                    <TextBlock x:Name="picName" Margin="10,2" Text="pic(1).jpg" Style="{StaticResource  GroupHeaderTextBlockStyle}" Foreground="White"/>
+                    <TextBlock x:Name="picDate" Margin="10,2" Text="05/02/2015" Style="{StaticResource ComboBoxPlaceholderTextBlockStyle}" Foreground="White"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid x:Name="ProgressDialog" Visibility="Collapsed">
+            <Grid.Background>
+                <SolidColorBrush Color="#99000000"/>
+            </Grid.Background>
+
+            <Grid x:Name="SubFrameGrid" Visibility="Collapsed">
+                <Grid.Background>
+                    <SolidColorBrush Color="#99000000"/>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="SubFrameHeader" Text="" FontSize="21.333" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                <Button  Content="X" HorizontalAlignment="Right" Click="HelpPageClose" MinWidth="0" Margin="0,0,15,0"/>
+                <Frame Margin="15" Grid.Row="1" x:Name="SubFrame" Background="{x:Null}"/>
+            </Grid>
+
+
+            <Border x:Name="FileMoveDialog" CornerRadius="20" Margin="20,100" VerticalAlignment="Center" Visibility="Collapsed">
+                <Border.Background>
+                    <SolidColorBrush Color="{ThemeResource PhoneChromeColor}"/>
+                </Border.Background>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <TextBlock Margin="10" TextWrapping="Wrap" Text="Paste" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                        <Button Content="x"  HorizontalAlignment="Right" FontFamily="Assets/Font/iconfont.ttf#iconfont" Click="CloseDialog"/>
+                    </Grid>
+                    <TextBlock Grid.Row="1" Margin="10" TextWrapping="Wrap" Text="swipe horizontally to switch modes : copy / move" FontSize="20"/>
+                    <Grid Grid.Row="2">
+                        <FlipView x:Name="PasteFlipView">
+                            <FlipViewItem>
+
+                                <StackPanel Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock Text="O" TextAlignment="Center" FontFamily="Assets/Font/iconfont.ttf#iconfont" FontSize="40"/>
+                                    <TextBlock Text="copy" TextAlignment="Center"/>
+                                </StackPanel>
+                            </FlipViewItem>
+                            <FlipViewItem>
+
+                                <StackPanel Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock Text="R" TextAlignment="Center" FontFamily="Assets/Font/iconfont.ttf#iconfont" FontSize="40"/>
+                                    <TextBlock Text="move" TextAlignment="Center"/>
+                                </StackPanel>
+                            </FlipViewItem>
+                        </FlipView>
+                    </Grid>
+                    <TextBlock Grid.Row="3" Margin="10" TextWrapping="Wrap" Text="select file actions" FontSize="20"/>
+                    <Grid Grid.Row="4" Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Background="{ThemeResource PhoneAccentBrush}" Click="OverwriteContents">
+                            <StackPanel>
+                                <TextBlock Text="Overwrite" TextAlignment="Center"/>
+                                <TextBlock TextWrapping="Wrap" Text="replaces existing contents" FontSize="10.667" TextAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Background="{ThemeResource PhoneAccentBrush}" Click="KeepBothFiles">
+                            <StackPanel>
+                                <TextBlock Text="Keep Both" TextAlignment="Center"/>
+                                <TextBlock TextWrapping="Wrap" Text="gives unique file name" FontSize="10.667" TextAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Border>
+
+
+            <Grid Margin="15" x:Name="ProgInfoView" HorizontalAlignment="Stretch" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Margin="25" TextWrapping="Wrap" Text="Please do not close this app during this operation." TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Margin="25" TextWrapping="Wrap" Text="This dialog will close automatically upon completion." TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"/>
+                <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                    <StackPanel.Background>
+                        <SolidColorBrush Color="{ThemeResource PhoneChromeColor}"/>
+                    </StackPanel.Background>
+                    <TextBlock Margin="15,5" HorizontalAlignment="Center" TextWrapping="Wrap">
+                    		<Run x:Name="cmstatus" Text="copying "/>
+                    		<Run x:Name="progFileSource" FontWeight="Bold" Text="Vedhalam"/>
+                    		<Run Text=" to "/>
+                    		<Run x:Name="progFileDest" Text="D:" FontWeight="Bold"/>
+                    		<Run/>
+                    </TextBlock>
+                    <ProgressBar x:Name="progBar" Margin="15,10" IsIndeterminate="True" VerticalAlignment="Stretch" Height="18"/>
+                    <TextBlock Margin="0,5" x:Name="progText" HorizontalAlignment="Center">
+                        	<Run x:Name="progCurrentSize" FontWeight="Bold" Text="25.3 "/>
+                        	<Run Text="/ "/>
+                        	<Run x:Name="progTotalSize" FontWeight="Bold" Text="45.2 "/>
+                        	<Run Text="mb"/>
+                    </TextBlock>
+                    <Button Style="{StaticResource DialogBoxButton}" HorizontalAlignment="Stretch"  Content="Cancel" FontFamily="Assets/Font/Custom/HelveticaNeue-Thin.otf#Helvetica Neue" Background="{ThemeResource PhoneAccentBrush}"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition FromVerticalOffset="400" FromHorizontalOffset="0"/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+    </Grid>
+</Page>

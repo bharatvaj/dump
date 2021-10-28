@@ -1,0 +1,74 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/xxlarge"
+    android:theme="@style/AppTheme.Contrast"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.cz.rideshare.SelectDate">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/textWhenHeaderContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+            android:textStyle="bold"
+            android:textSize="@dimen/large"
+            android:layout_marginTop="@dimen/small"
+            android:id="@+id/textWhen"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="When?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/selectDateExit"
+                android:layout_centerVertical="true"
+                android:text="X"
+                android:gravity="center"
+                android:textAlignment="gravity"
+                android:background="@drawable/round_button_sos"
+                app:srcCompat="@drawable/error"
+                android:layout_alignParentRight="true"
+                android:textColor="@android:color/white"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textWhenInfo"
+            android:layout_marginTop="@dimen/medium"
+            android:layout_below="@id/textWhenHeaderContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textAlignment="gravity"
+            android:text="@string/text_date_pick" />
+
+        <TimePicker
+            android:theme="@style/AppTheme.Normal"
+            android:headerBackground="@drawable/round_button"
+            android:layout_marginTop="@dimen/small"
+            android:layout_below="@+id/textWhenInfo"
+            android:id="@+id/timePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TimePicker>
+
+        <Button
+            android:id="@+id/dateSubmitButton"
+            android:layout_margin="@dimen/small"
+            android:text="@string/button_ok"
+            android:paddingLeft="@dimen/user_profile_picture_small"
+            android:paddingRight="@dimen/user_profile_picture_small"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/timePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+</FrameLayout>

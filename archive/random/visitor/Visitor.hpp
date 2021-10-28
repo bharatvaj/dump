@@ -1,0 +1,4 @@
+class Visitor {
+public:
+  Visitor();
+};

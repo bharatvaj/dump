@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lesson>
+  <section header="வணக்கம் உங்கள் பெயர் என்ன ? - உங்க பேரு என்ன ? 
+Hello, What's your name?">
+      In this unit, you'll learn to introduce yourself.
+
+  </section>
+
+<section dialog="Intro">
+
+    <dialog>
+      <e>
+        Hello, What's your name? 
+        My name is Arun, whats's your name? 
+        My name is Ram.
+      </e>
+      <st>
+        : வணக்கம்! உங்கள் பெயர் என்ன ? 
+        : என் பெயர் அருண், உங்கள்  பெயர் என்ன ? 
+        : என் பெயர் ராம் . 
+      </st>
+      <c>
+        : ஹலோ, உங்க பேரு என்ன 
+        : எ(ன்) பேரு அருண், உங்க பேரு? 
+        : எ(ன்) பேரு ராம் 
+      </c>
+
+      
+      <grammar>
+        <summary>
+        You may notice there is no "is/are" in the dialogue. In Tamil, if the Subject pronoun (I, she, his name, it etc.) needs a complement to satisfy it, the "to be " verb is not necessary!
+      </summary>
+      </grammar>
+      
+      <pronounciationtips>
+        <summary>
+          Did you notice how the last consonant is usually dropped and how the last "n" is nasalaised?
+          That is one of the primary differences between Standard and colloquial tamil. Do not worry about the differences, soon you'll recognize the patterns easily.
+        </summary>
+
+        <table>
+          என் |            எ(ன்)|         My |
+          உங்கள் |         உங்க(ள்) |    your |
+          பெயர்|           பேரு |         Name |
+          என்ன |          என்ன   |       What |
+        </table>
+      </pronounciationtips>
+    
+    </dialog>
+  </section>
+
+
+
+  <section title="Vocabulary">
+    
+      <table>
+      நன்றாக      |           நல்லா         |         good |
+      இருக்கிறீர்கள் |           இருக்கீங்க     |          are|
+      இருக்கிறேன்  |           இருக்கே(ன்)    |         am|
+      எப்படி         |           எப்படி            |       How|
+      </table>
+    
+    <pronounciation>
+      <summary>
+      Here, notice have "னும்" changes to "னு(ம்)"
+    </summary>
+    <culturalnote>
+Many of them in tamil, ask "you which city" to know where the person is from. It's that easy!
+There are other ways of saying it. But for now, let's keep it simple.
+    </culturalnote>
+    </pronounciation>
+  </section>
+  
+  <section activity="match">
+    <t>தமிழ்</t>
+    <e>tamil</e>
+    <t>தமிழ்</t>
+    <e>tamil</e>
+    <t>தமிழ்</t>
+    <e>tamil</e>
+  </section>
+  </lesson>

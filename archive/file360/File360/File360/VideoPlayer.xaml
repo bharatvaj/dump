@@ -1,0 +1,44 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:edc="clr-namespace:Microsoft.Expression.Controls;assembly=Microsoft.Expression.Drawing"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    x:Class="File360.secret"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Landscape"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False" Orientation="Landscape">
+
+
+    <Grid Background="Black">
+        <MediaElement x:Name="VideoPlayer" 
+                      Tap="VideoPlayer_Tap"
+                      Source="123.wmv" 
+                      AutoPlay="True"
+                      MediaOpened="VideoPlayer_MediaOpened"
+                      MediaEnded="VideoPlayer_MediaEnded"
+                      MediaFailed="Media_MediaFailed"/>
+        <Grid x:Name="ControlsContainer" HorizontalAlignment="Left" Height="259" Margin="0,221,0,0" VerticalAlignment="Top" Width="800" Opacity="0.795" Background="{StaticResource PhoneBackgroundBrush}">
+            <RepeatButton x:Name="Forward" Content="" HorizontalAlignment="Right" Margin="0,91,66,70" VerticalAlignment="Center" Width="120" Height="90" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Forward_Click">
+                <RepeatButton.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="/Resources/Assets/Images/transport.ff.png"/>
+                </RepeatButton.Background>
+            </RepeatButton>
+            <Button x:Name="Play" Opacity="1" Click="Play_Click"  Margin="310,75,310,70"/>
+            <RepeatButton x:Name="Reverse" Content="" HorizontalAlignment="Left" Margin="66,91,0,70" VerticalAlignment="Center" Width="120" Height="90" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Reverse_Click">
+                <RepeatButton.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="/Resources/Assets/Images/transport.rew.png"/>
+                </RepeatButton.Background>
+            </RepeatButton>
+            <Slider Name="timelineSlider" Margin="66,3,66,169" ValueChanged="timelineSlider_ValueChanged" VerticalAlignment="Center" Height="87"/>
+        </Grid>
+        <Image x:Name="MuteAudio" Tap="MuteAudio_Tap" Opacity="0.5" Source="/Resources/Assets/Images/mute.png" Margin="686,29,38,396"/>
+    </Grid>
+
+</phone:PhoneApplicationPage>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<transaction>
+  <expense>
+    <name>Bank Deposit</name>
+    <description>Bank deposit...not exactly a expense</description>
+  </expense>
+  <expense>
+    <name>TV Amount</name>
+    <description>Bank deposit...not exactly a expense</description>
+    <icon>t</icon>
+  </expense>
+  <expense>
+    <name>Petrol</name>
+    <description>Petrol Expenses</description>
+    <icon>f</icon>
+  </expense>
+  <expense>
+    <name>Gokulam</name>
+    <description>Bank deposit...not exactly a expense</description>
+    <icon>H</icon>
+  </expense>
+  <expense>
+    <name>Coffee</name>
+    <description>Bank deposit...not exactly a expense</description>
+    <icon>F</icon>
+  </expense>
+  <expense>
+    <name>Water</name>
+    <description>Bank deposit...not exactly a expense</description>
+    <icon>W</icon>
+  </expense>
+  <expense>
+    <name>Food</name>
+    <description>Bank deposit...not exactly a expense</description>
+    <icon>F</icon>
+  </expense>
+  <expense>
+    <name>Electricity</name>
+    <description>Bank deposit...not exactly a expense</description>
+    <icon>E</icon>
+  </expense>
+  <expense>
+    <name>Telephone Bills</name>
+    <description>Bank deposit...not exactly a expense</description>
+    <icon>C</icon>
+  </expense>
+  <expense>
+    <name>Godown Rent</name>
+    <description>Bank deposit...not exactly a expense</description>
+  </expense>
+  <expense>
+    <name>Showroom Rent</name>
+    <description>Bank deposit...not exactly a expense</description>
+  </expense>
+  <expense>
+    <name>Printing</name>
+    <description>Bank deposit...not exactly a expense</description>
+    <icon>P</icon>
+  </expense>
+  <expense>
+    <name>Salary</name>
+    <description>Bank deposit...not exactly a expense</description>
+  </expense>
+  <expense>
+    <name>In Loading Charges</name>
+    <description>Bank deposit...not exactly a expense</description>
+  </expense>
+</transaction>

@@ -1,0 +1,111 @@
+﻿<Page
+    x:Class="Expense_Manager.Dashboard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Expense_Manager"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Top">
+                <Image Margin="15,15,5,15" Source="Assets/bharatgas_logo.png" Width="45"/>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="SAI KRUPA GAS AGENCY" FontSize="10.667" FontWeight="Bold"/>
+                    <TextBlock Text="bharatgas@hotmail.com" FontSize="11.333" Foreground="#FF494949"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA6A6A6" Offset="1"/>
+                    <GradientStop Color="#FFA6A6A6"/>
+                    <GradientStop Color="White" Offset="0.96"/>
+                    <GradientStop Color="White" Offset="0.044"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock FontSize="33.333" HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black" Margin="0,15,0,0">
+                        	<Run Text="{StaticResource Currency}"/>
+                        	<Run Text="9,50,500"/>
+                </TextBlock>
+                <Grid Margin="0,5,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid HorizontalAlignment="Center" Width="150" Height="150" VerticalAlignment="Center">
+
+                        <Ellipse Width="150" Height="150" Fill="#FF319731" Stroke="#FFE8E5E5" StrokeThickness="2"/>
+                    </Grid>
+                </Grid>
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,30" >
+                    <TextBlock Text="FEB 2016" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="Black"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <StackPanel Margin="10,0,0,0" Grid.Row="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="LIFE INSURANCE" FontWeight="Bold" Foreground="Black"/>
+                    <TextBlock Text="Bharathi Axa Life Insurace" Foreground="#FF292929"/>
+                </StackPanel>
+                <Grid Grid.Column="1" Background="#FF319731" RenderTransformOrigin="0.5,0.5">
+                    <StackPanel Margin="5" VerticalAlignment="Center">
+                        <TextBlock Text="05" TextAlignment="Center" FontSize="18.667" Foreground="White"/>
+                        <TextBlock TextAlignment="Center" Foreground="White">
+                    	<Run Text="FEB 2016"/>
+                        </TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="LIFE INSURANCE" FontWeight="Bold" Foreground="Black"/>
+                    <TextBlock Text="Bharathi Axa Life Insurace" Foreground="#FF292929"/>
+                </StackPanel>
+                <Grid Grid.Column="1" Background="#FF319731" RenderTransformOrigin="0.5,0.5">
+                    <StackPanel Margin="5" VerticalAlignment="Center">
+                        <TextBlock Text="05" TextAlignment="Center" FontSize="18.667" Foreground="White"/>
+                        <TextBlock TextAlignment="Center" Foreground="White">
+                    	<Run Text="FEB 2016"/>
+                        </TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="LIFE INSURANCE" FontWeight="Bold" Foreground="Black"/>
+                    <TextBlock Text="Bharathi Axa Life Insurace" Foreground="#FF292929"/>
+                </StackPanel>
+                <Grid Grid.Column="1" Background="#FF319731" RenderTransformOrigin="0.5,0.5">
+                    <StackPanel Margin="5" VerticalAlignment="Center">
+                        <TextBlock Text="05" TextAlignment="Center" FontSize="18.667" Foreground="White"/>
+                        <TextBlock TextAlignment="Center" Foreground="White">
+                    	<Run Text="FEB 2016"/>
+                        </TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{12DBCDD7-C235-40E7-B8FD-71E8074350BD}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>File360</RootNamespace>
+    <AssemblyName>File360</AssemblyName>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>File360_$(Configuration)_$(Platform).xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>File360.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <ExpressionBlendVersion>5.0.40218.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AlphaKeyGroup.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppSettings.cs" />
+    <Compile Include="EBookReader.xaml.cs">
+      <DependentUpon>EBookReader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FTPServerPage.xaml.cs">
+      <DependentUpon>FTPServerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="picturelist.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="sdlist.cs" />
+    <Compile Include="SecurityPage.xaml.cs">
+      <DependentUpon>SecurityPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="settinglist.cs" />
+    <Compile Include="TiltEffect.cs" />
+    <Compile Include="VideoPlayer.xaml.cs">
+      <DependentUpon>VideoPlayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinPhoneFtp.FtpService\DataReceivedEventArgs.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\ErrorOccuredEventArgs.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\FtpClient.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\FtpCommand.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\FtpDirectoryChangedEventArgs.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\FtpDirectoryListedEventArgs.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\FtpDisconnectedEventArgs.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\FtpDisconnectReason.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\FtpFileOperationInfo.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\FtpFileTransferEventArgs.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\FtpFileTransferFailedEventArgs.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\FtpFileTransferFailureReason.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\FtpFileTransferProgressedEventArgs.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\FtpPassiveOperation.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\FtpPresentWorkingDirectoryEventArgs.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\Logger.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\SocketClosedEventArgs.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\SocketCloseReason.cs" />
+    <Compile Include="WinPhoneFtp.FtpService\TcpClientSocket.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="123.wmv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AMI.png" />
+    <Content Include="Assets\AlignmentGrid.png" />
+    <Content Include="Assets\ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileMedium.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileSmall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\IconicTileMediumLarge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\IconicTileSmall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File360.Logo.Large.png" />
+    <Content Include="File360.Logo.Medium.png" />
+    <Content Include="File360.Logo.png" />
+    <Content Include="File360.Logo.Small.png" />
+    <Content Include="README_FIRST.txt" />
+    <Content Include="Resources\Assets\AlignmentGrid.png" />
+    <Content Include="Resources\Assets\ApplicationIcon.png" />
+    <Content Include="Resources\Assets\File_Types\7z.png" />
+    <Content Include="Resources\Assets\File_Types\avi.png" />
+    <Content Include="Resources\Assets\File_Types\csv.png" />
+    <Content Include="Resources\Assets\File_Types\mkv.png" />
+    <Content Include="Resources\Assets\File_Types\pdf.png" />
+    <Content Include="Resources\Assets\File_Types\rar.png" />
+    <Content Include="Resources\Assets\File_Types\svg.png" />
+    <Content Include="Resources\Assets\Images\back.png" />
+    <Content Include="Resources\Assets\Images\collage_music.png" />
+    <Content Include="Resources\Assets\Images\coverArt.png" />
+    <Content Include="Resources\Assets\Images\delete.png" />
+    <Content Include="Resources\Assets\Images\down.png" />
+    <Content Include="Resources\Assets\Images\download.png" />
+    <Content Include="Resources\Assets\Images\edit.png" />
+    <Content Include="Resources\Assets\Images\feature.settings.png" />
+    <Content Include="Resources\Assets\Images\Fine-Halftone-Screen-Small.png" />
+    <Content Include="Resources\Assets\Images\folder.png" />
+    <Content Include="Resources\Assets\Images\go.png" />
+    <Content Include="Resources\Assets\Images\gradient_music.png" />
+    <Content Include="Resources\Assets\Images\grid.png" />
+    <Content Include="Resources\Assets\Images\Hamburger.png" />
+    <Content Include="Resources\Assets\Images\headphone.png" />
+    <Content Include="Resources\Assets\Images\hiddenFolder.png" />
+    <Content Include="Resources\Assets\Images\like.png" />
+    <Content Include="Resources\Assets\Images\list.png" />
+    <Content Include="Resources\Assets\Images\microphone.png" />
+    <Content Include="Resources\Assets\Images\MusicBar.png" />
+    <Content Include="Resources\Assets\Images\next.png" />
+    <Content Include="Resources\Assets\Images\onedrive.png" />
+    <Content Include="Resources\Assets\Images\phone.png" />
+    <Content Include="Resources\Assets\Images\previous.png" />
+    <Content Include="Resources\Assets\Images\sdcard.png" />
+    <Content Include="Resources\Assets\Images\Search.png" />
+    <Content Include="Resources\Assets\Images\settings_light.png" />
+    <Content Include="Resources\Assets\Images\share.png" />
+    <Content Include="Resources\Assets\Images\shuffle.png" />
+    <Content Include="Resources\Assets\Images\skydrive.png" />
+    <Content Include="Resources\Assets\Images\slide_circle.png" />
+    <Content Include="Resources\Assets\Images\transport.ff.png" />
+    <Content Include="Resources\Assets\Images\transport.pause.png" />
+    <Content Include="Resources\Assets\Images\transport.play.png" />
+    <Content Include="Resources\Assets\Images\transport.rew.png" />
+    <Content Include="Resources\Assets\Images\up.png" />
+    <Content Include="Resources\Assets\Images\upload.png" />
+    <Content Include="Resources\Assets\Images\user.png" />
+    <Content Include="Resources\Assets\Images\vinyl.png" />
+    <Content Include="Resources\Assets\Settings\about.png" />
+    <Content Include="Resources\Assets\Settings\bluetooth.png" />
+    <Content Include="Resources\Assets\Settings\ftp.png" />
+    <Content Include="Resources\Assets\Settings\music.png" />
+    <Content Include="Resources\Assets\Settings\nfc.png" />
+    <Content Include="Resources\Assets\Settings\personalization.png" />
+    <Content Include="Resources\Assets\Settings\security.png" />
+    <Content Include="Resources\Assets\Tiles\FlipCycleTileLarge.png" />
+    <Content Include="Resources\Assets\Tiles\FlipCycleTileMedium.png" />
+    <Content Include="Resources\Assets\Tiles\FlipCycleTileSmall.png" />
+    <Content Include="Resources\Assets\Tiles\IconicTileMediumLarge.png" />
+    <Content Include="Resources\Assets\Tiles\IconicTileSmall.png" />
+    <Content Include="Resources\Assets\Wallpaper\bg1.jpg" />
+    <Content Include="Resources\Assets\Wallpaper\bg2.jpg" />
+    <Content Include="SplashScreenImage.jpg" />
+    <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\AppResources.ta.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EBookReader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FTPServerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SecurityPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VideoPlayer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Coding4Fun.Phone.Controls">
+      <HintPath>..\..\..\..\..\Desktop\Coding4Fun.Phone.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Advertising.Mobile, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="microsoft.advertising.mobile.ui, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Interactions" />
+    <Reference Include="Microsoft.Phone.Controls.Maps, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=8.0.1.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Assets\Images\favs.png" />
+    <Resource Include="Resources\Assets\Images\mute.png" />
+    <Resource Include="Resources\Assets\Images\repeat.png" />
+    <Resource Include="Resources\Assets\Images\volume_high.png" />
+    <Resource Include="Resources\Assets\Images\volume_low.png" />
+    <Resource Include="share.png" />
+    <Resource Include="slider_alpha.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\WindowsPhone\v8.0\Microsoft.Expression.Blend.WindowsPhone.targets" />
+</Project>

@@ -1,0 +1,2 @@
+RIDE_SHARE
+	This app is used to share the ride to another person who is in need to reach the same destination.The final version of app will be done by using AR and ML concepts into it, but in android only after the version 7.0 that is from the version oreo(8.0) (not even available in nougut) and so there will be two types of the first one which supports AR and ML and the other one for the android versions that doessn't support AR.

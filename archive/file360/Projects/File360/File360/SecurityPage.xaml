@@ -1,0 +1,32 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    x:Class="File360.SecurityPage"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <phone:Pivot HorizontalAlignment="Left" Height="768" Title="FILE360°" VerticalAlignment="Top" Width="480" Grid.RowSpan="2">
+            <phone:PivotItem CacheMode="{x:Null}" Header="security"></phone:PivotItem>
+        </phone:Pivot>
+
+        <toolkit:ToggleSwitch x:Name="passw" Checked="passw_Checked" Unchecked="passw_Unchecked" HorizontalAlignment="Left" Margin="10,157,0,0" Grid.Row="1" VerticalAlignment="Top" Width="460" Content="password"/>
+        <toolkit:ToggleSwitch x:Name="shake" Checked="shake_Checked" Unchecked="shake_Unchecked" HorizontalAlignment="Left" Margin="10,265,0,0" Grid.Row="1" VerticalAlignment="Top" Width="460" Content="shake to hide"/>
+        <TextBox x:Name="pb" HorizontalAlignment="Left" Height="84" Margin="10,368,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="460" TextChanged="PSetter" Foreground="{StaticResource PhoneBackgroundBrush}" SelectionBackground="{x:Null}" SelectionForeground="{x:Null}"/>
+    </Grid>
+
+</phone:PhoneApplicationPage>

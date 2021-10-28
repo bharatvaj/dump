@@ -1,0 +1,30 @@
+Changelog:
+
+Expense Manager - v1.8.0.0
+-----------------------------
+-added smiley face indicator which indicates the percentage of income greater or lesser than expense.
+The limit is obtained as goal from the user in month starting... anyways can be changed in setting menu.
+-----------------------------
+Expense Manager - v1.7.0.0
+-----------------------------
+-Can view and add secret expenses by admin
+-----------------------------
+Expense Manager - v1.5.0.0
+-----------------------------
+-Added print current month expense option
+-----------------------------
+Expense Manager - v1.3.0.0
+-----------------------------
+-Added local password Authentication and password retrieval
+-----------------------------
+Expense Manager - v1.1.0.0
+------------------------------
+-Currency Exchange Rates when adding money
+-Unified amount box (incomeTextBox & expenseTextBox )
+as amountTextBox
+
+-------------------------------
+Expense Manager - v1.0.0.0
+-------------------------------
+-Initial Release
+-------------------------------

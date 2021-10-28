@@ -1,0 +1,4 @@
+Cigarette,150
+Drinks,250
+Furniture,12000
+Something,500

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<transaction>
+  <income>
+    <name>Opening Balance</name>
+    <description>This is the opening balance of every month</description>
+  </income>
+  <income>
+    <name>Domestic Sales</name>
+    <description>This is the local sales income</description>
+  </income>
+  <income>
+    <name>Commercial Sales</name>
+    <description>This is the commercial sales income</description>
+  </income>
+  <income>
+    <name>Stove Inspection</name>
+    <description>Income from stove inspection</description>
+  </income>
+  <income>
+    <name>Consumer Recovery</name>
+    <description>Income based on consumer recovery</description>
+  </income>
+</transaction>

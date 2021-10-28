@@ -1,0 +1,6 @@
+[submodule "smart-mirror"]
+	path = smart-mirror
+	url = https://github.com/dinechandu/smart-mirror
+[submodule "web-apps"]
+	path = web-apps
+	url = https://bitbucket.org/goutham-sm/web-apps

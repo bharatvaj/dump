@@ -1,0 +1,47 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="File360.FTPServerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,643">
+            <TextBlock Text="FILE360" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="ftp server" Margin="9,-7,0,0" FontSize="48" FontFamily="Segoe WP Light"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Margin="10,0,14,0">
+            <toolkit:PhoneTextBox Hint="FTP Server Address" x:Name="txtIp" toolkit:TiltEffect.IsTiltEnabled="True" Margin="0,129,178,560"/>
+            <toolkit:PhoneTextBox Hint="Port" x:Name="txtPortNumber" toolkit:TiltEffect.IsTiltEnabled="True" Text="21" Margin="278,129,83,560" />
+            <Button Content="" HorizontalAlignment="Left" Margin="373,129,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="83" Height="79" Background="{StaticResource PhoneForegroundBrush}" Click="Connect_Click">
+                <Button.OpacityMask>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/Assets/Images/go.png"/>
+                </Button.OpacityMask>
+            </Button>
+            <TextBlock x:Name="WarningP" HorizontalAlignment="Left" Height="32" Margin="10,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="436" FontSize="22" FontFamily="Segoe WP Semibold" Foreground="#FFE43D3D"/>
+            <toolkit:PhoneTextBox Hint="Command" x:Name="txtCmd" HorizontalAlignment="Left" Height="72" TextWrapping="Wrap" VerticalAlignment="Top" Width="363" Margin="0,232,0,0"/>
+            <phone:LongListSelector x:Name="lstLogs" HorizontalAlignment="Left" Height="449" VerticalAlignment="Top" Width="436" Margin="10,309,0,0" Background="{x:Null}"/>
+            <Button Click="Command_Click" HorizontalAlignment="Left" Margin="363,240,0,0" VerticalAlignment="Top" Width="83" Height="64" BorderBrush="{x:Null}" Background="{StaticResource PhoneForegroundBrush}">
+                <Button.OpacityMask>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/Assets/Images/go.png"/>
+                </Button.OpacityMask>
+            </Button>
+            <TextBlock x:Name="sds" HorizontalAlignment="Left" Height="114" Margin="217,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="229" Foreground="White"/>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

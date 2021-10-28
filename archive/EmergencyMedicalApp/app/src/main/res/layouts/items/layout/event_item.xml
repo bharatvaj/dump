@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.silencedut.expandablelayout.ExpandableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppTheme.CardViewStyle"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/view_margin_medium"
+    android:layout_height="wrap_content"
+    app:expDuration="300"
+    app:expExpandScrollTogether="true"
+    app:expWithParentScroll="true">
+    <include layout="@layout/event_header_left" />
+
+    <FrameLayout
+        android:id="@+id/eventBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</com.silencedut.expandablelayout.ExpandableLayout>

@@ -1,0 +1,9 @@
+<div class="container" *ngIf="room">
+  <div *ngFor="let device of devices">
+    <div class="box">
+      <p><b>{{device.name}}</b></p>
+      <p class="desc">{{device.description}}</p>
+      <h1 class="wrap-text">{{device.cmd}}</h1>
+    </div>
+  </div>
+</div>

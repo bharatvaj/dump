@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Emergency Medical App</string>
+    <string name="default_user_name">John Doe</string>
+    <string name="default_user_health">0%</string>
+    <string name="helpline_input_placeholder">Ask&#8230;</string>
+
+    <!--activity title-->
+    <string name="feeds">News Feed</string>
+
+    <string name="user_content_description">User Image</string>
+
+    <!--list_activity-->
+    <string name="list_add_new_item">+ Add new item</string>
+
+    <!--transition names-->
+    <string name="transition_list_header_name">transition_list_header_text</string>
+    <string name="transition_info_header_name">transition_info_header_text</string>
+
+    <!--keys-->
+    <string translatable="false" name="extra_card_info_obj">cardInfoObj</string>
+    <string translatable="false" name="extra_card_list_obj">cardListObj</string>
+    <string translatable="false" name="extra_feed">feed</string>
+
+    <!--description-->
+    <string name="chat_button_description">Help Bot</string>
+    <string name="heart_button_description">Heart Rate Monitor</string>
+    <string name="alarm_button_description">Event Reminder</string>
+    <string name="news_button_description">News Feed</string>
+    <string name="feed_image_description">Feed Image</string>
+
+    <!--toolbar action titles-->
+    <string name="toolbar_alarm_add">Add Event</string>
+
+    <!--sample-->
+    <string name="feed_image_sample">https://www.star2.com/wp-content/uploads/2017/09/healthcare-770x470.jpg</string>
+    <string name="feed_header_sample">Health Care</string>
+    <string name="feed_content_sample">Sergio Canavero , an Italian neurosurgeon, intends to attempt the first human head transplant by 2017, though no successful animal transplants with long-term survival have yet been made. Because of the difficulty of connecting the spinal cord, Canavero has suggested improvements in the process using a special blade and polyethylene glycol, a polymer used in medicine as well as in everything from skin cream to the conservation of the Mary Rose, can help start growth in spinal cord nerves.
+
+Being able to surgically remove the head in an orderly fashion should allow surgeons to then reattach all the nerves and blood vessels to the new body, once that pesky donor head is removed. A special bio-compatible glue will hold the spinal cord together so it can fuse with the donor body. The patient will then be put in a drug-induced coma for four weeks while the connection between the head and body heals. It’s the reattachment process that’s the most unlikely part of all this. There’s never been a successful procedure that reattached a fully severed primate spinal cord.
+
+Canavero says all the technology he needs is available and estimates the procedure will take about 36 hours and require the services of 150 medical professionals. He expects a 90% chance of success, as in a 90% chance the patient is up and walking around a few months after the surgery. This all still sounds like science fiction, and medical professionals are mostly skeptical of Canavero’s plan. He seems set to try, though. And who knows? Maybe it’ll work. A few years ago face transplants seemed like science fiction. Even if this does work, the process will be obscenely expensive. Plus, it will give an entire body full of transplantable organs to a single person. It’s unclear if this would be considered ethical when there are so many people waiting for transplants. Cardiac transplantation, also called heart transplantation, has evolved into the treatment of choice for many people with severe heart failure who have severe symptoms despite maximum medical therapy. Survival among cardiac transplant recipients has improved as a result of improvements in treatments that suppress the immune system and prevent infection.
+
+Unfortunately, the number of heart donors has reached a plateau despite an increasing number of potential recipients. More than 5000 cardiac transplants occur each year around the world, although it is estimated that up to 50,000 people are candidates for transplantation . This critical organ shortage means that healthcare providers must strictly evaluate who should receive a heart transplant.
+
+For many years, surgeons in the United States have preserved organs in a cold solution and transported in coolers to the receiving patient in need.  But this process can cause damage to the heart and in some cases render it unusable.</string>
+</resources>
