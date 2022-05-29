@@ -1,0 +1,12 @@
+win32
+=====
+
+Native Wifi
+-----------
+https://docs.microsoft.com/en-us/windows/win32/nativewifi/about-native-wifi
+
+Auto Configuration Module(ACM) - connection and disconnection API can be used to override API elements automatic configuration logic
+
+https://docs.microsoft.com/en-us/windows/win32/nativewifi/native-wifi-api-permissions
+
+A Native Wifi API call may fail with when a caller does not have adequate permissions to perform the requested operation.
