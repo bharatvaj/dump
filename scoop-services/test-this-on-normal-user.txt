@@ -1,1 +1,0 @@
-You can contribute this to scoop if it's useful. Need better reasons, check if invoking sc with user previlidges is possible. If not nothing you can do. Just recommend the start-process approach as given by one individual.

@@ -23,8 +23,7 @@ if (-Not $NotError) {
 
 # TODO if ServiceBinPath is null exit this, possibly rollback
 
-New-Item -Path Registry::HKLM\SYSTEM\CurrentControlSet\Services\$SERVICE_NAME\Parameters -Force
-New-ItemProperty -Path Registry::HKLM\SYSTEM\CurrentControlSet\Services\$SERVICE_NAME\Parameters -Name Application -PropertyType String -Value "$ServiceBinPath" -Force
+Set-ItemProperty -Path Registry::HKLM\SYSTEM\CurrentControlSet\Services\$SERVICE_NAME\Parameters -Name Application -Value "$ServiceBinPath"
 # TODO Use proper AppDir
-New-ItemProperty -Path Registry::HKLM\SYSTEM\CurrentControlSet\Services\$SERVICE_NAME\Parameters -Name AppDirectory -PropertyType String -Value "$Env:Scoop\shims" -Force
-New-ItemProperty -Path Registry::HKLM\SYSTEM\CurrentControlSet\Services\$SERVICE_NAME\Parameters -Name AppParameters -PropertyType String  -Value "$SERVICE_ARGS" -Force
+Set-ItemProperty -Path Registry::HKLM\SYSTEM\CurrentControlSet\Services\$SERVICE_NAME\Parameters -Name AppDirectory -Value "$Env:Scoop\shims"
+Set-ItemProperty -Path Registry::HKLM\SYSTEM\CurrentControlSet\Services\$SERVICE_NAME\Parameters -Name AppParameters -Value "$SERVICE_ARGS"
