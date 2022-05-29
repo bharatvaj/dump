@@ -17,10 +17,14 @@ NativeWifi offers wlanapi.h calm :)
 Wifi management:
 netsh
 
-ReactOS: 
-? Do they use Native API too?
+ReactOS:
+DeviceIOControl? Do they use Native API too?
+No they don't, they use DeviceIOControl
+WlanQuery and friends were UNIMPLEMENTED in the reactos project
+https://github.com/reactos/reactos/blob/3fa57b8ff7fcee47b8e2ed869aecaf4515603f3f/dll/win32/wlanapi/main.c#L276
+Oppurtunity for wifi
 Wifi management:
-wlanconf
+wlanconf - their own wifi configuration tool rolled out with DeviceIOControl.
 
 MacOS:
 CoreWLAN?

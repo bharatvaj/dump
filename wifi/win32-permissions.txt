@@ -1,0 +1,14 @@
+Permissions
+-----------
+Access Control List (Vector)
+Access Control Entries (Unit)
+|_> Trustee and access rights
+
+Security Object can contain either DACL or SACL
+
+Discretionary ACL - Offers access
+if the object does not have DACL - gives all access to everyone
+else if DACL's->ACE does not have any entries - no access for anyone
+else check one by one until something get's offered access
+---
+System ACL - Offers logging of request access for sysadmins
