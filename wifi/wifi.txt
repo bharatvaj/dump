@@ -30,3 +30,5 @@ MacOS:
 CoreWLAN?
 Wifi management:
 airport?
+
+OpenBSD: autonet - network chooser
