@@ -21,13 +21,13 @@
 #define WIFI_CTX_UPDATE_ERROR_CODE(CTX_NATIVE) \
 	switch(CTX_NATIVE->last_ret_code) { \
 	case ERROR_NOT_ENOUGH_MEMORY: \
-		CTX_NATIVE->last_error = WIFI_ERROR_NOT_ENOUGH_MEMORY; \
+		CTX_NATIVE->last_error = SWIFI_ERROR_NOT_ENOUGH_MEMORY; \
 		/* clog_info(L"WlanOpenHandle failed with error: %u\n", dwResult); */ \
 		break; \
 	/* case RPC_STATUS: */ \
 	/*didn't handle ERROR_INVALID_PARAMETER explicitly*/ \
 	case ERROR_REMOTE_SESSION_LIMIT_EXCEEDED: \
-		CTX_NATIVE->last_error = WIFI_ERROR_NOT_ENOUGH_MEMORY; \
+		CTX_NATIVE->last_error = SWIFI_ERROR_NOT_ENOUGH_MEMORY; \
 		break; \
 	}
 
@@ -42,10 +42,17 @@ swifi_context_native* swifi_create_context_native(const swifi_context* swifi_ctx
 	return ctx_native;
 }
 
-void swifi_destroy_context_native(swifi_context* swifi_ctx) {
+swifi_error_status swifi_destroy_context_native(const swifi_context* swifi_ctx) {
 	swifi_context_native* ctx_native = WIFI_CTX_NATIVE(swifi_ctx);
-	DWORD ret_code = WlanCloseHandle(ctx_native->client_handle, NULL);
-	// tech-debt should we return ret_code?
+	if (ctx_native->client_handle != NULL) {
+		DWORD ret_code = WlanCloseHandle(ctx_native->client_handle, NULL);
+		if (ret_code == ERROR_INVALID_HANDLE) {
+			// if we have an invalid handle which is not NULL
+			// it's probably a corrupted memory
+			return SWIFI_ERROR_UNEXPECTED;
+		}
+	}
+	free(ctx_native);
 }
 
 
@@ -61,6 +68,8 @@ swifi_error_status swifi_enumerate_interfaces(swifi_context* swifi_ctx, swifi_in
      wprintf(L"Current Index: %lu\n", pIfList->dwIndex);
         for (i = 0; i < (int) pIfList->dwNumberOfItems; i++) {
             pIfInfo = (WLAN_INTERFACE_INFO *) &pIfList->InterfaceInfo[i];
+			swifi_interface *swifi_if = (swifi_interface*) malloc(sizeof(swifi_interface));
+			/* swifi_interface->name = swifi_interface; */
             wprintf(L"  Interface Index[%d]:\t %lu\n", i, i);
             /* iRet = StringFromGUID2(pIfInfo->InterfaceGuid, (LPOLESTR) &GuidString, 39); */
             // For c rather than C++ source code, the above line needs to be
