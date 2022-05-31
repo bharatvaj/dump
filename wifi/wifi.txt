@@ -5,6 +5,11 @@ Linux drivers: cfg80211/mac80211
 Wifi management:
 iwd
 NetworkManager
+wireless-tools
+
+Interesting tool
+----------------
+https://github.com/hsluoyz/WlanHelper
 
 Account Provitioning - sounds stupid but can come in handy. Check later if this exists in other OSes.
 
@@ -30,3 +35,4 @@ MacOS:
 CoreWLAN?
 Wifi management:
 airport?
+networksetup

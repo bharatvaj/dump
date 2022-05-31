@@ -2,9 +2,7 @@
 #define __SWIFI_NATIVE_WIFI
 
 #include <swifi.h>
-
 #include <windows.h>
-#include <swifi.h>
 
 typedef struct swifi_context_native {
 	DWORD major_version;

@@ -16,7 +16,6 @@ See |win32-permissions.txt| before proceeding.
 WLAN_SECURABLE_OBJECT contains a DACL object.
 
 
-
 WlanQueryInterface, WlanGetInterface
 ------------------------------------
 Requires the following permissions from the DACL

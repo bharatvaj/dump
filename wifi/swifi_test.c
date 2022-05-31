@@ -12,7 +12,7 @@
 int main(int argc, char *argv[]) {
 	swifi_context* ctx = swifi_create_context();
 	swifi_error_status err = swifi_check_context(ctx);
-	if (err != WIFI_OK) {
+	if (err != SWIFI_OK) {
 		printf("Failed to create context\n");
 		return err;
 	}
@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
 	swifi_interface** wis = NULL;
 	size_t interfaces_len;
    	err = swifi_enumerate_interfaces(ctx, wis, &interfaces_len);
-	if (err != WIFI_OK) {
+	if (err != SWIFI_OK) {
 		printf("Failed to enumerate devices\n");
 		return err;
 	}

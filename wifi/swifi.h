@@ -1,6 +1,9 @@
 #ifndef __WIFI_H
 #define __WIFI_H
 
+/* Forward declaration, this is for internal use */
+typedef struct swifi_context_native swifi_context_native;
+
 enum return_codes {
 	WIFI_NO_MEMORY = 1
 };
@@ -19,10 +22,11 @@ typedef enum swifi_permissions {
 
 /* Steal from CURL, for better API */
 typedef enum swifi_error_status {
-	WIFI_OK,
-	WIFI_ERROR,
-	WIFI_ERROR_CONTEXT_NULL,
-	WIFI_ERROR_NOT_ENOUGH_MEMORY,
+	SWIFI_OK,
+	SWIFI_ERROR,
+	SWIFI_ERROR_CONTEXT_NULL,
+	SWIFI_ERROR_UNEXPECTED,
+	SWIFI_ERROR_NOT_ENOUGH_MEMORY,
 } swifi_error_status;
 
 typedef struct swifi_context {
@@ -30,7 +34,7 @@ typedef struct swifi_context {
 	swifi_permissions denied_permissions;
 	swifi_error_status last_error;
 	/* Internal use only */
-	void *native_context;
+	struct swifi_context_native *native_context;
 } swifi_context;
 
 /*
