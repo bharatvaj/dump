@@ -2,9 +2,9 @@
 
 # rssr - rss reader
 
-[ -z "$RSSR_FUZZY_SEARCHER" ] && RSSR_FUZZY_SEARCHER=fzy
+[ -z "$RSSR_FUZZY_SEARCHER" ] && RSSR_FUZZY_SEARCHER=$(FUZZER)
 [ -z "$FEEDS_PATH" ] && FEEDS_PATH="${HOME}/.sfeed/feeds"
-[ -z "$OPEN_PROGRAM" ] && OPEN_PROGRAM=open
+[ -z "$BROWSER" ] && BROWSER=open
 
 test -z "$RSSR_FUZZY_SEARCHER" && ( echo "RSSR_FUZZY_SEARCHER needs to be set" && exit 1 )
 
@@ -14,5 +14,5 @@ website="$(ls | $RSSR_FUZZY_SEARCHER)"
 
 [ -n "$website" ] && link=$(cat "$website" | cut -f3 | $RSSR_FUZZY_SEARCHER)
 
-[ -n "$link" ] && "$OPEN_PROGRAM"  "$link"
+[ -n "$link" ] && "$BROWSER"  "$link"
 

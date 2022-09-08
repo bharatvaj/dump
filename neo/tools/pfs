@@ -4,7 +4,7 @@
 
 cd "${PASSWORD_STORE_DIR}" || exit 1
 
-selection="$(find -L . -name '*.gpg' | sed 's/.gpg$//g' | fzy)"
+selection="$(find -L . -name '*.gpg' | sed 's/.gpg$//g' | ${FUZZER})"
 
 test -z "${selection}" || pass ${1} "${selection}"
 
