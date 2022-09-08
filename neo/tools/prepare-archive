@@ -1,0 +1,6 @@
+#!/bin/sh
+
+temp_archive_output=/tmp/dotfiles.tar.gz
+git archive --format=tar.gz --output=$temp_archive_output base
+cp /home/dev/dotfiles.git/hooks/scripts/sh /usr/share/nginx/html/sh
+cp $temp_archive_output /usr/share/nginx/html/
