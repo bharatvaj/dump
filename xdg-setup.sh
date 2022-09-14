@@ -1,0 +1,1 @@
+mkdir .local/share/newsboat

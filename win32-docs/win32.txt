@@ -1,0 +1,35 @@
+win32
+=====
+
+Native Wifi
+-----------
+https://docs.microsoft.com/en-us/windows/win32/nativewifi/about-native-wifi
+
+Auto Configuration Module(ACM) - connection and disconnection API can be used to override API elements automatic configuration logic
+
+https://docs.microsoft.com/en-us/windows/win32/nativewifi/native-wifi-api-permissions
+
+A Native Wifi API call may fail with when a caller does not have adequate permissions to perform the requested operation.
+
+See |win32-permissions.txt| before proceeding.
+
+WLAN_SECURABLE_OBJECT contains a DACL object.
+
+
+WlanQueryInterface, WlanGetInterface
+------------------------------------
+Requires the following permissions from the DACL
+wlan_secure_ac_enabled
+wlan_secure_bc_scan_enabled
+wlan_secure_bss_type
+wlan_secure_current_operation_mode
+wlan_secure_interface_properties
+wlan_secure_media_streaming_mode_enabled
+
+See |win32-accesstokens.txt| before proceeding.
+
+WLAN_READ_ACCESS should get access-token for performing WlanQuery* and WlanGet* functions.
+
+if (access_granted not granted) {
+	print ('You don't have to wifi')
+}
