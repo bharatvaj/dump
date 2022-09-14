@@ -1,0 +1,40 @@
+Linux:
+https://github.com/bmegli/wifi-scan
+nl80211(802.11 interface)
+Linux drivers: cfg80211/mac80211
+Wifi management:
+iwd
+NetworkManager
+wireless-tools
+
+Interesting tool
+----------------
+https://github.com/hsluoyz/WlanHelper
+
+Account Provitioning - sounds stupid but can come in handy. Check later if this exists in other OSes.
+
+win32: win32.txt
+https://www.codeproject.com/Articles/35329/How-to-access-wireless-network-parameters-using-na
+netsh.h does something way stupid - like managing network resources
+NativeWifi - is the api we need :)
+Then wtf is wlanapi.h? panic :{}
+NativeWifi offers wlanapi.h calm :)
+Wifi management:
+netsh
+
+ReactOS:
+DeviceIOControl? Do they use Native API too?
+No they don't, they use DeviceIOControl
+WlanQuery and friends were UNIMPLEMENTED in the reactos project
+https://github.com/reactos/reactos/blob/3fa57b8ff7fcee47b8e2ed869aecaf4515603f3f/dll/win32/wlanapi/main.c#L276
+Oppurtunity for wifi
+Wifi management:
+wlanconf - their own wifi configuration tool rolled out with DeviceIOControl.
+
+MacOS:
+CoreWLAN?
+Wifi management:
+airport?
+
+OpenBSD: autonet - network chooser
+networksetup

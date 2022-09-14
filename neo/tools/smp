@@ -1,0 +1,8 @@
+#!/bin/sh
+
+#TODO have multiple directories
+SMP_FOLDER="/Users/bharat-9052/Desktop/aud"
+SMP_MP3_PLAYER="mpg123"
+mp3_file=$(find "${SMP_FOLDER}" -type f -iregex '.*\.\(mp3\)$' | fzf)
+
+[ -f "${mp3_file}" ] && "${SMP_MP3_PLAYER}" "${mp3_file}"
