@@ -1,3 +1,0 @@
-# Add conditions
-
-yt=i[ -z "$OPEN_PROGRAM" ] && 
