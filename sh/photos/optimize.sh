@@ -1,1 +1,0 @@
-optipng image-file.png
